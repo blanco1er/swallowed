@@ -9,7 +9,7 @@ Build mode: fast — the learner asked the agent on 22 Oct to build through to s
 
 ## Slices
 
-- [ ] **1. Type what your pet ate and get a sourced verdict for any of the five animals**
+- [x] **1. Type what your pet ate and get a sourced verdict for any of the five animals**
   Becomes usable: A running app where typing an item ("dark chocolate", "lily", "ibuprofen"), confirming it, choosing dog, cat, rabbit, guinea pig/hamster or bird with a weight and an amount shows one of the three verdicts with its reason, calculation and veterinary source; moving the amount or weight updates the verdict instantly.
   Why now: The verdict on cited data is the unique kernel; it must be right before anything is built around it, and typing needs no AI so it proves the whole path end to end.
   PRD ref: `prd.md > The Core Journey` (steps 1, 3–6), `prd.md > Confirming the item`, `prd.md > The animal and the amount`, `prd.md > The verdict`
@@ -71,3 +71,6 @@ Reflection:
 Activity mode:
 
 ## Revisions
+- Dose calculation exists for dogs only — the veterinary sources publish numeric thresholds for dogs; for cats, rabbits, rodents and birds the curated data gives "any amount" or "no data → call a vet" (data/SOURCES.md). The demo's dose moment therefore uses a dog; the lily stays the cat case.
+- Product forms instead of one content value per item (e.g. ibuprofen 200/400 mg, dark vs baking chocolate, onion powder judged without math) — the curated data needed it; very dark chocolate (70 %+) uses the baking-chocolate value as the data recommends.
+- The French "3115" on-call number is not shown — the data could not confirm it on an official page.

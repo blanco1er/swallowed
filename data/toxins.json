@@ -1,0 +1,3501 @@
+[
+  {
+    "id": "chocolate-milk",
+    "names": {
+      "en": [
+        "milk chocolate",
+        "chocolate bar",
+        "chocolate candy",
+        "chocolate cookies",
+        "Easter egg"
+      ],
+      "fr": [
+        "chocolat au lait",
+        "barre chocolatée",
+        "bonbons au chocolat",
+        "œuf de Pâques",
+        "biscuits au chocolat"
+      ]
+    },
+    "category": "food",
+    "compound": "theobromine + caffeine (methylxanthines)",
+    "content": [
+      {
+        "form": "milk chocolate",
+        "unit": "mg/g",
+        "value": 2.3,
+        "note": "Methylxanthines combined (theobromine + caffeine), Merck.",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals"
+      }
+    ],
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "compound",
+        "thresholds": [
+          {
+            "from": 20,
+            "unit": "mg/kg",
+            "verdict": "vet-today",
+            "signs": "vomiting, diarrhea, increased thirst, restlessness",
+            "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals",
+            "quote": "mild clinical signs (vomiting, diarrhea, polydipsia) may occur in dogs ingesting 20 mg/kg"
+          },
+          {
+            "from": 40,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "racing or irregular heartbeat, agitation, panting",
+            "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals",
+            "quote": "cardiotoxic effects occur after ingesting 40–50 mg/kg"
+          },
+          {
+            "from": 60,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "tremors, seizures, collapse",
+            "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals",
+            "quote": "seizures occur after ingesting doses ≥ 60 mg/kg"
+          }
+        ],
+        "below": "watch",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals",
+        "quote": "For milk chocolate, approximately 62 g/kg (1 oz/lb) is potentially lethal"
+      },
+      "cat": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No toxic-dose thresholds published for cats; a lab table lists a lower theobromine LD50 for cats (200 mg/kg) than for dogs (K2009). Cats rarely eat chocolate.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4801869/",
+        "quote": "Though the intoxication of cats may also occur"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "ASPCA: less heart effect than dogs but more digestive upset; rabbits cannot vomit. No dose data.",
+        "source": "https://www.aspca.org/news/rabbit-pet-parents-beware-these-common-pet-toxins",
+        "quote": "Rabbits are less sensitive to chocolate’s heart and stimulatory effects compared to dogs"
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No reliable data for pet rodents. Laboratory LD50s (mouse 837, rat 1265 mg/kg theobromine, K2009 table) do not define a safe amount for a 30–1000 g pet. Rodents cannot vomit.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "hyperactivity, vomiting/regurgitation, fast breathing, tremors, seizures",
+        "source": "https://vcahospitals.com/know-your-pet/conures-feeding",
+        "quote": "Never offer any pet bird very salty foods (chips, pretzels, popcorn), chocolate",
+        "note": "Tiny body mass; a wild kea died after ~20 g dark chocolate (Gartrell & Reid 2007, abstract only)."
+      }
+    },
+    "onset": "Signs usually within 6–12 h; can last 1–3 days (dose-dependent).",
+    "notes": "White chocolate has very little theobromine but check for xylitol, raisins or macadamia in the product. Use the upper end of the owner's estimate."
+  },
+  {
+    "id": "chocolate-dark",
+    "names": {
+      "en": [
+        "dark chocolate",
+        "semisweet chocolate",
+        "bittersweet chocolate",
+        "chocolate chips"
+      ],
+      "fr": [
+        "chocolat noir",
+        "chocolat mi-sucré",
+        "pépites de chocolat",
+        "chocolat pâtissier noir"
+      ]
+    },
+    "category": "food",
+    "compound": "theobromine + caffeine (methylxanthines)",
+    "content": [
+      {
+        "form": "semisweet / sweet dark chocolate",
+        "unit": "mg/g",
+        "value": 5.5,
+        "range": [
+          5.3,
+          5.6
+        ],
+        "note": "Merck range 5.3–5.6 mg/g (150–160 mg/oz). Very dark (70 %+) bars are not covered by Merck — app recommendation: use the baking-chocolate value for them.",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals"
+      }
+    ],
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "compound",
+        "thresholds": [
+          {
+            "from": 20,
+            "unit": "mg/kg",
+            "verdict": "vet-today",
+            "signs": "vomiting, diarrhea, increased thirst, restlessness",
+            "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals",
+            "quote": "mild clinical signs (vomiting, diarrhea, polydipsia) may occur in dogs ingesting 20 mg/kg"
+          },
+          {
+            "from": 40,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "racing or irregular heartbeat, agitation, panting",
+            "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals",
+            "quote": "cardiotoxic effects occur after ingesting 40–50 mg/kg"
+          },
+          {
+            "from": 60,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "tremors, seizures, collapse",
+            "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals",
+            "quote": "seizures occur after ingesting doses ≥ 60 mg/kg"
+          }
+        ],
+        "below": "watch",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals",
+        "quote": "mild clinical signs (vomiting, diarrhea, polydipsia) may occur in dogs ingesting 20 mg/kg"
+      },
+      "cat": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No toxic-dose thresholds published for cats; a lab table lists a lower theobromine LD50 for cats (200 mg/kg) than for dogs (K2009). Cats rarely eat chocolate.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4801869/",
+        "quote": "Though the intoxication of cats may also occur"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "ASPCA: less heart effect than dogs but more digestive upset; rabbits cannot vomit. No dose data.",
+        "source": "https://www.aspca.org/news/rabbit-pet-parents-beware-these-common-pet-toxins",
+        "quote": "Rabbits are less sensitive to chocolate’s heart and stimulatory effects compared to dogs"
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No reliable data for pet rodents. Laboratory LD50s (mouse 837, rat 1265 mg/kg theobromine, K2009 table) do not define a safe amount for a 30–1000 g pet. Rodents cannot vomit.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "hyperactivity, vomiting/regurgitation, fast breathing, tremors, seizures",
+        "source": "https://vcahospitals.com/know-your-pet/conures-feeding",
+        "quote": "Never offer any pet bird very salty foods (chips, pretzels, popcorn), chocolate",
+        "note": "Tiny body mass; a wild kea died after ~20 g dark chocolate (Gartrell & Reid 2007, abstract only)."
+      }
+    },
+    "onset": "Signs usually within 6–12 h; can last 1–3 days.",
+    "notes": "Use the upper end of the owner's estimate."
+  },
+  {
+    "id": "chocolate-baking-cocoa",
+    "names": {
+      "en": [
+        "baking chocolate",
+        "unsweetened baker's chocolate",
+        "cocoa powder",
+        "cacao powder",
+        "cacao nibs",
+        "hot chocolate powder"
+      ],
+      "fr": [
+        "chocolat à cuire",
+        "chocolat de couverture",
+        "cacao en poudre",
+        "cacao non sucré",
+        "éclats de fèves de cacao"
+      ]
+    },
+    "category": "food",
+    "compound": "theobromine + caffeine (methylxanthines)",
+    "content": [
+      {
+        "form": "unsweetened (baker's) chocolate",
+        "unit": "mg/g",
+        "value": 15.5,
+        "note": "440 mg/oz.",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals"
+      },
+      {
+        "form": "cocoa powder",
+        "unit": "mg/g",
+        "value": 28.5,
+        "note": "807 mg/oz. Sweetened drinking-chocolate mixes contain less, but no sourced figure — use this value.",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals"
+      }
+    ],
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "compound",
+        "thresholds": [
+          {
+            "from": 20,
+            "unit": "mg/kg",
+            "verdict": "vet-today",
+            "signs": "vomiting, diarrhea, increased thirst, restlessness",
+            "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals",
+            "quote": "mild clinical signs (vomiting, diarrhea, polydipsia) may occur in dogs ingesting 20 mg/kg"
+          },
+          {
+            "from": 40,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "racing or irregular heartbeat, agitation, panting",
+            "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals",
+            "quote": "cardiotoxic effects occur after ingesting 40–50 mg/kg"
+          },
+          {
+            "from": 60,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "tremors, seizures, collapse",
+            "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals",
+            "quote": "seizures occur after ingesting doses ≥ 60 mg/kg"
+          }
+        ],
+        "below": "watch",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals",
+        "quote": "cardiotoxic effects occur after ingesting 40–50 mg/kg"
+      },
+      "cat": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No toxic-dose thresholds published for cats; a lab table lists a lower theobromine LD50 for cats (200 mg/kg) than for dogs (K2009). Cats rarely eat chocolate.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4801869/",
+        "quote": "Though the intoxication of cats may also occur"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "ASPCA: less heart effect than dogs but more digestive upset; rabbits cannot vomit. No dose data.",
+        "source": "https://www.aspca.org/news/rabbit-pet-parents-beware-these-common-pet-toxins",
+        "quote": "Rabbits are less sensitive to chocolate’s heart and stimulatory effects compared to dogs"
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No reliable data for pet rodents. Laboratory LD50s (mouse 837, rat 1265 mg/kg theobromine, K2009 table) do not define a safe amount for a 30–1000 g pet. Rodents cannot vomit.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "hyperactivity, vomiting/regurgitation, fast breathing, tremors, seizures",
+        "source": "https://vcahospitals.com/know-your-pet/conures-feeding",
+        "quote": "Never offer any pet bird very salty foods (chips, pretzels, popcorn), chocolate",
+        "note": "Tiny body mass; a wild kea died after ~20 g dark chocolate (Gartrell & Reid 2007, abstract only)."
+      }
+    },
+    "onset": "Signs usually within 6–12 h; can last 1–3 days.",
+    "notes": "Most concentrated forms: small amounts reach dangerous doses in small pets. Cocoa bean hull mulch (~9 mg/g, Merck) is also dangerous."
+  },
+  {
+    "id": "xylitol",
+    "names": {
+      "en": [
+        "xylitol",
+        "sugar-free gum",
+        "sugar-free candy",
+        "sugar-free mints",
+        "birch sugar",
+        "some peanut butters",
+        "sugar-free baked goods",
+        "sugar-free syrup or medicine"
+      ],
+      "fr": [
+        "xylitol",
+        "E967",
+        "chewing-gum sans sucre",
+        "bonbons sans sucre",
+        "sucre de bouleau",
+        "beurre de cacahuète allégé",
+        "pâtisserie sans sucre"
+      ]
+    },
+    "category": "food",
+    "compound": "xylitol (sugar alcohol)",
+    "content": [
+      {
+        "form": "sugar-free gum or mint",
+        "unit": "g/piece",
+        "value": 1,
+        "range": [
+          0.22,
+          1
+        ],
+        "note": "Range 0.22–1.0 g per piece; varies by brand and flavour — use the upper value unless the label gives the amount.",
+        "source": "https://www.akc.org/expert-advice/health/dog-accidentally-eats-gum-can-gum-make-my-dog-sick/"
+      },
+      {
+        "form": "gum (vet estimation rule)",
+        "unit": "g/piece",
+        "value": 0.3,
+        "note": "ASPCA APCC rule when xylitol is NOT the first sugar alcohol listed; if it is first, assume the label total of sugar alcohols is xylitol.",
+        "source": "https://www.dvm360.com/view/new-findings-effects-xylitol-ingestion-dogs"
+      }
+    ],
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "compound",
+        "thresholds": [
+          {
+            "from": 100,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "weakness, wobbliness, vomiting, collapse, seizures (low blood sugar) — can start within 30 min"
+          },
+          {
+            "from": 500,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "liver failure risk: may appear 24–48 h later (yellow gums, bleeding)",
+            "source": "https://www.merckvetmanual.com/toxicology/food-hazards/xylitol-toxicosis-in-dogs",
+            "quote": "Some dogs ingesting xylitol at doses > 500 mg/kg (227 mg/lb)"
+          }
+        ],
+        "below": "vet-today",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/xylitol-toxicosis-in-dogs",
+        "quote": "greater than approximately 100 mg/kg (45 mg/lb) have been associated with hypoglycemia",
+        "note": "Pet Poison Helpline uses the same 0.1 g/kg (0.05 g/lb) threshold. Below it: still call — product content is uncertain."
+      },
+      "cat": {
+        "risk": "low",
+        "verdict": "watch",
+        "signs": "Watch for other ingredients (chocolate, raisins).",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/xylitol-toxicosis-in-dogs",
+        "quote": "cats are not at risk for hypoglycemia or liver injury from xylitol",
+        "note": "FDA is more cautious (\"does not seem to be as dangerous for cats\"). Dunayer 2006: effect in cats unknown."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No oral data. Intravenous xylitol triggers strong insulin release in rabbits (Dunayer 2006, dvm360) — the mechanism that makes it dangerous in dogs.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "Only lab-mouse data: very low acute toxicity in mice. No data for hamsters, guinea pigs or rats as pets.",
+        "source": "https://www.dvm360.com/view/new-findings-effects-xylitol-ingestion-dogs",
+        "quote": "The oral LD50 in mice for xylitol is > 20 g/kg."
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "One report of 29 wild sunbirds dying within ~15 min after xylitol nectar (Gardner & Mitchell, J Avian Med Surg 2017 — abstract only, not verified). No data for cage birds.",
+        "source": "https://www.merckvetmanual.com/bird-owners/routine-care-and-safety-of-birds/illness-in-pet-birds",
+        "quote": "birds hide their sickness so they don't appear weak to other animals"
+      }
+    },
+    "onset": "Low blood sugar within 30 min (up to 12–18 h with gum); liver injury 24–48 h+.",
+    "notes": "Also in some medicines (e.g. liquid gabapentin), toothpaste, nicotine gum."
+  },
+  {
+    "id": "grapes-raisins",
+    "names": {
+      "en": [
+        "grapes",
+        "raisins",
+        "sultanas",
+        "currants (dried Zante currants)",
+        "grape juice",
+        "raisin bread",
+        "trail mix",
+        "fruit cake",
+        "tamarind"
+      ],
+      "fr": [
+        "raisin",
+        "raisins secs",
+        "sultanines",
+        "raisins de Corinthe",
+        "pain aux raisins",
+        "cake aux fruits",
+        "mélange de fruits secs",
+        "tamarin"
+      ]
+    },
+    "category": "food",
+    "compound": "tartaric acid (proposed)",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting or diarrhea within 6–12 h, lethargy, not eating, then little or no urine (kidney failure in 24–72 h)",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2984110/",
+        "quote": "potentially any dose should be considered a problem",
+        "note": "Merck: >1 grape or raisin per 4.5 kg may be enough; content varies, sensitivity varies — no safe amount used."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, lethargy, reduced urine",
+        "source": "https://www.aspca.org/news/leahs-close-call-handful-grapes-nearly-cost-one-dog-her-life",
+        "quote": "cats may also be affected.",
+        "note": "Merck: anecdotal reports only in cats and ferrets, no published cases."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No data on kidney injury in rabbits; Pet Poison Helpline advises avoiding as a precaution. Grape toxicity appears dog-specific so far.",
+        "source": "https://www.petpoisonhelpline.com/uncategorized/dangers-home-rabbit/",
+        "quote": "There is limited information at this time"
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No data for rodents.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No reports of grape toxicity in pet birds found; no data either way.",
+        "source": "https://www.merckvetmanual.com/bird-owners/routine-care-and-safety-of-birds/illness-in-pet-birds",
+        "quote": "birds hide their sickness so they don't appear weak to other animals"
+      }
+    },
+    "onset": "GI signs 6–12 h; kidney failure 24–72 h.",
+    "notes": "Fresh redcurrants/blackcurrants (Ribes, \"groseilles/cassis\") are NOT grapes: Merck says Ribes currants have not been associated with kidney injury. Dried \"currants\" sold for baking are grapes (Vitis)."
+  },
+  {
+    "id": "onion-allium",
+    "names": {
+      "en": [
+        "onion",
+        "red onion",
+        "shallot",
+        "leek",
+        "chives",
+        "spring onion",
+        "scallion",
+        "fried onions",
+        "onion soup"
+      ],
+      "fr": [
+        "oignon",
+        "échalote",
+        "poireau",
+        "ciboulette",
+        "oignon nouveau",
+        "oignons frits",
+        "soupe à l'oignon"
+      ]
+    },
+    "category": "food",
+    "compound": "organosulfur compounds (n-propyl disulfide etc.) → oxidative red-cell damage",
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "product",
+        "thresholds": [
+          {
+            "from": 5,
+            "unit": "g/kg",
+            "verdict": "vet-now",
+            "signs": "days later: weakness, pale gums, red-brown urine, fast breathing (anemia)"
+          }
+        ],
+        "below": "watch",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2984110/",
+        "quote": "more than 0.5% of their b. wt. in onions at one time",
+        "note": "Merck reports signs at 15–30 g/kg raw onion; Kovalkovičová 2009 gives 0.5 % of body weight (5 g/kg) — the more cautious 5 g/kg is used. Dose = grams of onion (fresh/cooked) per kg body weight.",
+        "noDoseMath": {
+          "forms": [
+            "onion powder",
+            "dehydrated onion",
+            "onion soup mix"
+          ],
+          "verdict": "vet-now",
+          "why": "Concentrated forms; no sourced conversion to fresh onion, so no dose math."
+        }
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "days later: weakness, pale gums, red-brown urine",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/garlic-and-onion-allium-spp-toxicosis-in-animals",
+        "quote": "less than a teaspoon of cooked onions or 5 g/kg of raw onions"
+      },
+      "rabbit": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "lethargy, pale gums, not eating",
+        "source": "https://www.petpoisonhelpline.com/uncategorized/dangers-home-rabbit/",
+        "quote": "a very small amount of either food could cause anemia"
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness. Merck advises not feeding onions to pet birds.",
+        "source": "https://www.merckvetmanual.com/bird-owners/routine-care-and-safety-of-birds/illness-in-pet-birds",
+        "quote": "birds hide their sickness so they don't appear weak to other animals"
+      }
+    },
+    "onset": "Usually a few days; red-cell destruction typically 3–5 days after eating (Merck).",
+    "notes": "Cooking or drying does not remove toxicity (C2016). Cats are the most sensitive species."
+  },
+  {
+    "id": "garlic",
+    "names": {
+      "en": [
+        "garlic",
+        "garlic clove",
+        "garlic powder",
+        "garlic bread",
+        "wild garlic"
+      ],
+      "fr": [
+        "ail",
+        "gousse d'ail",
+        "ail en poudre",
+        "pain à l'ail",
+        "ail des ours"
+      ]
+    },
+    "category": "food",
+    "compound": "organosulfur compounds → oxidative red-cell damage",
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "product",
+        "thresholds": [
+          {
+            "from": 1,
+            "unit": "g/kg",
+            "verdict": "vet-now",
+            "signs": "days later: weakness, pale gums, red-brown urine",
+            "derived": "No published acute garlic dose for dogs. Derived: 5 g/kg onion (K2009, cautious) ÷ 5 (Merck: garlic 3–5× more toxic than onion)."
+          }
+        ],
+        "below": "vet-today",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/garlic-and-onion-allium-spp-toxicosis-in-animals",
+        "quote": "Garlic is 3–5 times more toxic than onion.",
+        "note": "Pet Poison Helpline: the small amount of garlic in some dog treats is unlikely to be harmful. Threshold is DERIVED, not published.",
+        "noDoseMath": {
+          "forms": [
+            "garlic powder",
+            "garlic granules",
+            "garlic supplement"
+          ],
+          "verdict": "vet-now",
+          "why": "Concentrated; no sourced conversion factor."
+        }
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "days later: weakness, pale gums, red-brown urine",
+        "source": "https://www.petpoisonhelpline.com/pet-safety-tips/are-onions-poisons-to-dogs/",
+        "quote": "Cats are more sensitive than dogs to Allium toxicosis."
+      },
+      "rabbit": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "lethargy, pale gums, not eating",
+        "source": "https://www.petpoisonhelpline.com/uncategorized/dangers-home-rabbit/",
+        "quote": "a very small amount of either food could cause anemia"
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/bird-owners/routine-care-and-safety-of-birds/illness-in-pet-birds",
+        "quote": "birds hide their sickness so they don't appear weak to other animals"
+      }
+    },
+    "onset": "Usually a few days; hemolysis 3–5 days after eating (Merck).",
+    "notes": "Garlic is roughly 3–5× more potent than onion."
+  },
+  {
+    "id": "macadamia",
+    "names": {
+      "en": [
+        "macadamia nuts",
+        "macadamia cookies",
+        "macadamia nut butter"
+      ],
+      "fr": [
+        "noix de macadamia",
+        "cookies aux noix de macadamia"
+      ]
+    },
+    "category": "food",
+    "compound": "unknown",
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "product",
+        "thresholds": [
+          {
+            "from": 0.7,
+            "unit": "g/kg",
+            "verdict": "vet-today",
+            "signs": "weakness (esp. back legs), wobbliness, vomiting, tremors, fever"
+          }
+        ],
+        "below": "watch",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4801869/",
+        "quote": "as little as 0.7 g/kg of nuts",
+        "note": "Merck gives 2.4 g/kg; Cortinovis & Caloni 2016 report 0.7 g/kg — the lower value is used. If chocolate-coated, also run chocolate."
+      },
+      "cat": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "Not reported in cats — absence of reports is not proof of safety.",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/macadamia-nut-toxicosis-in-dogs",
+        "quote": "Dogs are the only species in which clinical signs have been reported."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No published data for this species. Effects in dogs/cats are mainly digestive, so rated \"call your vet today\"; small prey species hide illness and cannot vomit.",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/macadamia-nut-toxicosis-in-dogs",
+        "quote": "Dogs are the only species in which clinical signs have been reported."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No published data for this species. Effects in dogs/cats are mainly digestive, so rated \"call your vet today\"; small prey species hide illness and cannot vomit.",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/macadamia-nut-toxicosis-in-dogs",
+        "quote": "Dogs are the only species in which clinical signs have been reported."
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No published data for this species. Effects in dogs/cats are mainly digestive, so rated \"call your vet today\"; small prey species hide illness and cannot vomit.",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/macadamia-nut-toxicosis-in-dogs",
+        "quote": "Dogs are the only species in which clinical signs have been reported."
+      }
+    },
+    "onset": "Within 12 h; usually resolves in 12–48 h (Merck).",
+    "notes": ""
+  },
+  {
+    "id": "avocado",
+    "names": {
+      "en": [
+        "avocado",
+        "guacamole",
+        "avocado leaves",
+        "avocado pit/stone"
+      ],
+      "fr": [
+        "avocat",
+        "guacamole",
+        "feuilles d'avocatier",
+        "noyau d'avocat"
+      ]
+    },
+    "category": "food",
+    "compound": "persin",
+    "species": {
+      "dog": {
+        "risk": "low",
+        "verdict": "watch",
+        "signs": "vomiting, diarrhea; if the pit was swallowed: repeated vomiting, belly pain, not eating → vet-now (blockage)",
+        "source": "https://www.aspca.org/pet-care/aspca-poison-control/people-foods-avoid-feeding-your-pets",
+        "quote": "Avocado is primarily a problem for birds, rabbits, donkeys, horses and ruminants",
+        "note": "Merck: single report of heart damage in 2 dogs; the whole pit can block the gut — a swallowed pit should be \"vet-today\" at least."
+      },
+      "cat": {
+        "risk": "low",
+        "verdict": "watch",
+        "signs": "vomiting, diarrhea",
+        "source": "https://www.aspca.org/pet-care/aspca-poison-control/people-foods-avoid-feeding-your-pets",
+        "quote": "Avocado is primarily a problem for birds, rabbits, donkeys, horses and ruminants"
+      },
+      "rabbit": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "lethargy, not eating, breathing difficulty",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/avocado-persea-spp-toxicosis-in-animals",
+        "quote": "mice, rabbits, guinea pigs, rats, sheep, budgerigars, canaries, cockatiels"
+      },
+      "rodent": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "lethargy, breathing difficulty, not eating",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/avocado-persea-spp-toxicosis-in-animals",
+        "quote": "mice, rabbits, guinea pigs, rats, sheep, budgerigars, canaries, cockatiels"
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "fluffed up, breathing difficulty, weakness, sudden death",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/avocado-persea-spp-toxicosis-in-animals",
+        "quote": "Caged birds seem more susceptible to the effects of avocado",
+        "note": "Budgerigar: 8.7 g of mashed avocado caused death within 48 h (Merck)."
+      }
+    },
+    "onset": "Birds: signs within 24 h (usually after ≥12 h), death 1–2 days (Merck). K2009 reports 12–24 h.",
+    "notes": "All parts of the plant contain persin (leaves especially)."
+  },
+  {
+    "id": "caffeine",
+    "names": {
+      "en": [
+        "coffee",
+        "coffee grounds",
+        "coffee beans",
+        "espresso",
+        "caffeine pills",
+        "energy drink",
+        "tea bags",
+        "pre-workout powder",
+        "cola"
+      ],
+      "fr": [
+        "café",
+        "marc de café",
+        "grains de café",
+        "expresso",
+        "comprimés de caféine",
+        "boisson énergisante",
+        "sachets de thé",
+        "pré-workout",
+        "soda au cola"
+      ]
+    },
+    "category": "food",
+    "compound": "caffeine (methylxanthine)",
+    "content": [
+      {
+        "form": "caffeine tablet",
+        "unit": "mg/tablet",
+        "value": 200,
+        "note": "Up to 200 mg per tablet; K2009 mentions 100 mg tablets. Read the label.",
+        "source": "https://www.petpoisonhelpline.com/uncategorized/resolutions-to-get-healthier-in-the-new-year-can-lead-to-dangerous-exposures-for-our-pets/"
+      },
+      {
+        "form": "brewed coffee",
+        "unit": "mg/ml",
+        "value": 0.7,
+        "range": [
+          0.32,
+          0.7
+        ],
+        "note": "113–247 mg per 12 fl oz (355 ml) → 0.32–0.70 mg/ml; upper value used.",
+        "source": "https://www.fda.gov/consumers/consumer-updates/spilling-beans-how-much-caffeine-too-much"
+      },
+      {
+        "form": "energy drink",
+        "unit": "mg/ml",
+        "value": 0.69,
+        "range": [
+          0.11,
+          0.69
+        ],
+        "note": "54–328 mg per 16 fl oz (473 ml) → 0.11–0.69 mg/ml; upper value used unless label says.",
+        "source": "https://www.fda.gov/consumers/consumer-updates/spilling-beans-how-much-caffeine-too-much"
+      }
+    ],
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "compound",
+        "thresholds": [
+          {
+            "from": 20,
+            "unit": "mg/kg",
+            "verdict": "vet-today",
+            "signs": "vomiting, diarrhea, increased thirst, restlessness",
+            "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals",
+            "quote": "mild clinical signs (vomiting, diarrhea, polydipsia) may occur in dogs ingesting 20 mg/kg"
+          },
+          {
+            "from": 40,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "racing or irregular heartbeat, agitation, panting",
+            "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals",
+            "quote": "cardiotoxic effects occur after ingesting 40–50 mg/kg"
+          },
+          {
+            "from": 60,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "tremors, seizures, collapse",
+            "source": "https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals",
+            "quote": "seizures occur after ingesting doses ≥ 60 mg/kg"
+          }
+        ],
+        "below": "watch",
+        "source": "https://www.petpoisonhelpline.com/pet-tips/caffeine-poisoning-in-dogs/",
+        "quote": "A baseline of 9 mg/lb of bodyweight can result in caffeine poisoning.",
+        "note": "Merck chocolate thresholds apply to methylxanthines; PPH 9 mg/lb ≈ 20 mg/kg agrees. Ground coffee/beans: no sourced mg/g — use noDoseMath.",
+        "noDoseMath": {
+          "forms": [
+            "coffee grounds",
+            "coffee beans",
+            "instant coffee",
+            "pre-workout powder",
+            "tea leaves"
+          ],
+          "verdict": "vet-now",
+          "why": "No sourced caffeine content per gram for these forms."
+        }
+      },
+      "cat": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No feline thresholds published; pills can be fatal.",
+        "source": "https://vcahospitals.com/know-your-pet/caffeine-toxicity-in-pets",
+        "quote": "one or two caffeine pills can be fatal for small dogs and cats"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "hyperactivity, fast heartbeat, tremors",
+        "source": "https://vcahospitals.com/know-your-pet/conures-feeding",
+        "quote": "or products containing caffeine (coffee, tea, soda)"
+      }
+    },
+    "onset": "Within 1–2 h (Pet Poison Helpline).",
+    "notes": "Dog noDoseMath: coffee grounds, beans, instant coffee, pre-workout powder → vet-now (PPH: 3 teaspoons of instant coffee can cause moderate signs in a medium dog). A lick or two of coffee is unlikely to be toxic (PPH)."
+  },
+  {
+    "id": "alcohol",
+    "names": {
+      "en": [
+        "alcohol",
+        "beer",
+        "wine",
+        "spirits",
+        "liqueur",
+        "cocktail",
+        "hand sanitizer",
+        "rubbing alcohol (isopropyl)",
+        "rum cake",
+        "fermented/rotten fruit"
+      ],
+      "fr": [
+        "alcool",
+        "bière",
+        "vin",
+        "spiritueux",
+        "liqueur",
+        "cocktail",
+        "gel hydroalcoolique",
+        "alcool à 70° / isopropylique",
+        "baba au rhum",
+        "fruits fermentés"
+      ]
+    },
+    "category": "food",
+    "compound": "ethanol (isopropanol in rubbing alcohol)",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "wobbliness, vomiting, very sleepy, slow breathing, low body temperature, collapse",
+        "source": "https://todaysveterinarypractice.com/practical-toxicologyethanol-toxicosis-review/",
+        "quote": "The published oral lethal dose in dogs is 5.5 to 7.9 g/kg",
+        "note": "Only lethal doses are published (no mild-sign threshold), and a small glass of spirits can reach that range in a small dog → any amount = vet-now. Isopropanol is twice as toxic (Merck)."
+      },
+      "cat": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No feline dose data. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicoses-from-household-hazards/toxicoses-from-alcohols-in-animals",
+        "quote": "generally begin within 30–60 minutes after ingestion"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness. Merck advises no alcohol for pet birds.",
+        "source": "https://www.merckvetmanual.com/bird-owners/routine-care-and-safety-of-birds/illness-in-pet-birds",
+        "quote": "birds hide their sickness so they don't appear weak to other animals"
+      }
+    },
+    "onset": "30–60 min (Merck); typically within 1 h (Wismer).",
+    "notes": "Low blood sugar is a major complication."
+  },
+  {
+    "id": "raw-yeast-dough",
+    "names": {
+      "en": [
+        "raw bread dough",
+        "pizza dough",
+        "yeast dough",
+        "unbaked rolls",
+        "sourdough starter"
+      ],
+      "fr": [
+        "pâte à pain crue",
+        "pâte à pizza crue",
+        "pâte levée",
+        "levain",
+        "pâte à brioche crue"
+      ]
+    },
+    "category": "food",
+    "compound": "expanding dough + ethanol from yeast fermentation",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "swollen hard belly, unproductive retching, wobbliness, weakness",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/bread-dough-toxicosis-in-animals",
+        "quote": "Although any species is susceptible, dogs are most commonly affected"
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "swollen belly, retching, wobbliness",
+        "source": "https://www.petpoisonhelpline.com/poison/bread-dough/",
+        "quote": "Unbaked bread dough can be dangerous when ingested by dogs and cats."
+      },
+      "rabbit": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "swollen belly, no droppings, lethargy",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/bread-dough-toxicosis-in-animals",
+        "quote": "Although any species is susceptible, dogs are most commonly affected"
+      },
+      "rodent": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "swollen belly, lethargy",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/bread-dough-toxicosis-in-animals",
+        "quote": "Although any species is susceptible, dogs are most commonly affected"
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "fluffed up, wobbliness, swollen crop/belly",
+        "source": "https://www.merckvetmanual.com/toxicology/food-hazards/bread-dough-toxicosis-in-animals",
+        "quote": "Although any species is susceptible, dogs are most commonly affected"
+      }
+    },
+    "onset": "Within hours.",
+    "notes": "Merck: death is usually from ethanol effects rather than stomach distension."
+  },
+  {
+    "id": "salt",
+    "names": {
+      "en": [
+        "table salt",
+        "rock salt",
+        "sea salt",
+        "de-icing salt",
+        "seawater",
+        "homemade play dough",
+        "salt dough ornaments",
+        "bath salts (sodium chloride)"
+      ],
+      "fr": [
+        "sel de table",
+        "gros sel",
+        "sel de mer",
+        "sel de déneigement",
+        "eau de mer",
+        "pâte à sel",
+        "pâte à modeler maison",
+        "décorations en pâte à sel"
+      ]
+    },
+    "category": "household",
+    "compound": "sodium chloride",
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "product",
+        "thresholds": [
+          {
+            "from": 2,
+            "unit": "g/kg",
+            "verdict": "vet-now",
+            "signs": "vomiting, extreme thirst, wobbliness, tremors, seizures"
+          }
+        ],
+        "below": "vet-today",
+        "source": "https://www.merckvetmanual.com/toxicology/salt-toxicosis/salt-toxicosis-in-animals",
+        "quote": "clinical signs of toxicosis can appear after ingestion of 2–3 g/kg",
+        "note": "Dose = grams of salt per kg. Pet Poison Helpline: 1.5 g/lb (≈3.3 g/kg); Merck lethal ≈4 g/kg. Lower Merck value used.",
+        "noDoseMath": {
+          "forms": [
+            "homemade play dough",
+            "salt dough ornaments",
+            "seawater"
+          ],
+          "verdict": "vet-now",
+          "why": "Salt content of play dough/salt dough not published (PPH: \"a large amount of salt\"); no dose math."
+        }
+      },
+      "cat": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No feline threshold published. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.petpoisonhelpline.com/poison/salt/",
+        "quote": "handmade salt-dough ornaments or homemade salt-play dough"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "extreme thirst, weakness, tremors",
+        "source": "https://vcahospitals.com/know-your-pet/conures-feeding",
+        "quote": "Never offer any pet bird very salty foods"
+      }
+    },
+    "onset": "Within hours.",
+    "notes": "Salt was formerly used to make pets vomit — no longer recommended (Merck). The app must never suggest it."
+  },
+  {
+    "id": "apple-seeds",
+    "names": {
+      "en": [
+        "apple seeds",
+        "apple core",
+        "pear seeds"
+      ],
+      "fr": [
+        "pépins de pomme",
+        "trognon de pomme",
+        "pépins de poire"
+      ]
+    },
+    "category": "food",
+    "compound": "amygdalin (cyanogenic glycoside), released only when seeds are chewed",
+    "species": {
+      "dog": {
+        "risk": "low",
+        "verdict": "watch",
+        "signs": "only large amounts of chewed seeds matter: bright red gums, breathing difficulty → vet-now",
+        "source": "https://www.aspca.org/news/pet-parents-beware-these-four-fall-toxins",
+        "quote": "ingest a couple of apple seeds, its unlikely to cause a problem"
+      },
+      "cat": {
+        "risk": "low",
+        "verdict": "watch",
+        "signs": "as for dogs",
+        "source": "https://www.aspca.org/news/pet-parents-beware-these-four-fall-toxins",
+        "quote": "ingest a couple of apple seeds, its unlikely to cause a problem"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "Merck rabbit table lists apple seeds as harmful; no dose data. Rabbits chew seeds.",
+        "source": "https://www.merckvetmanual.com/toxicology/poisonous-plants/houseplants-and-ornamentals-toxic-to-animals",
+        "quote": "If a seed is swallowed whole, cyanide is not released"
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No data for rodents; they chew seeds; tiny body weight.",
+        "source": "https://www.merckvetmanual.com/toxicology/poisonous-plants/houseplants-and-ornamentals-toxic-to-animals",
+        "quote": "If a seed is swallowed whole, cyanide is not released"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "Merck advises avoiding apple seeds for birds; no dose data. Commercial apples have very low cyanide levels in seeds (Merck).",
+        "source": "https://www.merckvetmanual.com/bird-owners/routine-care-and-safety-of-birds/illness-in-pet-birds",
+        "quote": "birds hide their sickness so they don't appear weak to other animals"
+      }
+    },
+    "onset": "Minutes to hours if toxic.",
+    "notes": "MYTH WARNING: \"a few apple seeds kill\" is exaggerated (ASPCA, Merck). Stone-fruit pits (cherry, peach, apricot) are a separate risk (blockage; cyanide if crushed) — not covered here."
+  },
+  {
+    "id": "wild-mushrooms",
+    "names": {
+      "en": [
+        "wild mushroom",
+        "garden mushroom",
+        "toadstool",
+        "death cap (Amanita)",
+        "magic mushrooms (psilocybin)"
+      ],
+      "fr": [
+        "champignon sauvage",
+        "champignon du jardin",
+        "amanite phalloïde",
+        "champignons hallucinogènes"
+      ]
+    },
+    "category": "plant",
+    "compound": "various (amatoxins, muscarine, psilocybin…)",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, diarrhea 6–24 h later, then a false recovery, then liver failure; or drooling, tremors, seizures",
+        "source": "https://www.petpoisonhelpline.com/poison/mushrooms/",
+        "quote": "all mushroom ingestions by pets should be considered toxic"
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, drooling, wobbliness",
+        "source": "https://www.petpoisonhelpline.com/poison/mushrooms/",
+        "quote": "all mushroom ingestions by pets should be considered toxic"
+      },
+      "rabbit": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "not eating, lethargy",
+        "source": "https://www.petpoisonhelpline.com/poison/mushrooms/",
+        "quote": "all mushroom ingestions by pets should be considered toxic"
+      },
+      "rodent": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "lethargy, not eating",
+        "source": "https://www.petpoisonhelpline.com/poison/mushrooms/",
+        "quote": "all mushroom ingestions by pets should be considered toxic"
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "fluffed up, weakness",
+        "source": "https://www.petpoisonhelpline.com/poison/mushrooms/",
+        "quote": "all mushroom ingestions by pets should be considered toxic"
+      }
+    },
+    "onset": "Amanita: 6–12 h (PPH) to 6–24 h (VCA); false recovery 12–24 h; liver failure follows.",
+    "notes": "A pet that seems fine after a wild mushroom is NOT safe (delayed liver failure). Store-bought culinary mushrooms are not covered."
+  },
+  {
+    "id": "ibuprofen",
+    "names": {
+      "en": [
+        "ibuprofen",
+        "Advil",
+        "Motrin",
+        "Nurofen",
+        "children's ibuprofen"
+      ],
+      "fr": [
+        "ibuprofène",
+        "Advil",
+        "Nurofen",
+        "Spedifen",
+        "ibuprofène sirop enfant"
+      ]
+    },
+    "category": "human-medicine",
+    "compound": "ibuprofen (NSAID)",
+    "content": [
+      {
+        "form": "tablet",
+        "unit": "mg/tablet",
+        "value": 200,
+        "note": "Standard adult OTC strength (US). Always use the strength printed on the pack.",
+        "source": "https://dvm360.com/view/toxciology-brief-ibuprofen-toxicosis-dogs-cats-and-ferrets"
+      },
+      {
+        "form": "tablet",
+        "unit": "mg/tablet",
+        "value": 400,
+        "note": "Prescription strengths 400/600/800 mg (US). 400 mg is also sold OTC in France — not verified against a French source.",
+        "source": "https://dvm360.com/view/toxciology-brief-ibuprofen-toxicosis-dogs-cats-and-ferrets"
+      },
+      {
+        "form": "children's suspension",
+        "unit": "mg/ml",
+        "value": 40,
+        "range": [
+          20,
+          40
+        ],
+        "note": "Pediatric liquids are 20 or 40 mg/ml; upper value used unless label says.",
+        "source": "https://dvm360.com/view/toxciology-brief-ibuprofen-toxicosis-dogs-cats-and-ferrets"
+      }
+    ],
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "compound",
+        "thresholds": [
+          {
+            "from": 25,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "vomiting, not eating, black stools, belly pain (stomach ulcers)"
+          },
+          {
+            "from": 175,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "kidney injury: drinking/peeing more or less, vomiting",
+            "source": "https://www.merckvetmanual.com/toxicology/toxicities-from-human-drugs/analgesics-toxicity",
+            "quote": "Renal failure may occur with doses of 175–300 mg/kg."
+          },
+          {
+            "from": 400,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "seizures, wobbliness, coma",
+            "source": "https://www.merckvetmanual.com/toxicology/toxicities-from-human-drugs/analgesics-toxicity",
+            "quote": "Doses > 600 mg/kg are potentially lethal in dogs."
+          }
+        ],
+        "below": "vet-today",
+        "source": "https://dvm360.com/view/toxciology-brief-ibuprofen-toxicosis-dogs-cats-and-ferrets",
+        "quote": "Single, acute overdoses as low as 25 mg/kg can cause vomiting in dogs",
+        "note": "Merck gives 100–125 mg/kg for GI signs; ASPCA APCC data (dvm360) 25 mg/kg — lower value used. Repeated doses of 8–16 mg/kg caused ulcers (Merck)."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, not eating, kidney failure",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicities-from-human-drugs/analgesics-toxicity",
+        "quote": "approximately half the dose required to cause toxicosis in dogs"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rabbits. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rodents. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for birds. ",
+        "source": "https://www.dvm360.com/view/medications-pesticides-continue-poison-birds",
+        "quote": "potentially deadly for birds even in small amounts"
+      }
+    },
+    "onset": "GI signs within hours; kidney injury 1–5 days.",
+    "notes": "Ferrets are even more sensitive (out of scope)."
+  },
+  {
+    "id": "naproxen",
+    "names": {
+      "en": [
+        "naproxen",
+        "Aleve",
+        "Naprosyn"
+      ],
+      "fr": [
+        "naproxène",
+        "Apranax",
+        "Aleve"
+      ]
+    },
+    "category": "human-medicine",
+    "compound": "naproxen (NSAID, very long half-life in dogs)",
+    "content": [
+      {
+        "form": "OTC tablet",
+        "unit": "mg/tablet",
+        "value": 220,
+        "note": "Strengths found: 220, 250, 275, 375, 500, 550 mg. Use the printed strength.",
+        "source": "https://dvm360.com/view/toxicity-pain-medications-proceedings-0"
+      },
+      {
+        "form": "tablet",
+        "unit": "mg/tablet",
+        "value": 550,
+        "note": "Highest common strength.",
+        "source": "https://dvm360.com/view/toxicity-pain-medications-proceedings-0"
+      }
+    ],
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "compound",
+        "thresholds": [
+          {
+            "from": 5.6,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "vomiting, black stools, not eating (stomach ulcers)"
+          },
+          {
+            "from": 13,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "kidney injury",
+            "source": "https://dvm360.com/view/toxicology-brief-naproxen-toxicosis-dogs",
+            "quote": "azotemia is possible at doses ranging from 13 to 15 mg/kg."
+          }
+        ],
+        "below": "vet-today",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicities-from-human-drugs/analgesics-toxicity",
+        "quote": "5.6 mg/kg, PO, every 24 hours, for 7 days resulted in vomiting",
+        "note": "dvm360: single dose ≥7 mg/kg causes GI signs; half-life 74 h in dogs. One 220 mg tablet exceeds the threshold in dogs under ~30 kg."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, kidney failure",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicities-from-human-drugs/analgesics-toxicity",
+        "quote": "cats may be more susceptible to naproxen toxicosis than dogs are."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rabbits. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rodents. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for birds. ",
+        "source": "https://www.dvm360.com/view/medications-pesticides-continue-poison-birds",
+        "quote": "potentially deadly for birds even in small amounts"
+      }
+    },
+    "onset": "Hours to days.",
+    "notes": ""
+  },
+  {
+    "id": "acetaminophen",
+    "names": {
+      "en": [
+        "acetaminophen",
+        "paracetamol",
+        "Tylenol",
+        "Panadol",
+        "cold and flu tablets with paracetamol"
+      ],
+      "fr": [
+        "paracétamol",
+        "Doliprane",
+        "Dafalgan",
+        "Efferalgan",
+        "médicament contre le rhume avec paracétamol"
+      ]
+    },
+    "category": "human-medicine",
+    "compound": "acetaminophen / paracetamol",
+    "content": [
+      {
+        "form": "tablet",
+        "unit": "mg/tablet",
+        "value": 500,
+        "range": [
+          325,
+          1000
+        ],
+        "note": "Common strengths 325 and 500 mg (US) and 500 / 1000 mg (France, e.g. Doliprane 1000). Strengths seen only in search results — read the pack.",
+        "source": "https://dvm360.com/view/toxicity-pain-medications-proceedings-0",
+        "verified": false
+      }
+    ],
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "compound",
+        "thresholds": [
+          {
+            "from": 100,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "liver damage: vomiting, yellow gums, belly pain"
+          },
+          {
+            "from": 200,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "brown/grey gums, breathing difficulty, swollen face or paws",
+            "source": "https://www.merckvetmanual.com/toxicology/toxicities-from-human-drugs/analgesics-toxicity",
+            "quote": "methemoglobinemia have been reported in dogs at acetaminophen doses > 200 mg/kg"
+          }
+        ],
+        "below": "vet-today",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicities-from-human-drugs/analgesics-toxicity",
+        "quote": "not observed unless the dose exceeds 100 mg/kg"
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "brown/grey or blue gums, breathing difficulty, swollen face/paws, dark urine",
+        "source": "https://www.vet.cornell.edu/hospitals/pharmacy/consumer-clinical-care-guidelines-animals/small-animal-toxins",
+        "quote": "Contraindicated in cats at any dosage and not recommended in ferrets.",
+        "note": "Merck: some cats show signs at 10 mg/kg — less than a quarter of one 500 mg tablet for a 5 kg cat."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rabbits. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rodents. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for birds. ",
+        "source": "https://www.dvm360.com/view/medications-pesticides-continue-poison-birds",
+        "quote": "potentially deadly for birds even in small amounts"
+      }
+    },
+    "onset": "Cats: hours. Liver injury in dogs: 1–3 days.",
+    "notes": ""
+  },
+  {
+    "id": "aspirin",
+    "names": {
+      "en": [
+        "aspirin",
+        "acetylsalicylic acid",
+        "baby aspirin"
+      ],
+      "fr": [
+        "aspirine",
+        "acide acétylsalicylique",
+        "Kardégic",
+        "Aspégic"
+      ]
+    },
+    "category": "human-medicine",
+    "compound": "acetylsalicylic acid",
+    "content": [
+      {
+        "form": "tablet",
+        "unit": "mg/tablet",
+        "value": 500,
+        "range": [
+          80,
+          500
+        ],
+        "note": "Strengths 80/81, 325 and 500 mg (seen only in search results) — read the pack.",
+        "source": "https://www.vet.cornell.edu/hospitals/pharmacy/consumer-clinical-care-guidelines-animals/small-animal-toxins",
+        "verified": false
+      }
+    ],
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "compound",
+        "thresholds": [
+          {
+            "from": 100,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "vomiting (maybe bloody), not eating, black stools"
+          },
+          {
+            "from": 450,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "seizures, coma",
+            "source": "https://www.merckvetmanual.com/toxicology/toxicities-from-human-drugs/analgesics-toxicity",
+            "quote": "Acute aspirin ingestion of 450 mg/kg"
+          }
+        ],
+        "below": "vet-today",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicities-from-human-drugs/analgesics-toxicity",
+        "quote": "Toxicosis occurred in dogs receiving 100–300 mg/kg, PO, every 24 hours",
+        "note": "Below 100 mg/kg still \"vet-today\": Merck reports stomach erosions at 25 mg/kg every 8 h."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, fast breathing, weakness",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicities-from-human-drugs/analgesics-toxicity",
+        "quote": "Cats are very susceptible to aspirin"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rabbits. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rodents. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for birds. ",
+        "source": "https://www.dvm360.com/view/medications-pesticides-continue-poison-birds",
+        "quote": "potentially deadly for birds even in small amounts"
+      }
+    },
+    "onset": "Hours.",
+    "notes": ""
+  },
+  {
+    "id": "antidepressants-ssri",
+    "names": {
+      "en": [
+        "antidepressant",
+        "fluoxetine (Prozac)",
+        "sertraline (Zoloft)",
+        "paroxetine",
+        "citalopram",
+        "escitalopram",
+        "venlafaxine (Effexor)",
+        "duloxetine"
+      ],
+      "fr": [
+        "antidépresseur",
+        "fluoxétine (Prozac)",
+        "sertraline (Zoloft)",
+        "paroxétine (Deroxat)",
+        "citalopram",
+        "escitalopram (Seroplex)",
+        "venlafaxine (Effexor)",
+        "duloxétine"
+      ]
+    },
+    "category": "human-medicine",
+    "compound": "SSRIs / SNRIs",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "sleepiness or agitation, dilated pupils, tremors, fever, vomiting, seizures",
+        "source": "https://www.petpoisonhelpline.com/poison/antidepressants/",
+        "quote": "Immediate veterinary intervention is often needed",
+        "note": "Sertraline signs reported at 10 mg/kg (dvm360 2022); toxic dose hard to define — any amount."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "agitation, vocalising, dilated pupils, tremors",
+        "source": "https://www.petpoisonhelpline.com/poison/antidepressants/",
+        "quote": "Immediate veterinary intervention is often needed",
+        "note": "Cats are attracted to venlafaxine capsules (dvm360)."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rabbits. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rodents. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for birds. ",
+        "source": "https://www.dvm360.com/view/medications-pesticides-continue-poison-birds",
+        "quote": "potentially deadly for birds even in small amounts"
+      }
+    },
+    "onset": "Dogs 15 min–24 h (median 2 h); cats 1–6 h (dvm360 2022).",
+    "notes": ""
+  },
+  {
+    "id": "adhd-stimulants",
+    "names": {
+      "en": [
+        "ADHD medication",
+        "amphetamine (Adderall)",
+        "methylphenidate (Ritalin, Concerta)",
+        "lisdexamfetamine (Vyvanse)",
+        "atomoxetine"
+      ],
+      "fr": [
+        "médicament TDAH",
+        "méthylphénidate (Ritaline, Concerta, Quasym)",
+        "lisdexamfétamine",
+        "amphétamine",
+        "atomoxétine"
+      ]
+    },
+    "category": "human-medicine",
+    "compound": "amphetamines / methylphenidate",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "agitation, pacing, fast heartbeat, fever, tremors, seizures",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicoses-from-human-recreational-drugs/toxicoses-in-animals-from-amphetamines-and-adhd-drugs-in-animals",
+        "quote": "restlessness and agitation associated with amphetamine salt ingestion occur at 0.09 mg/kg"
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "agitation, dilated pupils, fast heartbeat, tremors",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicoses-from-human-recreational-drugs/toxicoses-in-animals-from-amphetamines-and-adhd-drugs-in-animals",
+        "quote": "restlessness and agitation associated with amphetamine salt ingestion occur at 0.09 mg/kg",
+        "note": "Amphetamine combinations are #7 on Pet Poison Helpline's 2025 cat list."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rabbits. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rodents. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for birds. ",
+        "source": "https://www.dvm360.com/view/medications-pesticides-continue-poison-birds",
+        "quote": "potentially deadly for birds even in small amounts"
+      }
+    },
+    "onset": "Peak 1–3 h; atomoxetine 30 min–2 h (Merck).",
+    "notes": "Thresholds are so low that any tablet is treated as an emergency."
+  },
+  {
+    "id": "heart-medications",
+    "names": {
+      "en": [
+        "heart medication",
+        "blood pressure pills",
+        "beta blocker (metoprolol, atenolol, propranolol, bisoprolol)",
+        "calcium channel blocker (amlodipine, diltiazem, verapamil)"
+      ],
+      "fr": [
+        "médicament pour le cœur",
+        "antihypertenseur",
+        "bêtabloquant (bisoprolol, aténolol, propranolol)",
+        "inhibiteur calcique (amlodipine, diltiazem, vérapamil)"
+      ]
+    },
+    "category": "human-medicine",
+    "compound": "beta-blockers, calcium-channel blockers",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "weakness, collapse, slow heartbeat, pale gums",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicoses-from-cardiovascular-medications/toxicoses-in-animals-from-cardiovascular-medications",
+        "quote": "The most common clinical signs of beta-blocker toxicosis are bradycardia and hypotension.",
+        "note": "Merck: toxic doses vary with the specific drug — no single threshold."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "weakness, collapse, slow heartbeat",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicoses-from-cardiovascular-medications/toxicoses-in-animals-from-cardiovascular-medications",
+        "quote": "The most common clinical signs of beta-blocker toxicosis are bradycardia and hypotension."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rabbits. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rodents. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for birds. ",
+        "source": "https://www.dvm360.com/view/medications-pesticides-continue-poison-birds",
+        "quote": "potentially deadly for birds even in small amounts"
+      }
+    },
+    "onset": "Within 4 h; can last 24–48 h, longer for extended-release forms (Merck).",
+    "notes": "ASPCA: cardiac drugs are among the most common prescription exposures."
+  },
+  {
+    "id": "vitamin-d",
+    "names": {
+      "en": [
+        "vitamin D3 supplement",
+        "cholecalciferol",
+        "vitamin D drops",
+        "high-dose vitamin D capsule"
+      ],
+      "fr": [
+        "vitamine D3",
+        "cholécalciférol",
+        "ampoule de vitamine D (ZymaD, Uvedose)",
+        "gouttes de vitamine D"
+      ]
+    },
+    "category": "human-medicine",
+    "compound": "cholecalciferol",
+    "content": [
+      {
+        "form": "supplement labelled in IU",
+        "unit": "mg per 1000 IU",
+        "value": 0.025,
+        "note": "1 IU = 0.025 mcg cholecalciferol (Merck). Convert the printed IU per tablet/drop/ampoule.",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicoses-from-human-vitamins-minerals-and-dietary-supplements/toxicoses-in-animals-from-human-multivitamins-and-supplements"
+      }
+    ],
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "compound",
+        "thresholds": [
+          {
+            "from": 0.1,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "vomiting, drinking and peeing a lot, weakness (high calcium → kidney failure)"
+          }
+        ],
+        "below": "vet-today",
+        "source": "https://www.merckvetmanual.com/toxicology/rodenticide-poisoning/cholecalciferol-vitamin-d3-poisoning-in-animals",
+        "quote": "Clinical signs may be noted in doses as low as 0.1 mg/kg",
+        "note": "Merck supplements page says 0.5 mg/kg; rodenticide page 0.1 mg/kg — lower value used. 0.1 mg/kg = 4 000 IU/kg."
+      },
+      "cat": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No separate feline threshold; vitamin D3 is #4 on Pet Poison Helpline's 2025 cat list. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/toxicology/rodenticide-poisoning/cholecalciferol-vitamin-d3-poisoning-in-animals",
+        "quote": "Clinical signs may be noted in doses as low as 0.1 mg/kg"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rabbits. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rodents. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for birds. ",
+        "source": "https://www.dvm360.com/view/medications-pesticides-continue-poison-birds",
+        "quote": "potentially deadly for birds even in small amounts"
+      }
+    },
+    "onset": "12–48 h (Merck).",
+    "notes": "Same compound as cholecalciferol rat bait (see rodenticide-other)."
+  },
+  {
+    "id": "calcipotriol-cream",
+    "names": {
+      "en": [
+        "calcipotriol / calcipotriene cream",
+        "psoriasis cream",
+        "Dovonex",
+        "Daivonex",
+        "Enstilar",
+        "Daivobet"
+      ],
+      "fr": [
+        "calcipotriol",
+        "crème contre le psoriasis",
+        "Daivonex",
+        "Daivobet",
+        "Enstilar",
+        "Xamiol"
+      ]
+    },
+    "category": "human-medicine",
+    "compound": "calcipotriol (vitamin D analogue)",
+    "content": [
+      {
+        "form": "cream/ointment 0.005 %",
+        "unit": "mg/g",
+        "value": 0.05,
+        "note": "0.005 % = 50 mcg per gram.",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicosis-from-human-topical-agents/toxicosis-in-animals-from-human-topical-agents"
+      }
+    ],
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "compound",
+        "thresholds": [
+          {
+            "from": 0.04,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "vomiting, drinking and peeing a lot, weakness (high calcium)"
+          }
+        ],
+        "below": "vet-today",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicosis-from-human-topical-agents/toxicosis-in-animals-from-human-topical-agents",
+        "quote": "Accidental ingestion of 40–60 mcg/kg of calcipotriene has been associated with life-threatening hypercalcemia",
+        "note": "0.04 mg/kg = 0.8 g of 0.005 % cream per kg (≈8 g for a 10 kg dog)."
+      },
+      "cat": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No feline data. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicosis-from-human-topical-agents/toxicosis-in-animals-from-human-topical-agents",
+        "quote": "Accidental ingestion of 40–60 mcg/kg of calcipotriene has been associated with life-threatening hypercalcemia"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rabbits. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rodents. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for birds. ",
+        "source": "https://www.dvm360.com/view/medications-pesticides-continue-poison-birds",
+        "quote": "potentially deadly for birds even in small amounts"
+      }
+    },
+    "onset": "24–36 h (Merck).",
+    "notes": "Pets often chew the tube."
+  },
+  {
+    "id": "cannabis-thc",
+    "names": {
+      "en": [
+        "cannabis",
+        "marijuana",
+        "weed",
+        "THC edible",
+        "pot brownie",
+        "cannabis butter",
+        "joint / blunt",
+        "THC gummies",
+        "vape cartridge (THC)"
+      ],
+      "fr": [
+        "cannabis",
+        "herbe",
+        "shit / résine",
+        "space cake",
+        "beurre de cannabis",
+        "joint",
+        "bonbons au THC"
+      ]
+    },
+    "category": "other",
+    "compound": "THC",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "wobbliness, dribbling urine, startles at sound/touch, dilated pupils, slow heartbeat, very sleepy",
+        "source": "https://www.petpoisonhelpline.com/poison/marijuana/",
+        "quote": "There is no safe dose of psychoactive marijuana for companion animals.",
+        "note": "Merck: mild signs from 0.3–0.5 mg/kg; mortality very low, but two published dog deaths after cannabis-butter baked goods. Edibles may also contain chocolate or xylitol — check those entries."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "wobbliness, dilated pupils, agitation or sleepiness",
+        "source": "https://www.petpoisonhelpline.com/poison/marijuana/",
+        "quote": "There is no safe dose of psychoactive marijuana for companion animals."
+      },
+      "rabbit": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "lethargy, wobbliness, not eating",
+        "source": "https://www.petpoisonhelpline.com/poison/marijuana/",
+        "quote": "There is no safe dose of psychoactive marijuana for companion animals."
+      },
+      "rodent": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "lethargy, wobbliness",
+        "source": "https://www.petpoisonhelpline.com/poison/marijuana/",
+        "quote": "There is no safe dose of psychoactive marijuana for companion animals."
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "fluffed up, falling off perch",
+        "source": "https://www.petpoisonhelpline.com/poison/marijuana/",
+        "quote": "There is no safe dose of psychoactive marijuana for companion animals."
+      }
+    },
+    "onset": "1–2 h (up to 4 h in fasted dogs); minutes if smoke (Merck). Lasts 1–3 days.",
+    "notes": "Owners may under-report: the app should stay non-judgemental."
+  },
+  {
+    "id": "nicotine",
+    "names": {
+      "en": [
+        "cigarette",
+        "cigarette butt",
+        "cigar",
+        "chewing tobacco",
+        "nicotine gum",
+        "nicotine patch",
+        "vape liquid",
+        "e-cigarette pod",
+        "nicotine pouch"
+      ],
+      "fr": [
+        "cigarette",
+        "mégot",
+        "cigare",
+        "tabac à rouler",
+        "gomme à la nicotine",
+        "patch nicotinique",
+        "e-liquide",
+        "pod de cigarette électronique",
+        "sachet de nicotine (snus)"
+      ]
+    },
+    "category": "other",
+    "compound": "nicotine",
+    "content": [
+      {
+        "form": "cigarette",
+        "unit": "mg/cigarette",
+        "value": 30,
+        "range": [
+          9,
+          30
+        ],
+        "note": "A typical cigarette contains 9–30 mg nicotine; upper value used.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3088460"
+      },
+      {
+        "form": "vape e-liquid (bottle)",
+        "unit": "mg/ml",
+        "value": 24,
+        "note": "Up to 24 mg/ml \"or even higher\"; read the label.",
+        "source": "https://www.vettimes.com/news/vets/small-animal-vets/e-cigs-toxic-threat-to-dogs"
+      },
+      {
+        "form": "pod (nicotine salt, e.g. JUUL)",
+        "unit": "mg/ml",
+        "value": 59,
+        "note": "Advertised 59 mg/ml; lab measured ~69 mg/ml. EU cap of 20 mg/ml not verified here.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7341718"
+      },
+      {
+        "form": "gum, patch, cigar (per product)",
+        "unit": "mg/item",
+        "value": 114,
+        "range": [
+          2,
+          114
+        ],
+        "note": "Products range 2–114 mg; patches highest.",
+        "source": "https://www.mspca.org/angell_services/nicotine-toxicity/"
+      }
+    ],
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "compound",
+        "thresholds": [
+          {
+            "from": 1,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "drooling, vomiting, agitation, fast heartbeat, tremors, then weakness/collapse"
+          }
+        ],
+        "below": "vet-today",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3088460",
+        "quote": "clinical signs have been reported at doses as low as 1 mg/kg.",
+        "note": "Minimum lethal dose 9.2 mg/kg (Novotny); one cigarette can sicken a small dog. Some nicotine gums contain xylitol."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "drooling, vomiting, agitation, tremors",
+        "source": "https://vetmeds.org/pet-poison-control-list/Nicotine-Tobacco",
+        "quote": "There is no established toxic threshold for cats."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rabbits. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rodents. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for birds. ",
+        "source": "https://www.dvm360.com/view/medications-pesticides-continue-poison-birds",
+        "quote": "potentially deadly for birds even in small amounts"
+      }
+    },
+    "onset": "Rapid: 15 min–1 h, usually <4 h.",
+    "notes": ""
+  },
+  {
+    "id": "lilies-true",
+    "names": {
+      "en": [
+        "lily (Lilium)",
+        "Easter lily",
+        "tiger lily",
+        "Asiatic lily",
+        "Oriental lily",
+        "stargazer lily",
+        "daylily (Hemerocallis)",
+        "lily pollen",
+        "lily vase water"
+      ],
+      "fr": [
+        "lys",
+        "lis",
+        "lys de Pâques",
+        "lys tigré",
+        "lys asiatique",
+        "lys oriental",
+        "hémérocalle",
+        "pollen de lys",
+        "eau du vase de lys"
+      ]
+    },
+    "category": "plant",
+    "compound": "unknown nephrotoxin",
+    "species": {
+      "dog": {
+        "risk": "low",
+        "verdict": "watch",
+        "signs": "vomiting, mild stomach upset",
+        "source": "https://www.fda.gov/animal-veterinary/animal-health-literacy/lovely-lilies-and-curious-cats-dangerous-combination",
+        "quote": "minor stomach upset but they don't develop kidney failure",
+        "note": "ASPCA plant database: \"Non-Toxic to Dogs\"; an ASPCA news article says toxic to both — only GI upset expected."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, drooling, hiding, not eating; later drinking/peeing more, then no urine",
+        "source": "https://www.petpoisonhelpline.com/poison/lilies/",
+        "quote": "any amount of leaf, stem, flower, pollen, vase water, or rhizome",
+        "note": "ASPCA: often fatal if treatment is delayed beyond 18 h — go even if the cat seems fine."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "One small experimental study found no kidney changes in rabbits and rats — not proof of safety.",
+        "source": "https://digitalcommons.usu.edu/advs_facpub/151",
+        "quote": "No clinicopathological or histopathological changes were observed in the rats and rabbits."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "One small experimental study (rats) found no kidney changes — no data for hamsters/guinea pigs.",
+        "source": "https://digitalcommons.usu.edu/advs_facpub/151",
+        "quote": "No clinicopathological or histopathological changes were observed in the rats and rabbits."
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No data for birds.",
+        "source": "https://www.merckvetmanual.com/special-pet-topics/poisoning/plants-poisonous-to-animals",
+        "quote": "Not reported toxic to other species."
+      }
+    },
+    "onset": "Cats: signs 0–12 h (Merck 1–3 h); kidney failure 24–72 h; death 3–7 days.",
+    "notes": "Peace lily and calla lily are NOT true lilies (see oxalate-plants). Lily of the valley is NOT a true lily but is heart-toxic (see heart-toxic-plants)."
+  },
+  {
+    "id": "sago-palm",
+    "names": {
+      "en": [
+        "sago palm",
+        "Cycas revoluta",
+        "cycad",
+        "sago palm seeds/nuts"
+      ],
+      "fr": [
+        "cycas",
+        "Cycas revoluta",
+        "sagoutier",
+        "graines de cycas"
+      ]
+    },
+    "category": "plant",
+    "compound": "cycasin",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting (maybe bloody), diarrhea, black stools, yellow gums, bruising, seizures",
+        "source": "https://vcahospitals.com/know-your-pet/sago-palm-poisoning",
+        "quote": "highly toxic to dogs and cats.",
+        "note": "About 50 % survival in a 34-dog series (Ferguson 2011, via PPH)."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, lethargy, yellow gums",
+        "source": "https://vcahospitals.com/know-your-pet/sago-palm-poisoning",
+        "quote": "highly toxic to dogs and cats."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/toxicology/poisonous-plants/houseplants-and-ornamentals-toxic-to-animals",
+        "quote": "all parts are considered toxic"
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/toxicology/poisonous-plants/houseplants-and-ornamentals-toxic-to-animals",
+        "quote": "all parts are considered toxic"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/toxicology/poisonous-plants/houseplants-and-ornamentals-toxic-to-animals",
+        "quote": "all parts are considered toxic"
+      }
+    },
+    "onset": "15 min to several hours (first 4 h); liver failure up to 48–72 h.",
+    "notes": "Seeds are the most toxic part."
+  },
+  {
+    "id": "oleander",
+    "names": {
+      "en": [
+        "oleander",
+        "Nerium oleander",
+        "rose bay"
+      ],
+      "fr": [
+        "laurier-rose",
+        "Nerium oleander"
+      ]
+    },
+    "category": "plant",
+    "compound": "cardiac glycosides (oleandrin)",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, drooling, diarrhea, slow or irregular heartbeat, collapse",
+        "source": "https://www.merckvetmanual.com/toxicology/poisonous-plants/houseplants-and-ornamentals-toxic-to-animals",
+        "quote": "Fatalities have been reported after oleander and foxglove toxicosis even with aggressive treatment.",
+        "note": "PPH: 2–3 leaves can be toxic."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, drooling, slow heartbeat",
+        "source": "https://www.petpoisonhelpline.com/wp-content/uploads/2014/01/PPH-VPI-Toxic-Plants-April-2014.pdf",
+        "quote": "Cats may be more sensitive than dogs"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/toxicology/poisonous-plants/houseplants-and-ornamentals-toxic-to-animals",
+        "quote": "Fatalities have been reported after oleander and foxglove toxicosis even with aggressive treatment."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/toxicology/poisonous-plants/houseplants-and-ornamentals-toxic-to-animals",
+        "quote": "Fatalities have been reported after oleander and foxglove toxicosis even with aggressive treatment."
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "weakness, breathing difficulty, sudden death",
+        "source": "https://vcahospitals.com/know-your-pet/plants-toxic-for-birds",
+        "quote": "Abnormal heart rhythms and changes in heart rate have been noted"
+      }
+    },
+    "onset": "Within 2 h (Merck); GI signs as early as 30–45 min (PPH).",
+    "notes": "All parts toxic, dried leaves too."
+  },
+  {
+    "id": "heart-toxic-plants",
+    "names": {
+      "en": [
+        "lily of the valley",
+        "foxglove (Digitalis)",
+        "yew (Taxus)",
+        "yew berries/hedge"
+      ],
+      "fr": [
+        "muguet",
+        "digitale",
+        "if",
+        "baies d'if",
+        "haie d'if"
+      ]
+    },
+    "category": "plant",
+    "compound": "cardiac glycosides (lily of the valley, foxglove); taxines (yew)",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, irregular heartbeat, weakness, collapse, seizures",
+        "source": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/lily-valley",
+        "quote": "Vomiting, irregular heart beat, low blood pressure, disorientation, coma, seizures",
+        "note": "Yew: ASPCA \"Sudden death from acute cardiac failure\"."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, irregular heartbeat, weakness",
+        "source": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/foxglove",
+        "quote": "Cardiac arrhythmias, vomiting, diarrhea, weakness, cardiac failure, death."
+      },
+      "rabbit": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "not eating, weakness, collapse",
+        "source": "https://rabbitwelfare.co.uk/poisonous-plants/",
+        "quote": "unusual for a rabbit to become obviously ill immediately",
+        "note": "Foxglove, yew and lily of the valley are on the RWAF list of plants poisonous to rabbits; signs may be delayed."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/foxglove",
+        "quote": "Cardiac arrhythmias, vomiting, diarrhea, weakness, cardiac failure, death."
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "weakness, breathing difficulty, sudden death",
+        "source": "https://vcahospitals.com/know-your-pet/plants-toxic-for-birds",
+        "quote": "Abnormal heart rhythms and changes in heart rate have been noted"
+      }
+    },
+    "onset": "Within hours.",
+    "notes": "Lily of the valley (muguet) is common in France around 1 May; vase water may also be toxic (not verified)."
+  },
+  {
+    "id": "tulip-daffodil-bulbs",
+    "names": {
+      "en": [
+        "tulip bulb",
+        "daffodil bulb",
+        "narcissus",
+        "jonquil",
+        "hyacinth bulb"
+      ],
+      "fr": [
+        "bulbe de tulipe",
+        "bulbe de jonquille",
+        "narcisse",
+        "bulbe de jacinthe"
+      ]
+    },
+    "category": "plant",
+    "compound": "lycorine (daffodil), tulipalin (tulip)",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting (may be severe), drooling, diarrhea; large amounts: tremors, seizures, heart rhythm changes",
+        "source": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/daffodil",
+        "quote": "large ingestions cause convulsions, low blood pressure, tremors and cardiac arrhythmias.",
+        "note": "Sources disagree on severity (Merck: most exposures mild; ASPCA/PPH: heart effects with bulbs) — the cautious verdict is used for bulbs. Leaves/flowers: mostly GI upset. A bulb can also block the gut."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, drooling, diarrhea",
+        "source": "https://www.petpoisonhelpline.com/uncategorized/top-11-poisonous-plants/",
+        "quote": "Tulip and Daffodil bulbs can cause heart rate, rhythm and blood pressure changes"
+      },
+      "rabbit": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "not eating, no droppings, lethargy",
+        "source": "https://rabbitwelfare.co.uk/poisonous-plants/",
+        "quote": "unusual for a rabbit to become obviously ill immediately",
+        "note": "Daffodil and tulip are on the RWAF poisonous-plant list."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.petpoisonhelpline.com/uncategorized/top-11-poisonous-plants/",
+        "quote": "Tulip and Daffodil bulbs can cause heart rate, rhythm and blood pressure changes"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.petpoisonhelpline.com/uncategorized/top-11-poisonous-plants/",
+        "quote": "Tulip and Daffodil bulbs can cause heart rate, rhythm and blood pressure changes"
+      }
+    },
+    "onset": "Not precisely stated; GI signs typically within hours.",
+    "notes": "Hyacinth is listed by name only (not separately verified)."
+  },
+  {
+    "id": "oxalate-plants",
+    "names": {
+      "en": [
+        "pothos / devil's ivy",
+        "dieffenbachia / dumb cane",
+        "philodendron",
+        "peace lily (Spathiphyllum)",
+        "calla lily"
+      ],
+      "fr": [
+        "pothos",
+        "dieffenbachia",
+        "philodendron",
+        "spathiphyllum / fleur de lune",
+        "arum / calla"
+      ]
+    },
+    "category": "plant",
+    "compound": "insoluble calcium oxalate crystals",
+    "species": {
+      "dog": {
+        "risk": "low",
+        "verdict": "watch",
+        "signs": "pawing at mouth, drooling, vomiting; swelling of throat, trouble breathing or swallowing → vet-now",
+        "source": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/pothos",
+        "quote": "Oral irritation, pain and swelling of mouth, tongue and lips, excessive drooling, vomiting",
+        "note": "Rare: upper airway obstruction (PPH)."
+      },
+      "cat": {
+        "risk": "low",
+        "verdict": "watch",
+        "signs": "pawing at mouth, drooling, vomiting; throat swelling or breathing difficulty → vet-now",
+        "source": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/pothos",
+        "quote": "Oral irritation, pain and swelling of mouth, tongue and lips, excessive drooling, vomiting",
+        "note": "Peace lily and calla do NOT cause kidney failure in cats (PPH)."
+      },
+      "rabbit": {
+        "risk": "any",
+        "verdict": "vet-today",
+        "signs": "drooling, not eating (mouth pain can trigger gut stasis)",
+        "source": "https://www.aspca.org/news/rabbit-pet-parents-beware-these-common-pet-toxins",
+        "quote": "can cause irritation within the mouth.",
+        "note": "Philodendron and calla are on Merck's rabbit \"toxic\" table."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No published data for this species. Effects in dogs/cats are mainly digestive, so rated \"call your vet today\"; small prey species hide illness and cannot vomit.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-today",
+        "signs": "mouth pain, regurgitation, breathing difficulty → vet-now",
+        "source": "https://vcahospitals.com/know-your-pet/plants-toxic-for-birds",
+        "quote": "digestive upset, mouth pain, and sometimes difficulty breathing"
+      }
+    },
+    "onset": "Immediate on chewing.",
+    "notes": ""
+  },
+  {
+    "id": "aloe",
+    "names": {
+      "en": [
+        "aloe vera plant",
+        "aloe leaf",
+        "aloe latex"
+      ],
+      "fr": [
+        "aloe vera",
+        "feuille d'aloès",
+        "latex d'aloès"
+      ]
+    },
+    "category": "plant",
+    "compound": "anthraquinone glycosides, saponins",
+    "species": {
+      "dog": {
+        "risk": "low",
+        "verdict": "watch",
+        "signs": "vomiting, diarrhea, lethargy",
+        "source": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/aloe",
+        "quote": "Vomiting (not horses), lethargy, diarrhea. The gel is considered edible.",
+        "note": "Merck also mentions low blood sugar (abrupt severe diarrhea) — if weak or wobbly → vet-now."
+      },
+      "cat": {
+        "risk": "low",
+        "verdict": "watch",
+        "signs": "vomiting, diarrhea, lethargy",
+        "source": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/aloe",
+        "quote": "Vomiting (not horses), lethargy, diarrhea. The gel is considered edible."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "Aloe is on Merck's rabbit \"toxic — do not feed\" table; no dose data.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No published data for this species. Effects in dogs/cats are mainly digestive, so rated \"call your vet today\"; small prey species hide illness and cannot vomit.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No published data for this species. Effects in dogs/cats are mainly digestive, so rated \"call your vet today\"; small prey species hide illness and cannot vomit.",
+        "source": "https://www.merckvetmanual.com/bird-owners/routine-care-and-safety-of-birds/illness-in-pet-birds",
+        "quote": "birds hide their sickness so they don't appear weak to other animals"
+      }
+    },
+    "onset": "Not stated.",
+    "notes": ""
+  },
+  {
+    "id": "azalea-rhododendron",
+    "names": {
+      "en": [
+        "azalea",
+        "rhododendron",
+        "mountain laurel (Kalmia)"
+      ],
+      "fr": [
+        "azalée",
+        "rhododendron",
+        "kalmia"
+      ]
+    },
+    "category": "plant",
+    "compound": "grayanotoxins",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "drooling, vomiting, diarrhea, weakness, slow heartbeat, collapse",
+        "source": "https://www.petpoisonhelpline.com/pet-owners/basics/top-10-plants-poisonous-to-pets/",
+        "quote": "Eating even a few leaves can result in vomiting, diarrhea and excessive drooling.",
+        "note": "Merck toxic dose 1 g/kg; PPH \"a few leaves\" — cautious reading used."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "drooling, vomiting, weakness",
+        "source": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/azalea",
+        "quote": "Vomiting (not in horses), diarrhea, weakness, cardiac failure"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "Azalea is on Merck's rabbit \"toxic\" table. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "weakness, breathing difficulty",
+        "source": "https://vcahospitals.com/know-your-pet/plants-toxic-for-birds",
+        "quote": "Abnormal heart rhythms and changes in heart rate have been noted",
+        "note": "VCA lists rhododendron among plants with heart effects in birds."
+      }
+    },
+    "onset": "Within hours (Merck).",
+    "notes": ""
+  },
+  {
+    "id": "ethylene-glycol",
+    "names": {
+      "en": [
+        "antifreeze",
+        "coolant",
+        "ethylene glycol",
+        "de-icer (some)",
+        "snow globe liquid"
+      ],
+      "fr": [
+        "antigel",
+        "liquide de refroidissement",
+        "éthylène glycol",
+        "liquide de boule à neige"
+      ]
+    },
+    "category": "household",
+    "compound": "ethylene glycol",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "looks drunk, vomiting, drinking a lot — may then seem better while kidneys fail",
+        "source": "https://www.petpoisonhelpline.com/pet-owner-blog/antifreeze-poisoning",
+        "quote": "dogs must receive treatment within 8 hours of ingestion",
+        "note": "Merck minimum lethal dose 4.4–6.6 ml/kg undiluted."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "looks drunk, vomiting, depression",
+        "source": "https://www.petpoisonhelpline.com/pet-owner-blog/antifreeze-poisoning",
+        "quote": "Cats must receive treatment within 3 hours of ingestion",
+        "note": "Minimum lethal dose 1.4 ml/kg (Merck) — about a teaspoon for a cat."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/toxicology/ethylene-glycol-toxicosis/ethylene-glycol-toxicosis-in-animals",
+        "quote": "The minimum lethal dose of undiluted ethylene glycol is 1.4 mL/kg in cats"
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/toxicology/ethylene-glycol-toxicosis/ethylene-glycol-toxicosis-in-animals",
+        "quote": "The minimum lethal dose of undiluted ethylene glycol is 1.4 mL/kg in cats"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/toxicology/ethylene-glycol-toxicosis/ethylene-glycol-toxicosis-in-animals",
+        "quote": "The minimum lethal dose of undiluted ethylene glycol is 1.4 mL/kg in cats"
+      }
+    },
+    "onset": "Drunk-like signs 30 min–12 h; kidney failure cats 12–24 h, dogs 36–72 h (Merck).",
+    "notes": "Treatment window is hours — never wait for signs."
+  },
+  {
+    "id": "bleach",
+    "names": {
+      "en": [
+        "bleach",
+        "household bleach",
+        "chlorine bleach",
+        "toilet cleaner with bleach",
+        "pool chlorine"
+      ],
+      "fr": [
+        "eau de Javel",
+        "javel",
+        "nettoyant WC javellisé",
+        "chlore de piscine"
+      ]
+    },
+    "category": "household",
+    "compound": "sodium hypochlorite",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-today",
+        "signs": "drooling, vomiting, not eating; concentrated/pool product, mouth burns, trouble swallowing or breathing → vet-now",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicoses-from-household-hazards/toxicoses-from-household-cleaners-and-personal-care-products-in-animals",
+        "quote": "rarely causes more than mild vomiting, hypersalivation, lethargy",
+        "note": "Household bleach is 3–10 %; above 10 % it is corrosive (Merck). Never mix with ammonia or acids (toxic gas)."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-today",
+        "signs": "drooling, vomiting; mouth burns or breathing difficulty → vet-now",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicoses-from-household-hazards/toxicoses-from-household-cleaners-and-personal-care-products-in-animals",
+        "quote": "rarely causes more than mild vomiting, hypersalivation, lethargy"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No published data for this species. Effects in dogs/cats are mainly digestive, so rated \"call your vet today\"; small prey species hide illness and cannot vomit.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No published data for this species. Effects in dogs/cats are mainly digestive, so rated \"call your vet today\"; small prey species hide illness and cannot vomit.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "open-mouth breathing, tail bobbing, fluffed up",
+        "source": "https://www.merckvetmanual.com/special-pet-topics/poisoning/household-hazards",
+        "quote": "Caged birds are at increased risk of death from fumes of bleaches"
+      }
+    },
+    "onset": "Immediate (mouth/stomach); lung problems 12–24 h after inhaling concentrated fumes (Merck).",
+    "notes": ""
+  },
+  {
+    "id": "batteries",
+    "names": {
+      "en": [
+        "button battery",
+        "coin cell (lithium)",
+        "AA/AAA battery (chewed)",
+        "hearing-aid battery",
+        "remote-control battery"
+      ],
+      "fr": [
+        "pile bouton",
+        "pile plate au lithium",
+        "pile AA/AAA mâchée",
+        "pile d'appareil auditif"
+      ]
+    },
+    "category": "household",
+    "compound": "alkaline/acid contents; electrical current (button cells)",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "drooling, pawing at mouth, not eating, vomiting, painful swallowing",
+        "source": "https://petpoisonhelpline.com/pet-safety-tips/are-batteries-poisonous-to-dogs/",
+        "quote": "one 3 volt battery can result in severe necrosis to the esophagus",
+        "note": "Chewed alkaline batteries: \"liquefaction necrosis ... deeply penetrating ulcers\" (PPH). Burns can start within 15–30 min."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "drooling, pawing at mouth, not eating",
+        "source": "https://petpoisonhelpline.com/pet-safety-tips/are-batteries-poisonous-to-dogs/",
+        "quote": "one 3 volt battery can result in severe necrosis to the esophagus"
+      },
+      "rabbit": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "drooling, not eating",
+        "source": "https://petpoisonhelpline.com/pet-safety-tips/are-batteries-poisonous-to-dogs/",
+        "quote": "one 3 volt battery can result in severe necrosis to the esophagus"
+      },
+      "rodent": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "drooling, not eating",
+        "source": "https://petpoisonhelpline.com/pet-safety-tips/are-batteries-poisonous-to-dogs/",
+        "quote": "one 3 volt battery can result in severe necrosis to the esophagus"
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "regurgitation, not eating",
+        "source": "https://petpoisonhelpline.com/pet-safety-tips/are-batteries-poisonous-to-dogs/",
+        "quote": "one 3 volt battery can result in severe necrosis to the esophagus"
+      }
+    },
+    "onset": "Tissue damage within 15–30 min; mouth ulcers may appear hours later.",
+    "notes": "Pet Poison Helpline: do NOT induce vomiting."
+  },
+  {
+    "id": "ptfe-fumes",
+    "names": {
+      "en": [
+        "non-stick pan fumes",
+        "Teflon (PTFE) overheated",
+        "self-cleaning oven fumes",
+        "burnt non-stick pan"
+      ],
+      "fr": [
+        "fumées de poêle antiadhésive",
+        "Téflon surchauffé",
+        "four à pyrolyse",
+        "poêle antiadhésive brûlée"
+      ]
+    },
+    "category": "household",
+    "compound": "PTFE pyrolysis gases (inhaled, not eaten)",
+    "species": {
+      "dog": {
+        "risk": "low",
+        "verdict": "watch",
+        "signs": "coughing, breathing difficulty → vet-now",
+        "source": "https://vcahospitals.com/arbor/know-your-pet/teflon-polytetrafluoroethylene-poisoning-in-birds",
+        "quote": "although this is rare",
+        "note": "VCA: mammals rarely show flu-like signs."
+      },
+      "cat": {
+        "risk": "low",
+        "verdict": "watch",
+        "signs": "coughing, breathing difficulty → vet-now",
+        "source": "https://vcahospitals.com/arbor/know-your-pet/teflon-polytetrafluoroethylene-poisoning-in-birds",
+        "quote": "although this is rare"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No data; VCA mentions other mammals only presumptively.",
+        "source": "https://vcahospitals.com/arbor/know-your-pet/teflon-polytetrafluoroethylene-poisoning-in-birds",
+        "quote": "presumably other mammals"
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No data; VCA mentions other mammals only presumptively.",
+        "source": "https://vcahospitals.com/arbor/know-your-pet/teflon-polytetrafluoroethylene-poisoning-in-birds",
+        "quote": "presumably other mammals"
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "breathing difficulty, wobbliness, seizures, sudden death",
+        "source": "https://www.merckvetmanual.com/exotic-and-laboratory-animals/pet-birds/toxicoses-of-pet-birds",
+        "quote": "Often, the only clinical sign of PTFE gas poisoning is acute death.",
+        "note": "VCA: can happen even at recommended cooking temperatures; gas released ~280 °C (Merck)."
+      }
+    },
+    "onset": "Minutes (birds).",
+    "notes": "Inhalation exposure, included because it is a leading household killer of pet birds."
+  },
+  {
+    "id": "essential-oils",
+    "names": {
+      "en": [
+        "tea tree oil",
+        "melaleuca oil",
+        "essential oil",
+        "eucalyptus oil",
+        "peppermint oil",
+        "diffuser oil"
+      ],
+      "fr": [
+        "huile essentielle",
+        "huile d'arbre à thé (tea tree)",
+        "mélaleuca",
+        "huile essentielle d'eucalyptus",
+        "huile essentielle de menthe poivrée",
+        "huile pour diffuseur"
+      ]
+    },
+    "category": "household",
+    "compound": "terpenes (terpinen-4-ol etc.)",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "drooling, wobbliness, weakness, tremors, low body temperature",
+        "source": "https://www.petpoisonhelpline.com/poison/tea-tree-oil/",
+        "quote": "even a few concentrated drops applied topically or ingested, can result in severe poisoning",
+        "note": "Shampoos with <1–2 % tea tree oil are generally not toxic (PPH). Avoid the circulating \"7–8 drops = 10–20 ml\" figure (internally inconsistent)."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "drooling, wobbliness, weakness, tremors",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/24344857/",
+        "quote": "Younger cats and those with lighter body weight were at greater risk",
+        "note": "Cats are more sensitive (glucuronidation deficit, Merck)."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "fluffed up, falling off perch, seizures",
+        "source": "https://www.merckvetmanual.com/toxicology/toxicoses-from-household-hazards/toxicoses-from-essential-oils-in-animals",
+        "quote": "Birds are at high risk to be harmed",
+        "note": "A cockatiel went into coma 30 min after 3 drops (0.15 ml) of 100 % tea tree oil (BMC Vet Res 2020)."
+      }
+    },
+    "onset": "Minutes to hours (Merck); 2–12 h in the 443-case series (Khan 2014).",
+    "notes": "Individual oils other than tea tree were not checked one by one."
+  },
+  {
+    "id": "lead-zinc",
+    "names": {
+      "en": [
+        "coin / penny (US post-1982 = zinc)",
+        "galvanized wire or cage",
+        "zinc nut, bolt or zipper",
+        "lead paint chips",
+        "fishing sinker",
+        "curtain weight",
+        "stained-glass solder",
+        "old toy with lead"
+      ],
+      "fr": [
+        "pièce de monnaie",
+        "grillage ou cage galvanisée",
+        "écrou ou boulon en zinc",
+        "écailles de peinture au plomb",
+        "plomb de pêche",
+        "plomb de rideau",
+        "soudure de vitrail"
+      ]
+    },
+    "category": "other",
+    "compound": "zinc, lead",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, not eating, pale or yellow gums, red urine (zinc); tremors, behaviour change (lead)",
+        "source": "https://www.merckvetmanual.com/toxicology/lead-poisoning/lead-poisoning-in-animals",
+        "quote": "most common in dogs, cattle, and companion birds",
+        "note": "US pennies since 1982 are 97.5 % zinc (Merck) — the object usually has to be removed. Euro coin composition is not covered by these sources; any swallowed coin → vet-now."
+      },
+      "cat": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "Merck has no toxic-dose data for cats. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/toxicology/lead-poisoning/lead-poisoning-in-animals",
+        "quote": "There is no good information regarding a toxic dose in cats."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "fluffed up, regurgitation, drinking/peeing more, wobbliness, weakness, green/bloody droppings",
+        "source": "https://www.petpoisonhelpline.com/pet-safety-tips/top-5-toxins-companion-birds/",
+        "quote": "Zinc poisoning is the most common metal poisoning in caged birds"
+      }
+    },
+    "onset": "Zinc: GI within minutes–days, red-cell damage hours–days later (Merck). Lead: variable.",
+    "notes": "Birds chew galvanized cage wire, toys, keys, bells."
+  },
+  {
+    "id": "rodenticide-anticoagulant",
+    "names": {
+      "en": [
+        "rat poison",
+        "mouse bait",
+        "brodifacoum",
+        "bromadiolone",
+        "difenacoum",
+        "warfarin bait",
+        "blue/green bait pellets or blocks"
+      ],
+      "fr": [
+        "mort-aux-rats",
+        "raticide",
+        "souricide",
+        "brodifacoum",
+        "bromadiolone",
+        "difénacoum",
+        "appât en bloc / pâte / grains"
+      ]
+    },
+    "category": "pest-control",
+    "compound": "anticoagulants (vitamin K antagonists)",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "often NONE for 3–7 days; then weakness, pale gums, nosebleed, bruising, coughing, breathing difficulty",
+        "source": "https://www.merckvetmanual.com/toxicology/rodenticide-poisoning/anticoagulant-rodenticide-poisoning-in-animals",
+        "quote": "Potentially dangerous to a vast array of mammals and birds",
+        "note": "Bleeding typically 3–7 days after a toxic dose (Merck). Eating a poisoned rodent can also poison (relay toxicosis). Bait colour does not identify the type."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "delayed bleeding, weakness, breathing difficulty",
+        "source": "https://www.merckvetmanual.com/toxicology/rodenticide-poisoning/anticoagulant-rodenticide-poisoning-in-animals",
+        "quote": "Potentially dangerous to a vast array of mammals and birds"
+      },
+      "rabbit": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "delayed bleeding, weakness",
+        "source": "https://www.aspca.org/news/rabbit-pet-parents-beware-these-common-pet-toxins",
+        "quote": "please contact your veterinarian immediately"
+      },
+      "rodent": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "delayed bleeding, weakness, pale eyes/ears",
+        "source": "https://petpoisonhelpline.com/pet-safety-tips/whats-poisonous-to-birds-and-pocket-pets",
+        "quote": "Mouse and rat poison can be a danger to",
+        "note": "Pet rodents are the target species of these baits."
+      },
+      "bird": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "delayed bleeding, fluffed up, weakness",
+        "source": "https://www.merckvetmanual.com/toxicology/rodenticide-poisoning/anticoagulant-rodenticide-poisoning-in-animals",
+        "quote": "Potentially dangerous to a vast array of mammals and birds"
+      }
+    },
+    "onset": "3–7 days before bleeding (Merck).",
+    "notes": "A pet that looks fine after rat bait is NOT safe."
+  },
+  {
+    "id": "rodenticide-bromethalin",
+    "names": {
+      "en": [
+        "bromethalin bait",
+        "Tomcat (some)",
+        "neurotoxic rat bait"
+      ],
+      "fr": [
+        "brométhaline",
+        "raticide neurotoxique"
+      ]
+    },
+    "category": "pest-control",
+    "compound": "bromethalin",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "tremors, seizures, fever, wobbliness, hind-leg weakness/paralysis",
+        "source": "https://www.merckvetmanual.com/toxicology/rodenticide-poisoning/bromethalin-poisoning-in-animals",
+        "quote": "Cats tend to be exquisitely sensitive, with an LD50 of 0.4–0.71 mg/kg",
+        "note": "Dog LD50 2.38–5.6 mg/kg (Merck, internally inconsistent). #3 on Pet Poison Helpline's 2025 dog list."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "wobbliness, hind-leg paralysis, depression",
+        "source": "https://www.merckvetmanual.com/toxicology/rodenticide-poisoning/bromethalin-poisoning-in-animals",
+        "quote": "Cats tend to be exquisitely sensitive, with an LD50 of 0.4–0.71 mg/kg"
+      },
+      "rabbit": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "weakness, tremors, paralysis",
+        "source": "https://www.aspca.org/news/rabbit-pet-parents-beware-these-common-pet-toxins",
+        "quote": "please contact your veterinarian immediately"
+      },
+      "rodent": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "weakness, tremors, paralysis",
+        "source": "https://petpoisonhelpline.com/pet-safety-tips/whats-poisonous-to-birds-and-pocket-pets",
+        "quote": "Mouse and rat poison can be a danger to"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/bird-owners/routine-care-and-safety-of-birds/illness-in-pet-birds",
+        "quote": "birds hide their sickness so they don't appear weak to other animals"
+      }
+    },
+    "onset": "Dogs 4–36 h (convulsant form); paralytic form 1–5 days (Merck).",
+    "notes": ""
+  },
+  {
+    "id": "rodenticide-other",
+    "names": {
+      "en": [
+        "unknown rat/mouse bait",
+        "cholecalciferol bait",
+        "zinc phosphide (mole/gopher bait)",
+        "aluminium phosphide"
+      ],
+      "fr": [
+        "raticide inconnu",
+        "appât au cholécalciférol",
+        "phosphure de zinc (taupicide)",
+        "phosphure d'aluminium"
+      ]
+    },
+    "category": "pest-control",
+    "compound": "cholecalciferol, metal phosphides, or unknown",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, weakness, drinking a lot (cholecalciferol); vomiting, bloating, breathing difficulty, collapse (phosphides)",
+        "source": "https://www.merckvetmanual.com/toxicology/rodenticide-poisoning/phosphide-zinc-magnesium-aluminum-poisoning-in-animals",
+        "quote": "Lethal doses in dogs have been suggested at 20–40 mg/kg",
+        "note": "Take the packaging to the vet. HUMAN SAFETY: vomit from a phosphide-poisoned pet releases toxic gas (Merck) — keep the car well ventilated."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, weakness",
+        "source": "https://www.merckvetmanual.com/toxicology/rodenticide-poisoning/cholecalciferol-vitamin-d3-poisoning-in-animals",
+        "quote": "Clinical signs may be noted in doses as low as 0.1 mg/kg"
+      },
+      "rabbit": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "weakness, not eating",
+        "source": "https://www.aspca.org/news/rabbit-pet-parents-beware-these-common-pet-toxins",
+        "quote": "please contact your veterinarian immediately"
+      },
+      "rodent": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "weakness, collapse",
+        "source": "https://petpoisonhelpline.com/pet-safety-tips/whats-poisonous-to-birds-and-pocket-pets",
+        "quote": "Mouse and rat poison can be a danger to"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/bird-owners/routine-care-and-safety-of-birds/illness-in-pet-birds",
+        "quote": "birds hide their sickness so they don't appear weak to other animals"
+      }
+    },
+    "onset": "Phosphides: minutes–24 h (death possible <5 h); cholecalciferol 12–48 h (Merck).",
+    "notes": "Use this entry whenever the rodenticide type is unknown."
+  },
+  {
+    "id": "permethrin-spot-on",
+    "names": {
+      "en": [
+        "dog flea spot-on with permethrin",
+        "permethrin",
+        "Advantix (dog)",
+        "dog flea treatment used on cat",
+        "pyrethroid flea spray"
+      ],
+      "fr": [
+        "pipette antipuce pour chien",
+        "perméthrine",
+        "Advantix chien",
+        "antiparasitaire chien appliqué au chat",
+        "spray pyréthrinoïde"
+      ]
+    },
+    "category": "pest-control",
+    "compound": "permethrin (pyrethroid)",
+    "species": {
+      "dog": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "Labelled for dogs on the skin; no data on dogs swallowing a tube. Drooling/vomiting likely; tremors → vet-now.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3866860",
+        "quote": "Products that contain over 40% permethrin are labeled for use in dogs only."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "twitching, tremors, seizures, drooling, fever — also after cuddling a freshly treated dog",
+        "source": "https://www.merckvetmanual.com/pharmacology/ectoparasiticides/ectoparasiticides-used-in-small-animals",
+        "quote": "can be highly toxic to cats",
+        "note": "DeGroot: severity does not correlate with amount — treat any exposure as an emergency."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/bird-owners/routine-care-and-safety-of-birds/illness-in-pet-birds",
+        "quote": "birds hide their sickness so they don't appear weak to other animals"
+      }
+    },
+    "onset": "Usually within a few hours; up to 72 h (DeGroot 2014).",
+    "notes": "Dog spot-ons contain 45–65 % permethrin."
+  },
+  {
+    "id": "fipronil",
+    "names": {
+      "en": [
+        "fipronil",
+        "Frontline",
+        "flea spot-on (fipronil)",
+        "flea spray (fipronil)"
+      ],
+      "fr": [
+        "fipronil",
+        "Frontline",
+        "pipette antipuce au fipronil",
+        "spray antipuce au fipronil"
+      ]
+    },
+    "category": "pest-control",
+    "compound": "fipronil (phenylpyrazole)",
+    "species": {
+      "dog": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "Licensed for dogs; no reliable data on oral ingestion found.",
+        "source": "https://www.anses.fr/en/content/antiparasitics-containing-fipronil-are-toxic-rabbits",
+        "quote": "approved for use in dogs or cats but are toxic to rabbits"
+      },
+      "cat": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "Licensed for cats; no reliable data on oral ingestion found.",
+        "source": "https://www.anses.fr/en/content/antiparasitics-containing-fipronil-are-toxic-rabbits",
+        "quote": "approved for use in dogs or cats but are toxic to rabbits"
+      },
+      "rabbit": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "not eating, lethargy, wobbliness, tremors, seizures",
+        "source": "https://www.aspca.org/news/rabbit-pet-parents-beware-these-common-pet-toxins",
+        "quote": "Even a small amount of fipronil can lead to seizures",
+        "note": "ANSES 2023: 26 adverse events in rabbits incl. 5 deaths (2021–2022)."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No data; severe in rabbits. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/bird-owners/routine-care-and-safety-of-birds/illness-in-pet-birds",
+        "quote": "birds hide their sickness so they don't appear weak to other animals"
+      }
+    },
+    "onset": "Hours to days.",
+    "notes": "Never use dog/cat flea products on rabbits."
+  },
+  {
+    "id": "metaldehyde",
+    "names": {
+      "en": [
+        "slug pellets",
+        "snail bait",
+        "metaldehyde"
+      ],
+      "fr": [
+        "granulés anti-limaces",
+        "anti-limaces",
+        "métaldéhyde"
+      ]
+    },
+    "category": "garden",
+    "compound": "metaldehyde",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "anxiety, drooling, tremors, very high fever, seizures",
+        "source": "https://www.merckvetmanual.com/toxicology/metaldehyde-poisoning/metaldehyde-poisoning-in-animals",
+        "quote": "neurological signs, which predominate, develop 30 minutes to 6 hours after ingestion",
+        "note": "Baits contain 2–4 % metaldehyde. Ferric-phosphate \"organic\" slug baits are different and not covered here."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "tremors, drooling, fever, seizures",
+        "source": "https://www.merckvetmanual.com/toxicology/metaldehyde-poisoning/metaldehyde-poisoning-in-animals",
+        "quote": "neurological signs, which predominate, develop 30 minutes to 6 hours after ingestion"
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/bird-owners/routine-care-and-safety-of-birds/illness-in-pet-birds",
+        "quote": "birds hide their sickness so they don't appear weak to other animals"
+      }
+    },
+    "onset": "30 min–6 h (Merck); death possible within 4–24 h.",
+    "notes": ""
+  },
+  {
+    "id": "fertilizer",
+    "names": {
+      "en": [
+        "lawn fertilizer",
+        "garden fertilizer",
+        "plant food",
+        "bone meal",
+        "blood meal",
+        "fish emulsion",
+        "rose feed with insecticide"
+      ],
+      "fr": [
+        "engrais",
+        "engrais gazon",
+        "engrais pour plantes",
+        "corne broyée / poudre d'os",
+        "sang séché",
+        "engrais rosiers avec insecticide"
+      ]
+    },
+    "category": "garden",
+    "compound": "nitrogen/phosphorus/potassium salts; sometimes iron or insecticides",
+    "species": {
+      "dog": {
+        "risk": "any",
+        "verdict": "vet-today",
+        "signs": "vomiting, diarrhea, drooling; bone/blood meal, iron or insecticide-containing products, or tremors/breathing trouble → vet-now",
+        "source": "https://dvm360.com/view/spring-toxin-6-fertilizers",
+        "quote": "Ingesting most fertilizers only causes minor gastrointestinal irritation.",
+        "note": "Bone meal can form a large stomach mass; blood meal → pancreatitis; \"one teaspoon of 1 % disulfoton can kill a 55-lb dog\" (PPH, dvm360 2010)."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-today",
+        "signs": "vomiting, diarrhea, drooling",
+        "source": "https://dvm360.com/view/spring-toxin-6-fertilizers",
+        "quote": "Ingesting most fertilizers only causes minor gastrointestinal irritation."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No published data for this species. Effects in dogs/cats are mainly digestive, so rated \"call your vet today\"; small prey species hide illness and cannot vomit.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No published data for this species. Effects in dogs/cats are mainly digestive, so rated \"call your vet today\"; small prey species hide illness and cannot vomit.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-today",
+        "note": "No published data for this species. Effects in dogs/cats are mainly digestive, so rated \"call your vet today\"; small prey species hide illness and cannot vomit.",
+        "source": "https://www.merckvetmanual.com/bird-owners/routine-care-and-safety-of-birds/illness-in-pet-birds",
+        "quote": "birds hide their sickness so they don't appear weak to other animals"
+      }
+    },
+    "onset": "Hours.",
+    "notes": "Read the label for iron or insecticide (organophosphate/carbamate) — those are emergencies (Merck: OP signs minutes–hours, may be delayed >2 days)."
+  },
+  {
+    "id": "carprofen-pet-nsaid",
+    "names": {
+      "en": [
+        "carprofen chewables",
+        "Rimadyl",
+        "flavored pet pain tablets",
+        "pet NSAID chews (whole box eaten)"
+      ],
+      "fr": [
+        "carprofène",
+        "Rimadyl",
+        "anti-inflammatoire pour chien appétent",
+        "boîte de comprimés vétérinaires mangée"
+      ]
+    },
+    "category": "other",
+    "compound": "carprofen (veterinary NSAID)",
+    "content": [
+      {
+        "form": "chewable tablet",
+        "unit": "mg/tablet",
+        "value": 100,
+        "range": [
+          25,
+          100
+        ],
+        "note": "Rimadyl chewables are sold as 25, 75 and 100 mg (retailer listing seen in search only). Generics vary — read the box.",
+        "source": "https://www.petsmart.com/pharmacy/dog/joint-care/rimadyl-carprofen-chewable-tablet-for-dogs---25mg-75mg-100mg---1-30-60-or-180-tablets-5316658.html",
+        "verified": false
+      }
+    ],
+    "species": {
+      "dog": {
+        "risk": "dose",
+        "basis": "compound",
+        "thresholds": [
+          {
+            "from": 20,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "vomiting, black stools, not eating"
+          },
+          {
+            "from": 40,
+            "unit": "mg/kg",
+            "verdict": "vet-now",
+            "signs": "kidney injury",
+            "source": "https://www.dvm360.com/view/toxicology-brief-managing-acute-carprofen-toxicosis-dogs-and-cats",
+            "quote": "fairly severe gastrointestinal signs may be seen at doses exceeding 20 mg/kg"
+          }
+        ],
+        "below": "vet-today",
+        "source": "https://www.dvm360.com/view/toxicology-brief-managing-acute-carprofen-toxicosis-dogs-and-cats",
+        "quote": "fairly severe gastrointestinal signs may be seen at doses exceeding 20 mg/kg",
+        "note": "Read mg per tablet on the box. Eating a whole box of flavoured chews is common (dvm360)."
+      },
+      "cat": {
+        "risk": "any",
+        "verdict": "vet-now",
+        "signs": "vomiting, not eating, kidney failure",
+        "source": "https://www.dvm360.com/view/toxicology-brief-managing-acute-carprofen-toxicosis-dogs-and-cats",
+        "quote": "fairly severe gastrointestinal signs may be seen at doses exceeding 20 mg/kg",
+        "note": "Cats: GI signs >4 mg/kg, kidney failure >8 mg/kg (same source) — any amount = vet-now."
+      },
+      "rabbit": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rabbits. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+        "quote": "Rabbits also cannot vomit."
+      },
+      "rodent": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for rodents. No published data for this species. Rated by severity in dogs/cats (organ damage or death possible) and because small prey species cannot vomit or hide illness.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+        "quote": "the inability to vomit is a general property of Rodentia"
+      },
+      "bird": {
+        "risk": "no-data",
+        "verdict": "vet-now",
+        "note": "No dose data for birds. ",
+        "source": "https://www.dvm360.com/view/medications-pesticides-continue-poison-birds",
+        "quote": "potentially deadly for birds even in small amounts"
+      }
+    },
+    "onset": "GI hours; kidney injury from 24 h.",
+    "notes": "ASPCA 2025: veterinary products #5 (9.1 %), mostly flavoured chewables."
+  }
+]

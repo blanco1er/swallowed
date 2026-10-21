@@ -1,0 +1,17 @@
+{
+  "name": "swallowed",
+  "version": "0.1.0",
+  "description": "Your pet just ate something: how serious is it for this animal, and what to do now.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "test": "node --test \"test/**/*.test.js\""
+  },
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}

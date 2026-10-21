@@ -1,0 +1,106 @@
+{
+ "checked": "2026-10-22",
+ "disclaimer": "Numbers verified on the official pages listed on the date above. Re-check before each release; call your own vet first when you can.",
+ "poisonCentres": [
+  {
+   "id": "aspca-apcc",
+   "name": "ASPCA Animal Poison Control Center",
+   "country": [
+    "US"
+   ],
+   "phone": "(888) 426-4435",
+   "tel": "+18884264435",
+   "hours": "24/7, 365 days a year",
+   "fee": "A consultation fee may apply (amount not stated on the official page on the checked date).",
+   "audience": "pet owners and veterinarians",
+   "url": "https://www.aspca.org/pet-care/animal-poison-control",
+   "checked": "2026-10-22",
+   "quote": "We are available 24/7, 365 days a year.",
+   "short": "ASPCA Poison Control"
+  },
+  {
+   "id": "pet-poison-helpline",
+   "name": "Pet Poison Helpline",
+   "country": [
+    "US",
+    "CA",
+    "Caribbean"
+   ],
+   "phone": "(855) 764-7661",
+   "tel": "+18557647661",
+   "hours": "24/7",
+   "fee": "USD 99 per incident, follow-up consultations included.",
+   "audience": "pet owners and veterinary professionals",
+   "url": "https://www.petpoisonhelpline.com/about/",
+   "checked": "2026-10-22",
+   "quote": "There is a one-time consultation fee of $99 per incident.",
+   "note": "An older number (800) 213-6680 still appears on some PPH pages — not used.",
+   "short": "Pet Poison Helpline"
+  },
+  {
+   "id": "cnitv",
+   "name": "CNITV – Centre National d'Informations Toxicologiques Vétérinaires (VetAgro Sup, Lyon)",
+   "country": [
+    "FR"
+   ],
+   "phone": "04 78 87 10 40",
+   "tel": "+33478871040",
+   "hours": "7 j/7, 8h30 – minuit (00h00), 365 jours/an",
+   "fee": "No per-call fee stated; funded by vets' memberships and donations (vets and private individuals).",
+   "audience": "vétérinaires et particuliers (2025: 54 % vets, 45 % owners)",
+   "url": "https://www.cnitv.fr/centre-anti-poison",
+   "checked": "2026-10-22",
+   "quote": "Pour toute urgence, appelez notre ligne d'assistance au 04 78 87 10 40",
+   "note": "Closed from midnight to 08:30 — the app must show this and route to an on-duty vet at night.",
+   "short": "CNITV (Lyon)"
+  },
+  {
+   "id": "capae-ouest",
+   "name": "CAPAE-Ouest – Centre Anti-Poison Animal et Environnemental de l'Ouest (Oniris, Nantes)",
+   "country": [
+    "FR"
+   ],
+   "phone": "02 40 68 77 40",
+   "tel": "+33240687740",
+   "hours": "8h30 – minuit, 365 jours/an",
+   "fee": "Not stated on the official page.",
+   "audience": "principalement les vétérinaires, également contacté par les propriétaires d'animaux",
+   "url": "https://chuv.oniris-nantes.fr/accueil/centre-anti-poison",
+   "checked": "2026-10-22",
+   "quote": "Le Centre répond de 8h30 à minuit, 365 jours/an",
+   "short": "CAPAE-Ouest (Nantes)"
+  }
+ ],
+ "otherFrenchVetPoisonCentres": "None found. Official CNITV and Oniris pages name no other French veterinary poison centre; human poison centres (CAP) are for people.",
+ "onDutyVetFrance": [
+  {
+   "id": "own-vet-on-call",
+   "name": "Votre vétérinaire habituel (service de garde / permanence des soins)",
+   "country": [
+    "FR"
+   ],
+   "howTo": "Call your usual practice: French vets must tell the public how their out-of-hours emergency cover works (e.g. exterior notice at the practice; the phone line usually redirects to the on-duty vet).",
+   "url": "https://www.veterinaire.fr/je-suis-veterinaire/mon-exercice-professionnel/les-fiches-professionnelles/declarer-ses-modalites-de-continuite-et-de-permanence-des-soins",
+   "checked": "2026-10-22",
+   "verified": true,
+   "quote": "permettre à tout détenteur d'un animal de pouvoir lui faire prodiguer des soins urgents",
+   "note": "Redirection via answering machine is described in Ordre service-de-garde templates (seen via search, not on this page).",
+   "short": "Your usual vet"
+  },
+  {
+   "id": "3115",
+   "name": "3115 – régulation vétérinaire",
+   "country": [
+    "FR"
+   ],
+   "phone": "3115",
+   "tel": "3115",
+   "url": "https://www.3115.fr/",
+   "checked": "2026-10-22",
+   "verified": "partial",
+   "quote": "Un Vétérinaire régulateur répond à vos Urgences",
+   "whatIsVerified": "The 3115.fr site exists and presents a veterinary triage (\"régulateur\") service for dogs, cats, rabbits, guinea pigs, ferrets, chinchillas and rodents.",
+   "notVerified": "Operator, call cost, hours and geographic coverage are NOT stated on the official page. Third-party sites say it is free, 24/7, run by the private Emergence network and covers ~45 départements — unconfirmed; one local site stresses it is a private commercial line, not a public service. Not stated for birds."
+  }
+ ]
+}
