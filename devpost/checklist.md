@@ -1,0 +1,73 @@
+---
+doc: checklist
+status: approved
+---
+
+# Build Checklist
+
+Build mode: fast — the learner asked the agent on 22 Oct to build through to submission without further questions and delegated approval of this order; hands-on checkpoints are kept: one early look after slice 2 and the final kick-the-tires review.
+
+## Slices
+
+- [ ] **1. Type what your pet ate and get a sourced verdict for any of the five animals**
+  Becomes usable: A running app where typing an item ("dark chocolate", "lily", "ibuprofen"), confirming it, choosing dog, cat, rabbit, guinea pig/hamster or bird with a weight and an amount shows one of the three verdicts with its reason, calculation and veterinary source; moving the amount or weight updates the verdict instantly.
+  Why now: The verdict on cited data is the unique kernel; it must be right before anything is built around it, and typing needs no AI so it proves the whole path end to end.
+  PRD ref: `prd.md > The Core Journey` (steps 1, 3–6), `prd.md > Confirming the item`, `prd.md > The animal and the amount`, `prd.md > The verdict`
+  Spec ref: `spec.md > Item catalogue and matcher`, `spec.md > Verdict calculator`, `spec.md > Screens and flow (page)`, `spec.md > Data Model`, `spec.md > File Structure`, `spec.md > Look and Feel`
+  Build: Scaffold package.json (Node ≥22, Express 5), server.js serving public/ and data/; public/js/match.js, public/js/verdict.js, public/js/app.js with the Start (Type it), Confirm, Your pet and Verdict views on the design tokens; load data/toxins.json; unit tests for the matcher and the calculator.
+  Verify (mechanical): `npm test` passes, including: dark chocolate 100 g for a dog of 8 kg → vet-now with ≈ 69 mg/kg; one 5 g bite → a lower verdict; lily for a cat → vet-now with no calculation; an item with no data for a species never returns watch; "raisins" and "chocolat noir" both match. `npm start`, then headless browser at 393 px and 1280 px completes the typed chocolate journey with no console errors and no horizontal overflow.
+  Learner check: Open the app, type "dark chocolate", pick a dog of 8 kg and "the whole bar", then slide to "a bite" and watch the verdict change.
+  Commit: `Type an item and get a sourced verdict`
+
+- [ ] **2. Show it with a photo or say it out loud**
+  Becomes usable: Taking a photo of a packaging, a plant, a pill or a food — or saying "my rabbit ate some avocado" — leads to the confirmation screen with what was recognised and the printed quantities, then the same verdict.
+  Why now: Photo recognition by Gemini is the biggest technical risk (key, model, accuracy); proving it right after the kernel leaves time to adapt.
+  PRD ref: `prd.md > Showing what was eaten`, `prd.md > Confirming the item`, `prd.md > States and Boundaries`
+  Spec ref: `spec.md > Photo and text identification (server)`, `spec.md > Speech input`, `spec.md > External Services and Dependencies`, `spec.md > Important Failure Modes`
+  Build: src/identify.js (Gemini generateContent with JSON schema, timeout, demo mode without a key), POST /api/identify with size and per-IP limits, client-side photo resize, Take a photo and Say it on the Start view, low-confidence candidate list, text fallback to /api/identify; tests with a mocked Gemini response.
+  Verify (mechanical): `npm test` passes (identify parses a mocked response, rejects oversize images, demo mode answers clearly). With the key: real photos of a chocolate wrapper and of a lily return the right item ids, and the chocolate's net weight and cocoa % are read; headless run of the photo journey has no console errors.
+  Learner check: On your phone, photograph a chocolate bar (or a plant) and say "my rabbit ate some avocado" — check what the app recognised before it judges.
+  Commit: `Recognise items from a photo or the voice`
+
+- [ ] **3. "I don't know what it ate", the vet summary and the emergency numbers**
+  Becomes usable: Choosing "I don't know what it ate", the animal and the visible signs gives the urgency and the species' checklist of usual culprits; every verdict offers a vet summary to copy or share and the US or French emergency numbers.
+  Why now: The learner's own story; it completes the core journey and the "get help" end of every verdict.
+  PRD ref: `prd.md > I don't know what it ate`, `prd.md > Vet summary and emergency numbers`
+  Spec ref: `spec.md > Signs triage`, `spec.md > Vet summary and contacts`, `spec.md > Data Model`
+  Build: signs view and signsVerdict in public/js/verdict.js; culprit checklist; public/js/summary.js; Copy/Share; emergency sheet from data/contacts.json reachable from every view; tests.
+  Verify (mechanical): `npm test` passes: a cat with drooling and wobbling → vet-now with the cat culprit list; any sign in a rabbit → at least vet-today; the summary contains species, weight, item or "unknown", time and signs. Headless run of the unknown path at 393 px with no console errors.
+  Learner check: Choose "I don't know what it ate", a cat, tick drooling and wobbling, and read the summary you would read to a vet.
+  Commit: `Unknown item path, vet summary and emergency numbers`
+
+- [ ] **4. A calm, finished experience on any screen, online for the judges**
+  Becomes usable: Every state from the PRD (identifying, blurry photo, not in the list, no data for a species, camera or microphone refused, offline) has a clear message; phone and computer layouts in light and dark pass the design checklist; the app runs on a public URL.
+  Why now: With the whole journey working, the finish and the hosted version decide Design and Presentation.
+  PRD ref: `prd.md > States and Boundaries`, `prd.md > Look and Feel`, `prd.md > Screens and Layout`
+  Spec ref: `spec.md > Look and Feel`, `spec.md > Important Failure Modes`, `spec.md > Where It Runs and How Someone Tries It`
+  Build: state messages, motion with reduced-motion support, final visual pass on the design system, privacy note, README, MIT LICENSE, .env.example, render.yaml.
+  Verify (mechanical): `npm test` passes; headless screenshots at 375, 393 and 1280 px, light and dark, for Start, Confirm, Verdict (each level), Signs and the emergency sheet show no overflow and no console errors; the universal UX audit reports no high or medium issue; the hosted URL answers 200 and completes the typed journey.
+  Learner check: On your phone, open the public link, try the chocolate, the lily and "I don't know what it ate", and say whether it feels calm, clear and finished.
+  Commit: `Polish states, design and hosting`
+
+## Hands-on Checkpoints
+
+- [ ] Early usable behavior explored — after slice 2 (typed, photo and voice journeys), on the learner's phone
+- [ ] Final kick-the-tires exploration and feedback completed
+
+## Final Review
+
+- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+
+## Code Tour and App Map
+
+- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
+- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
+- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+
+Activity and evidence:
+Route and stops:
+Edit outcome:
+Reflection:
+Activity mode:
+
+## Revisions
