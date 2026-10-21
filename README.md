@@ -11,10 +11,6 @@ When nobody knows what the animal ate, **"I don't know what it ate"** turns the 
 
 > Swallowed is a triage aid built on published veterinary references. It never replaces a vet and never gives home-treatment advice.
 
-## Why
-
-The ASPCA Animal Poison Control Center handled more than 451,000 cases in 2024. Existing tools answer "can my dog eat this?" or cover one substance for dogs only. Swallowed answers the moment *after*: "it already ate it — how bad is it, for this animal?" It was built by a pet owner whose cat died two years ago after eating something he never identified.
-
 ## How it works
 
 - **Verdicts come only from curated data** in [`data/`](data/): 48 common pet poisonings × 5 kinds of animal, each verdict with its source and a short quote (Merck Veterinary Manual, ASPCA, Pet Poison Helpline, VCA, peer-reviewed papers). Where the sources have no reliable data for a species, Swallowed says so and tells you to call a vet — it never shows "Watch at home" without data. See [`data/SOURCES.md`](data/SOURCES.md).
