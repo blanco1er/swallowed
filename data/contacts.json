@@ -16,7 +16,9 @@
    "url": "https://www.aspca.org/pet-care/animal-poison-control",
    "checked": "2026-10-22",
    "quote": "We are available 24/7, 365 days a year.",
-   "short": "ASPCA Poison Control"
+   "short": "ASPCA Poison Control",
+   "hoursShort": "24/7",
+   "feeShort": "Consultation fee may apply"
   },
   {
    "id": "pet-poison-helpline",
@@ -35,7 +37,9 @@
    "checked": "2026-10-22",
    "quote": "There is a one-time consultation fee of $99 per incident.",
    "note": "An older number (800) 213-6680 still appears on some PPH pages — not used.",
-   "short": "Pet Poison Helpline"
+   "short": "Pet Poison Helpline",
+   "hoursShort": "24/7",
+   "feeShort": "$99 per incident"
   },
   {
    "id": "cnitv",
@@ -52,7 +56,9 @@
    "checked": "2026-10-22",
    "quote": "Pour toute urgence, appelez notre ligne d'assistance au 04 78 87 10 40",
    "note": "Closed from midnight to 08:30 — the app must show this and route to an on-duty vet at night.",
-   "short": "CNITV (Lyon)"
+   "short": "CNITV (Lyon)",
+   "hoursShort": "Daily, 8:30 am – midnight",
+   "feeShort": "Veterinary poison centre"
   },
   {
    "id": "capae-ouest",
@@ -68,7 +74,9 @@
    "url": "https://chuv.oniris-nantes.fr/accueil/centre-anti-poison",
    "checked": "2026-10-22",
    "quote": "Le Centre répond de 8h30 à minuit, 365 jours/an",
-   "short": "CAPAE-Ouest (Nantes)"
+   "short": "CAPAE-Ouest (Nantes)",
+   "hoursShort": "Daily, 8:30 am – midnight",
+   "feeShort": "Veterinary poison centre"
   }
  ],
  "otherFrenchVetPoisonCentres": "None found. Official CNITV and Oniris pages name no other French veterinary poison centre; human poison centres (CAP) are for people.",
@@ -85,7 +93,8 @@
    "verified": true,
    "quote": "permettre à tout détenteur d'un animal de pouvoir lui faire prodiguer des soins urgents",
    "note": "Redirection via answering machine is described in Ordre service-de-garde templates (seen via search, not on this page).",
-   "short": "Your usual vet"
+   "short": "Your usual vet",
+   "display": "At night, call your usual vet: their phone message gives the on-call vet."
   },
   {
    "id": "3115",

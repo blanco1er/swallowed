@@ -29,7 +29,7 @@ Build mode: fast — the learner asked the agent on 22 Oct to build through to s
   Learner check: On your phone, photograph a chocolate bar (or a plant) and say "my rabbit ate some avocado" — check what the app recognised before it judges.
   Commit: `Recognise items from a photo or the voice`
 
-- [ ] **3. "I don't know what it ate", the vet summary and the emergency numbers**
+- [x] **3. "I don't know what it ate", the vet summary and the emergency numbers**
   Becomes usable: Choosing "I don't know what it ate", the animal and the visible signs gives the urgency and the species' checklist of usual culprits; every verdict offers a vet summary to copy or share and the US or French emergency numbers.
   Why now: The learner's own story; it completes the core journey and the "get help" end of every verdict.
   PRD ref: `prd.md > I don't know what it ate`, `prd.md > Vet summary and emergency numbers`
@@ -74,3 +74,5 @@ Activity mode:
 - Dose calculation exists for dogs only — the veterinary sources publish numeric thresholds for dogs; for cats, rabbits, rodents and birds the curated data gives "any amount" or "no data → call a vet" (data/SOURCES.md). The demo's dose moment therefore uses a dog; the lily stays the cat case.
 - Product forms instead of one content value per item (e.g. ibuprofen 200/400 mg, dark vs baking chocolate, onion powder judged without math) — the curated data needed it; very dark chocolate (70 %+) uses the baking-chocolate value as the data recommends.
 - The French "3115" on-call number is not shown — the data could not confirm it on an official page.
+- Slice 3 was built before slice 2 — the Gemini key needed to verify real photos was not yet available; slice 2 resumes as soon as it is.
+- Culprit and contact labels cleaned for display (internal research notes moved to `note` fields; short names, hours and fees added to data/contacts.json).

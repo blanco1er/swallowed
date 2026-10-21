@@ -588,8 +588,8 @@ function renderVerdict() {
   // Watch for
   const watch = $('watch-block');
   if (state.path === 'unknown') {
-    const urgent = data.signs.signs.filter((s) => s.urgency === 'vet-now').map((s) => s.label.toLowerCase());
-    $('verdict-signs').textContent = `Go to a vet at once for: ${urgent.slice(0, 6).join(', ')}.`;
+    const urgent = signsFor(data.signs, state.species).filter((s) => s.urgency === 'vet-now').map((s) => s.label.split(':')[0].split(' (')[0].toLowerCase());
+    $('verdict-signs').textContent = `Go to a vet at once if you see: ${urgent.slice(0, 6).join('; ')}.`;
     $('verdict-onset').textContent = '';
     watch.hidden = false;
   } else {
@@ -602,7 +602,9 @@ function renderVerdict() {
   const src = $('verdict-source');
   if (state.path === 'unknown') {
     const urls = [...new Set([...v.chosen.map((s) => s.source), v.culpritsSource].filter(Boolean))];
-    src.replaceChildren(...urls.map((u, i) => [i ? ' · ' : '', el('a', { href: u, target: '_blank', rel: 'noopener noreferrer', text: sourceLabel(u) })]).flat());
+    const seen = new Set();
+    const links = urls.filter((u) => !seen.has(sourceLabel(u)) && seen.add(sourceLabel(u)));
+    src.replaceChildren(...links.map((u, i) => [i ? ' · ' : '', el('a', { href: u, target: '_blank', rel: 'noopener noreferrer', text: sourceLabel(u) })]).flat());
     if (!src.childNodes.length) src.textContent = 'Signs from veterinary references listed in the app.';
   } else if (v.source) {
     src.replaceChildren(
@@ -742,7 +744,7 @@ function renderContacts() {
     ...contactsFor(state.country).map((c) => {
       const body = el('span', { class: 'row-body' }, [
         el('span', { class: 'row-title', text: shortName(c) }),
-        el('span', { class: 'row-sub', text: [c.name !== shortName(c) ? c.name : null, c.hours, c.fee, c.tel ? null : c.note].filter(Boolean).join(' · ') }),
+        el('span', { class: 'row-sub', text: c.display || [c.hoursShort || c.hours, c.feeShort || c.fee].filter(Boolean).join(' · ') }),
       ]);
       return el('li', {}, c.tel
         ? el('a', { class: 'row', href: telHref(c) }, [body, el('span', { class: 'contact-num', text: c.phone })])

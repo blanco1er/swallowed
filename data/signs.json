@@ -1,905 +1,907 @@
 {
-  "checked": "2026-10-22",
-  "signs": [
-    {
-      "id": "seizure",
-      "label": "Seizure / fit: shaking uncontrollably, paddling legs, not aware of you",
-      "urgency": "vet-now",
-      "species": [
-        "dog",
-        "cat",
-        "rabbit",
-        "rodent",
-        "bird"
-      ],
-      "source": "https://www.aspca.org/news/how-do-i-know-if-i-should-bring-my-pet-veterinary-hospital-experts-explain",
-      "quote": "seizures, trouble breathing, not responding to you or are unconscious"
-    },
-    {
-      "id": "unresponsive",
-      "label": "Unconscious or not responding to you",
-      "urgency": "vet-now",
-      "species": [
-        "dog",
-        "cat",
-        "rabbit",
-        "rodent",
-        "bird"
-      ],
-      "source": "https://www.aspca.org/pet-care/general-pet-care/emergency-care-your-pet",
-      "quote": "Loss of consciousness"
-    },
-    {
-      "id": "collapse",
-      "label": "Collapsed, cannot stand up, or suddenly very weak",
-      "urgency": "vet-now",
-      "species": [
-        "dog",
-        "cat",
-        "rabbit",
-        "rodent",
-        "bird"
-      ],
-      "source": "https://vcahospitals.com/know-your-pet/common-emergencies-in-dogs",
-      "quote": "Collapse should always be treated as a medical emergency."
-    },
-    {
-      "id": "breathing",
-      "label": "Trouble breathing: gasping, very fast or noisy breathing, breathing with mouth open (cats, rabbits, rodents, birds)",
-      "urgency": "vet-now",
-      "species": [
-        "dog",
-        "cat",
-        "rabbit",
-        "rodent",
-        "bird"
-      ],
-      "source": "https://www.merckvetmanual.com/special-pet-topics/emergencies/what-to-do-in-a-dog-or-cat-emergency",
-      "quote": "Trouble breathing"
-    },
-    {
-      "id": "gums-pale-blue",
-      "label": "Gums or tongue pale, white, grey or blue",
-      "urgency": "vet-now",
-      "species": [
-        "dog",
-        "cat",
-        "rabbit",
-        "rodent"
-      ],
-      "source": "https://www.merckvetmanual.com/multimedia/table/when-to-see-a-veterinarian",
-      "quote": "Bluish or white gums or tongue",
-      "note": "Merck table column (immediate vs 24 h) was inferred from extracted text; VCA: \"The presence of cyanosis means there is an emergency.\" (cats)."
-    },
-    {
-      "id": "gums-yellow",
-      "label": "Yellow gums, eyes or skin (jaundice)",
-      "urgency": "vet-now",
-      "species": [
-        "dog",
-        "cat"
-      ],
-      "source": "https://vcahospitals.com/know-your-pet/recognizing-signs-of-illness-in-cats",
-      "quote": "a yellow tint may indicate jaundice",
-      "note": "Classified vet-now by us because, after a possible poisoning, jaundice suggests liver injury (xylitol, sago palm, paracetamol, mushrooms). No source explicitly ranks it as an emergency."
-    },
-    {
-      "id": "bleeding",
-      "label": "Bleeding that will not stop, nosebleed, bleeding gums, big bruises, blood in urine",
-      "urgency": "vet-now",
-      "species": [
-        "dog",
-        "cat",
-        "rabbit",
-        "rodent",
-        "bird"
-      ],
-      "source": "https://www.aspca.org/pet-care/general-pet-care/emergency-care-your-pet",
-      "quote": "Excessive bleeding"
-    },
-    {
-      "id": "bloody-diarrhea",
-      "label": "Bloody, black/tarry or uncontrollable diarrhea",
-      "urgency": "vet-now",
-      "species": [
-        "dog",
-        "cat",
-        "rabbit",
-        "rodent"
-      ],
-      "source": "https://www.merckvetmanual.com/multimedia/table/when-to-see-a-veterinarian",
-      "quote": "Bloody, foul-smelling, or uncontrollable diarrhea",
-      "note": "Column inferred (see gums-pale-blue)."
-    },
-    {
-      "id": "vomit-blood",
-      "label": "Vomiting blood or \"coffee grounds\"",
-      "urgency": "vet-now",
-      "species": [
-        "dog",
-        "cat"
-      ],
-      "source": "https://vcahospitals.com/know-your-pet/vomiting-in-dogs",
-      "quote": "Vomit contains blood"
-    },
-    {
-      "id": "vomit-repeated",
-      "label": "Vomiting again and again (more than twice), or vomiting plus diarrhea",
-      "urgency": "vet-now",
-      "species": [
-        "dog",
-        "cat"
-      ],
-      "source": "https://vcahospitals.com/know-your-pet/common-emergencies-in-dogs",
-      "quote": "Repeated or continuous vomiting or diarrhea, with or without blood"
-    },
-    {
-      "id": "bloat-retching",
-      "label": "Swollen, tight belly with trying to vomit but nothing comes up",
-      "urgency": "vet-now",
-      "species": [
-        "dog"
-      ],
-      "source": "https://www.merckvetmanual.com/dog-owners/digestive-disorders-of-dogs/disorders-of-the-stomach-and-intestines-in-dogs",
-      "quote": "Immediately seek veterinary care if your dog exhibits signs of bloat"
-    },
-    {
-      "id": "cat-urine-straining",
-      "label": "Cat straining in the litter box, passing little or no urine, crying while trying",
-      "urgency": "vet-now",
-      "species": [
-        "cat"
-      ],
-      "source": "https://vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics/feline-lower-urinary-tract-disease",
-      "quote": "A urethral obstruction is an absolute emergency, requiring immediate veterinary treatment."
-    },
-    {
-      "id": "cat-not-eating-24h",
-      "label": "Cat has not eaten properly for 24 hours",
-      "urgency": "vet-now",
-      "species": [
-        "cat"
-      ],
-      "source": "https://vcahospitals.com/know-your-pet/recognizing-signs-of-illness-in-cats",
-      "quote": "If your cat has not eaten properly for 24 hours, seek immediate veterinary attention."
-    },
-    {
-      "id": "tremors-wobbly",
-      "label": "Trembling, twitching, stumbling or walking as if drunk",
-      "urgency": "vet-now",
-      "species": [
-        "dog",
-        "cat",
-        "rabbit",
-        "rodent",
-        "bird"
-      ],
-      "source": "https://www.petpoisonhelpline.com/pet-owner-blog/triaging-a-potentially-poisoned-pet-at-home/",
-      "quote": "Confusion, dilated or constricted pupils, ataxia (stumbling), tremors, seizures"
-    },
-    {
-      "id": "heart-weak",
-      "label": "Racing or very slow heartbeat, extreme weakness or tiredness",
-      "urgency": "vet-now",
-      "species": [
-        "dog",
-        "cat"
-      ],
-      "source": "https://www.petpoisonhelpline.com/pet-owner-blog/triaging-a-potentially-poisoned-pet-at-home/",
-      "quote": "Racing or slow heart rate, pale gums, weakness or lethargy, collapse"
-    },
-    {
-      "id": "throat-swelling",
-      "label": "Swollen face, tongue or throat; trouble swallowing",
-      "urgency": "vet-now",
-      "species": [
-        "dog",
-        "cat",
-        "rabbit",
-        "rodent",
-        "bird"
-      ],
-      "source": "https://www.merckvetmanual.com/toxicology/poisonous-plants/houseplants-and-ornamentals-toxic-to-animals",
-      "quote": "edema to the laryngeal region does not cause respiratory distress"
-    },
-    {
-      "id": "bird-floor-fluffed",
-      "label": "Bird fluffed up, sitting on the cage floor or low on the perch, not perching",
-      "urgency": "vet-now",
-      "species": [
-        "bird"
-      ],
-      "source": "https://vcahospitals.com/delaware-valley/know-your-pet/recognizing-the-signs-of-illness-in-pet-birds",
-      "quote": "not perching, sitting on bottom of cage for an extended period",
-      "note": "Same page: \"Do not delay as serious illness can develop quickly.\""
-    },
-    {
-      "id": "bird-tail-bobbing",
-      "label": "Bird breathing with tail bobbing, wheezing or open beak",
-      "urgency": "vet-now",
-      "species": [
-        "bird"
-      ],
-      "source": "https://vcahospitals.com/know-your-pet/respiratory-disease-in-birds",
-      "quote": "A bird showing any of these signs should be seen by a veterinarian immediately."
-    },
-    {
-      "id": "rabbit-no-eating-droppings",
-      "label": "Rabbit not eating, or no droppings, for 12 hours or more",
-      "urgency": "vet-now",
-      "species": [
-        "rabbit"
-      ],
-      "source": "https://rabbit.org/care/gi-stasis/",
-      "quote": "If your rabbit stops eating or producing feces for 12 hours or more",
-      "note": "House Rabbit Society: consider it an EMERGENCY. Merck: \"Diarrhea or no droppings for more than 12 hours\"."
-    },
-    {
-      "id": "rabbit-lethargy",
-      "label": "Rabbit unusually quiet, hunched, not moving, not interested in food",
-      "urgency": "vet-now",
-      "species": [
-        "rabbit"
-      ],
-      "source": "https://rabbit.org/health/is-your-rabbit-sick/",
-      "quote": "needs emergency medical care is a loss of appetite and lethargy"
-    },
-    {
-      "id": "guinea-pig-not-eating",
-      "label": "Guinea pig drooling or not eating",
-      "urgency": "vet-now",
-      "species": [
-        "rodent"
-      ],
-      "source": "https://www.merckvetmanual.com/all-other-pets/guinea-pigs/disorders-and-diseases-of-guinea-pigs",
-      "quote": "If your guinea pig drools or stops eating, see a vet quickly."
-    },
-    {
-      "id": "rodent-breathing",
-      "label": "Hamster, rat or mouse breathing hard, wheezing, or very lethargic",
-      "urgency": "vet-now",
-      "species": [
-        "rodent"
-      ],
-      "source": "https://www.merckvetmanual.com/all-other-pets/hamsters/disorders-and-diseases-of-hamsters",
-      "quote": "Breathing problems can become serious quickly in hamsters.",
-      "note": "Rats: Merck lists \"lethargy, labored breathing\" as reasons to see the vet."
-    },
-    {
-      "id": "hamster-wet-tail",
-      "label": "Hamster with wet fur around the tail, low energy, not eating",
-      "urgency": "vet-now",
-      "species": [
-        "rodent"
-      ],
-      "source": "https://www.merckvetmanual.com/all-other-pets/hamsters/disorders-and-diseases-of-hamsters",
-      "quote": "Signs include wet fur around the tail, low energy, poor appetite"
-    },
-    {
-      "id": "vomit-once",
-      "label": "Vomited once and otherwise acting normally",
-      "urgency": "vet-today",
-      "species": [
-        "dog",
-        "cat"
-      ],
-      "source": "https://www.petpoisonhelpline.com/pet-owner-blog/triaging-a-potentially-poisoned-pet-at-home/",
-      "quote": "Nausea, drooling, vomiting, diarrhea, or decreased appetite",
-      "note": "Outside a possible poisoning a single vomit can often be monitored (VCA); in this app the pet may have eaten something, so call the vet today."
-    },
-    {
-      "id": "diarrhea-mild",
-      "label": "Mild diarrhea (no blood), otherwise acting normally",
-      "urgency": "vet-today",
-      "species": [
-        "dog",
-        "cat"
-      ],
-      "source": "https://www.petpoisonhelpline.com/pet-owner-blog/triaging-a-potentially-poisoned-pet-at-home/",
-      "quote": "Nausea, drooling, vomiting, diarrhea, or decreased appetite"
-    },
-    {
-      "id": "drooling",
-      "label": "Drooling, lip-licking, pawing at the mouth",
-      "urgency": "vet-today",
-      "species": [
-        "dog",
-        "cat",
-        "rabbit",
-        "rodent",
-        "bird"
-      ],
-      "source": "https://www.petpoisonhelpline.com/pet-owner-blog/triaging-a-potentially-poisoned-pet-at-home/",
-      "quote": "Nausea, drooling, vomiting, diarrhea, or decreased appetite",
-      "note": "If drooling comes with mouth swelling or trouble swallowing → throat-swelling (vet-now)."
-    },
-    {
-      "id": "appetite-down",
-      "label": "Eating less than usual but otherwise normal",
-      "urgency": "vet-today",
-      "species": [
-        "dog",
-        "cat"
-      ],
-      "source": "https://www.merckvetmanual.com/multimedia/table/when-to-see-a-veterinarian",
-      "quote": "Lack of appetite but no other signs of illness",
-      "note": "Merck table column inferred. For rabbits and guinea pigs, not eating is vet-now."
-    },
-    {
-      "id": "mild-tiredness",
-      "label": "A bit quieter or sleepier than usual",
-      "urgency": "vet-today",
-      "species": [
-        "dog",
-        "cat"
-      ],
-      "source": "https://www.aspca.org/news/how-do-i-know-if-i-should-bring-my-pet-veterinary-hospital-experts-explain",
-      "quote": "do not wait for the signs to worsen before getting help",
-      "note": "No source ranks \"mild lethargy\" precisely; cautious same-day call."
-    },
-    {
-      "id": "no-signs",
-      "label": "No signs at all (yet)",
-      "urgency": "vet-today",
-      "species": [
-        "dog",
-        "cat",
-        "rabbit",
-        "rodent",
-        "bird"
-      ],
-      "source": "https://www.petpoisonhelpline.com/pet-owner-blog/triaging-a-potentially-poisoned-pet-at-home/",
-      "quote": "Even if your pet is acting normal, contact your veterinarian or Pet Poison Helpline",
-      "note": "Many poisons have delayed signs (rat bait 3–7 days, lilies, xylitol liver injury, grapes, antifreeze)."
-    }
-  ],
-  "rules": [
-    {
-      "id": "small-prey-species-minimum",
-      "appliesTo": [
-        "rabbit",
-        "rodent",
-        "bird"
-      ],
-      "rule": "Any sign of illness in a rabbit, rodent or bird → at least \"vet-today\"; listed vet-now signs stay vet-now.",
-      "evidence": [
-        {
-          "source": "https://www.merckvetmanual.com/bird-owners/routine-care-and-safety-of-birds/illness-in-pet-birds",
-          "quote": "birds hide their sickness so they don't appear weak to other animals"
-        },
-        {
-          "source": "https://vcahospitals.com/delaware-valley/know-your-pet/recognizing-the-signs-of-illness-in-pet-birds",
-          "quote": "Do not delay as serious illness can develop quickly."
-        },
-        {
-          "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
-          "quote": "Rabbits often hide illness, so quick veterinary care matters."
-        },
-        {
-          "source": "https://www.merckvetmanual.com/exotic-and-laboratory-animals/rodents/overview-of-rodents",
-          "quote": "rodents do not show obvious signs of pain or disease until near death"
-        },
-        {
-          "source": "https://www.merckvetmanual.com/all-other-pets/guinea-pigs/disorders-and-diseases-of-guinea-pigs",
-          "quote": "Guinea pigs hide signs of illness until they are very sick."
-        }
-      ]
-    },
-    {
-      "id": "cannot-vomit",
-      "appliesTo": [
-        "rabbit",
-        "rodent"
-      ],
-      "rule": "Rabbits and rodents cannot vomit: \"no vomiting\" is never reassuring for them, and the app must never suggest making them vomit.",
-      "evidence": [
-        {
-          "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
-          "quote": "Rabbits also cannot vomit."
-        },
-        {
-          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
-          "quote": "the inability to vomit is a general property of Rodentia"
-        },
-        {
-          "source": "https://www.merckvetmanual.com/exotic-and-laboratory-animals/rodents/chinchillas",
-          "quote": "Like other rodents, chinchillas cannot vomit."
-        }
-      ]
-    },
-    {
-      "id": "unknown-ingestion-no-signs",
-      "appliesTo": [
-        "dog",
-        "cat",
-        "rabbit",
-        "rodent",
-        "bird"
-      ],
-      "rule": "Owner believes the pet ate something unknown but there are no signs → \"vet-today\" (call the vet or a poison line now; do not wait for signs). If the owner can see a likely culprit from the list below, switch to the identified-item path.",
-      "evidence": [
-        {
-          "source": "https://www.petpoisonhelpline.com/pet-owner-blog/triaging-a-potentially-poisoned-pet-at-home/",
-          "quote": "Even if your pet is acting normal, contact your veterinarian or Pet Poison Helpline"
-        },
-        {
-          "source": "https://www.aspca.org/news/how-do-i-know-if-i-should-bring-my-pet-veterinary-hospital-experts-explain",
-          "quote": "do not wait for the signs to worsen before getting help"
-        }
-      ]
-    },
-    {
-      "id": "highest-urgency-wins",
-      "appliesTo": [
-        "dog",
-        "cat",
-        "rabbit",
-        "rodent",
-        "bird"
-      ],
-      "rule": "When several signs are ticked, use the most urgent verdict. Any vet-now sign overrides a dose-based \"watch\" or \"vet-today\" from toxins.json.",
-      "evidence": [
-        {
-          "source": "https://vcahospitals.com/know-your-pet/common-emergencies-in-dogs",
-          "quote": "Poisoning of any sort is an emergency."
-        }
-      ]
-    },
-    {
-      "id": "no-home-treatment",
-      "appliesTo": [
-        "dog",
-        "cat",
-        "rabbit",
-        "rodent",
-        "bird"
-      ],
-      "rule": "Never give home-treatment instructions (no inducing vomiting, no salt, no hydrogen peroxide, no milk/oil). Bring the packaging or a photo of the item to the vet.",
-      "evidence": [
-        {
-          "source": "https://www.petpoisonhelpline.com/uncategorized/what-if-my-dog-ate-a-battery/",
-          "quote": "Do not attempt to induce vomiting."
-        },
-        {
-          "source": "https://www.merckvetmanual.com/toxicology/salt-toxicosis/salt-toxicosis-in-animals",
-          "quote": "no longer recommended"
-        }
-      ],
-      "note": "Merck: salt as an emetic is \"no longer recommended\"."
-    }
-  ],
-  "culprits": {
-    "dog": {
-      "ranked": true,
-      "basis": "Pet Poison Helpline 2025 — most frequently encountered (not most toxic)",
-      "source": "https://www.petpoisonhelpline.com/media-releases/top102025/",
-      "quote": "not necessarily the most toxic poisons, they are the most frequently encountered by pets",
-      "items": [
-        {
-          "rank": 1,
-          "label": "Chocolate",
-          "ids": [
-            "chocolate-milk",
-            "chocolate-dark",
-            "chocolate-baking-cocoa"
-          ]
-        },
-        {
-          "rank": 2,
-          "label": "Grapes and raisins",
-          "ids": [
-            "grapes-raisins"
-          ]
-        },
-        {
-          "rank": 3,
-          "label": "Rat bait (bromethalin)",
-          "ids": [
-            "rodenticide-bromethalin",
-            "rodenticide-other"
-          ]
-        },
-        {
-          "rank": 4,
-          "label": "Xylitol (sugar-free gum, sweets)",
-          "ids": [
-            "xylitol"
-          ]
-        },
-        {
-          "rank": 5,
-          "label": "Onion, chives, leek, shallot, garlic",
-          "ids": [
-            "onion-allium",
-            "garlic"
-          ]
-        },
-        {
-          "rank": 6,
-          "label": "Ibuprofen",
-          "ids": [
-            "ibuprofen"
-          ]
-        },
-        {
-          "rank": 7,
-          "label": "Vitamin D3 overdose",
-          "ids": [
-            "vitamin-d",
-            "calcipotriol-cream"
-          ]
-        },
-        {
-          "rank": 8,
-          "label": "Cannabis (THC)",
-          "ids": [
-            "cannabis-thc"
-          ]
-        },
-        {
-          "rank": 9,
-          "label": "Rat bait (anticoagulant)",
-          "ids": [
-            "rodenticide-anticoagulant"
-          ]
-        },
-        {
-          "rank": 10,
-          "label": "Paracetamol / acetaminophen",
-          "ids": [
-            "acetaminophen"
-          ]
-        }
-      ]
-    },
-    "cat": {
-      "ranked": true,
-      "basis": "Pet Poison Helpline 2025 — most frequently encountered (not most toxic)",
-      "source": "https://www.petpoisonhelpline.com/media-releases/top102025/",
-      "quote": "not necessarily the most toxic poisons, they are the most frequently encountered by pets",
-      "items": [
-        {
-          "rank": 1,
-          "label": "Lilies (incl. pollen, vase water)",
-          "ids": [
-            "lilies-true"
-          ]
-        },
-        {
-          "rank": 2,
-          "label": "Onion, garlic, chives, leek",
-          "ids": [
-            "onion-allium",
-            "garlic"
-          ]
-        },
-        {
-          "rank": 3,
-          "label": "Chocolate",
-          "ids": [
-            "chocolate-milk",
-            "chocolate-dark",
-            "chocolate-baking-cocoa"
-          ]
-        },
-        {
-          "rank": 4,
-          "label": "Vitamin D3 overdose",
-          "ids": [
-            "vitamin-d"
-          ]
-        },
-        {
-          "rank": 5,
-          "label": "Ibuprofen",
-          "ids": [
-            "ibuprofen"
-          ]
-        },
-        {
-          "rank": 6,
-          "label": "Alstroemeria (Peruvian lily)",
-          "ids": [],
-          "note": "Not in toxins.json (mild GI); handled by sign path."
-        },
-        {
-          "rank": 7,
-          "label": "ADHD medicines (amphetamines)",
-          "ids": [
-            "adhd-stimulants"
-          ]
-        },
-        {
-          "rank": 8,
-          "label": "Paracetamol / acetaminophen",
-          "ids": [
-            "acetaminophen"
-          ]
-        },
-        {
-          "rank": 9,
-          "label": "Carprofen (pet pain chews)",
-          "ids": [
-            "carprofen-pet-nsaid"
-          ]
-        },
-        {
-          "rank": 10,
-          "label": "Grapes and raisins",
-          "ids": [
-            "grapes-raisins"
-          ]
-        },
-        {
-          "rank": null,
-          "label": "Dog flea spot-on (permethrin) — not in PPH top 10 but classic cat emergency",
-          "ids": [
-            "permethrin-spot-on"
-          ]
-        }
-      ]
-    },
-    "rabbit": {
-      "ranked": false,
-      "basis": "No frequency ranking found; listed from ASPCA and Pet Poison Helpline rabbit pages (order = editorial, most severe first).",
-      "source": "https://www.aspca.org/news/rabbit-pet-parents-beware-these-common-pet-toxins",
-      "quote": "Even a small amount of fipronil can lead to seizures",
-      "items": [
-        {
-          "label": "Flea products with fipronil (Frontline)",
-          "ids": [
-            "fipronil"
-          ]
-        },
-        {
-          "label": "Rat or mouse bait",
-          "ids": [
-            "rodenticide-anticoagulant",
-            "rodenticide-bromethalin",
-            "rodenticide-other"
-          ]
-        },
-        {
-          "label": "Avocado",
-          "ids": [
-            "avocado"
-          ]
-        },
-        {
-          "label": "Onion and garlic",
-          "ids": [
-            "onion-allium",
-            "garlic"
-          ]
-        },
-        {
-          "label": "Garden plants (foxglove, yew, lily of the valley, daffodil, tulip, azalea)",
-          "ids": [
-            "heart-toxic-plants",
-            "tulip-daffodil-bulbs",
-            "azalea-rhododendron"
-          ],
-          "source": "https://rabbitwelfare.co.uk/poisonous-plants/"
-        },
-        {
-          "label": "Houseplants with oxalates (pothos, philodendron, calla)",
-          "ids": [
-            "oxalate-plants"
-          ]
-        },
-        {
-          "label": "Chocolate and sweets",
-          "ids": [
-            "chocolate-milk",
-            "chocolate-dark",
-            "chocolate-baking-cocoa",
-            "xylitol"
-          ]
-        },
-        {
-          "label": "Human medicines",
-          "ids": [
-            "ibuprofen",
-            "acetaminophen",
-            "naproxen",
-            "aspirin"
-          ]
-        },
-        {
-          "label": "Chewed electrical cords (burns, not poison)",
-          "ids": [],
-          "source": "https://www.petpoisonhelpline.com/uncategorized/dangers-home-rabbit/"
-        }
-      ]
-    },
-    "rodent": {
-      "ranked": false,
-      "basis": "No frequency ranking found; Pet Poison Helpline pocket-pets page + Merck.",
-      "source": "https://petpoisonhelpline.com/pet-safety-tips/whats-poisonous-to-birds-and-pocket-pets",
-      "quote": "Mouse and rat poison can be a danger to",
-      "items": [
-        {
-          "label": "Rat or mouse bait",
-          "ids": [
-            "rodenticide-anticoagulant",
-            "rodenticide-bromethalin",
-            "rodenticide-other"
-          ]
-        },
-        {
-          "label": "Avocado (guinea pigs, rats, mice listed by Merck)",
-          "ids": [
-            "avocado"
-          ]
-        },
-        {
-          "label": "Tobacco / nicotine",
-          "ids": [
-            "nicotine"
-          ]
-        },
-        {
-          "label": "Chocolate (no rodent data — vet call by caution)",
-          "ids": [
-            "chocolate-milk",
-            "chocolate-dark",
-            "chocolate-baking-cocoa"
-          ]
-        },
-        {
-          "label": "Onion and garlic (no rodent data)",
-          "ids": [
-            "onion-allium",
-            "garlic"
-          ]
-        },
-        {
-          "label": "Mouldy food (mycotoxins)",
-          "ids": [],
-          "source": "https://petpoisonhelpline.com/pet-safety-tips/whats-poisonous-to-birds-and-pocket-pets"
-        },
-        {
-          "label": "Fruit pits and seeds",
-          "ids": [
-            "apple-seeds"
-          ],
-          "source": "https://petpoisonhelpline.com/pet-safety-tips/whats-poisonous-to-birds-and-pocket-pets"
-        },
-        {
-          "label": "Human medicines",
-          "ids": [
-            "ibuprofen",
-            "acetaminophen"
-          ]
-        }
-      ],
-      "note": "Merck: many common antibiotics are dangerous for guinea pigs and hamsters — only a vet should medicate them."
-    },
-    "bird": {
-      "ranked": false,
-      "basis": "No frequency ranking found; Pet Poison Helpline \"Top 5\" for birds (not frequency-ordered) + Merck + VCA.",
-      "source": "https://www.petpoisonhelpline.com/pet-safety-tips/top-5-toxins-companion-birds/",
-      "quote": "Zinc poisoning is the most common metal poisoning in caged birds",
-      "items": [
-        {
-          "label": "Overheated non-stick pans / self-cleaning oven fumes",
-          "ids": [
-            "ptfe-fumes"
-          ]
-        },
-        {
-          "label": "Zinc and lead (cage wire, toys, coins, keys, paint)",
-          "ids": [
-            "lead-zinc"
-          ]
-        },
-        {
-          "label": "Avocado",
-          "ids": [
-            "avocado"
-          ]
-        },
-        {
-          "label": "Chocolate",
-          "ids": [
-            "chocolate-milk",
-            "chocolate-dark",
-            "chocolate-baking-cocoa"
-          ]
-        },
-        {
-          "label": "Salty food",
-          "ids": [
-            "salt"
-          ]
-        },
-        {
-          "label": "Caffeine (coffee, tea, soda)",
-          "ids": [
-            "caffeine"
-          ]
-        },
-        {
-          "label": "Aerosols, scented candles, essential oils, bleach fumes",
-          "ids": [
-            "essential-oils",
-            "bleach"
-          ],
-          "source": "https://petpoisonhelpline.com/pet-safety-tips/whats-poisonous-to-birds-and-pocket-pets"
-        },
-        {
-          "label": "Human medicines",
-          "ids": [
-            "ibuprofen",
-            "acetaminophen"
-          ],
-          "source": "https://www.dvm360.com/view/medications-pesticides-continue-poison-birds"
-        },
-        {
-          "label": "Alcohol",
-          "ids": [
-            "alcohol"
-          ]
-        }
-      ]
-    },
-    "allSpeciesCategories": {
-      "ranked": true,
-      "basis": "ASPCA Animal Poison Control Center — Top 10 toxin categories of 2025 (share of exposures)",
-      "source": "https://www.aspca.org/news/top-10-toxins-2025",
-      "quote": "Grapes, raisins, xylitol gums, onions and garlic make up the largest part",
-      "items": [
-        {
-          "rank": 1,
-          "label": "Over-the-counter medicines and supplements",
-          "share": 16.9
-        },
-        {
-          "rank": 2,
-          "label": "Food and drink",
-          "share": 16.4
-        },
-        {
-          "rank": 3,
-          "label": "Human prescription medicines",
-          "share": null
-        },
-        {
-          "rank": 4,
-          "label": "Chocolate",
-          "share": 13.6
-        },
-        {
-          "rank": 5,
-          "label": "Veterinary products",
-          "share": 9.1
-        },
-        {
-          "rank": 6,
-          "label": "Plants and fungi",
-          "share": 7.5
-        },
-        {
-          "rank": 7,
-          "label": "Rodenticides",
-          "share": 6.5
-        },
-        {
-          "rank": 8,
-          "label": "Household products",
-          "share": 6.4
-        },
-        {
-          "rank": 9,
-          "label": "Insecticides",
-          "share": 3.8
-        },
-        {
-          "rank": 10,
-          "label": "Recreational drugs",
-          "share": 1.9
-        }
-      ]
-    }
+ "checked": "2026-10-22",
+ "signs": [
+  {
+   "id": "seizure",
+   "label": "Seizure / fit: shaking uncontrollably, paddling legs, not aware of you",
+   "urgency": "vet-now",
+   "species": [
+    "dog",
+    "cat",
+    "rabbit",
+    "rodent",
+    "bird"
+   ],
+   "source": "https://www.aspca.org/news/how-do-i-know-if-i-should-bring-my-pet-veterinary-hospital-experts-explain",
+   "quote": "seizures, trouble breathing, not responding to you or are unconscious"
+  },
+  {
+   "id": "unresponsive",
+   "label": "Unconscious or not responding to you",
+   "urgency": "vet-now",
+   "species": [
+    "dog",
+    "cat",
+    "rabbit",
+    "rodent",
+    "bird"
+   ],
+   "source": "https://www.aspca.org/pet-care/general-pet-care/emergency-care-your-pet",
+   "quote": "Loss of consciousness"
+  },
+  {
+   "id": "collapse",
+   "label": "Collapsed, cannot stand up, or suddenly very weak",
+   "urgency": "vet-now",
+   "species": [
+    "dog",
+    "cat",
+    "rabbit",
+    "rodent",
+    "bird"
+   ],
+   "source": "https://vcahospitals.com/know-your-pet/common-emergencies-in-dogs",
+   "quote": "Collapse should always be treated as a medical emergency."
+  },
+  {
+   "id": "breathing",
+   "label": "Trouble breathing: gasping, very fast or noisy breathing, breathing with mouth open (cats, rabbits, rodents, birds)",
+   "urgency": "vet-now",
+   "species": [
+    "dog",
+    "cat",
+    "rabbit",
+    "rodent",
+    "bird"
+   ],
+   "source": "https://www.merckvetmanual.com/special-pet-topics/emergencies/what-to-do-in-a-dog-or-cat-emergency",
+   "quote": "Trouble breathing"
+  },
+  {
+   "id": "gums-pale-blue",
+   "label": "Gums or tongue pale, white, grey or blue",
+   "urgency": "vet-now",
+   "species": [
+    "dog",
+    "cat",
+    "rabbit",
+    "rodent"
+   ],
+   "source": "https://www.merckvetmanual.com/multimedia/table/when-to-see-a-veterinarian",
+   "quote": "Bluish or white gums or tongue",
+   "note": "Merck table column (immediate vs 24 h) was inferred from extracted text; VCA: \"The presence of cyanosis means there is an emergency.\" (cats)."
+  },
+  {
+   "id": "gums-yellow",
+   "label": "Yellow gums, eyes or skin (jaundice)",
+   "urgency": "vet-now",
+   "species": [
+    "dog",
+    "cat"
+   ],
+   "source": "https://vcahospitals.com/know-your-pet/recognizing-signs-of-illness-in-cats",
+   "quote": "a yellow tint may indicate jaundice",
+   "note": "Classified vet-now by us because, after a possible poisoning, jaundice suggests liver injury (xylitol, sago palm, paracetamol, mushrooms). No source explicitly ranks it as an emergency."
+  },
+  {
+   "id": "bleeding",
+   "label": "Bleeding that will not stop, nosebleed, bleeding gums, big bruises, blood in urine",
+   "urgency": "vet-now",
+   "species": [
+    "dog",
+    "cat",
+    "rabbit",
+    "rodent",
+    "bird"
+   ],
+   "source": "https://www.aspca.org/pet-care/general-pet-care/emergency-care-your-pet",
+   "quote": "Excessive bleeding"
+  },
+  {
+   "id": "bloody-diarrhea",
+   "label": "Bloody, black/tarry or uncontrollable diarrhea",
+   "urgency": "vet-now",
+   "species": [
+    "dog",
+    "cat",
+    "rabbit",
+    "rodent"
+   ],
+   "source": "https://www.merckvetmanual.com/multimedia/table/when-to-see-a-veterinarian",
+   "quote": "Bloody, foul-smelling, or uncontrollable diarrhea",
+   "note": "Column inferred (see gums-pale-blue)."
+  },
+  {
+   "id": "vomit-blood",
+   "label": "Vomiting blood or \"coffee grounds\"",
+   "urgency": "vet-now",
+   "species": [
+    "dog",
+    "cat"
+   ],
+   "source": "https://vcahospitals.com/know-your-pet/vomiting-in-dogs",
+   "quote": "Vomit contains blood"
+  },
+  {
+   "id": "vomit-repeated",
+   "label": "Vomiting again and again (more than twice), or vomiting plus diarrhea",
+   "urgency": "vet-now",
+   "species": [
+    "dog",
+    "cat"
+   ],
+   "source": "https://vcahospitals.com/know-your-pet/common-emergencies-in-dogs",
+   "quote": "Repeated or continuous vomiting or diarrhea, with or without blood"
+  },
+  {
+   "id": "bloat-retching",
+   "label": "Swollen, tight belly with trying to vomit but nothing comes up",
+   "urgency": "vet-now",
+   "species": [
+    "dog"
+   ],
+   "source": "https://www.merckvetmanual.com/dog-owners/digestive-disorders-of-dogs/disorders-of-the-stomach-and-intestines-in-dogs",
+   "quote": "Immediately seek veterinary care if your dog exhibits signs of bloat"
+  },
+  {
+   "id": "cat-urine-straining",
+   "label": "Cat straining in the litter box, passing little or no urine, crying while trying",
+   "urgency": "vet-now",
+   "species": [
+    "cat"
+   ],
+   "source": "https://vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics/feline-lower-urinary-tract-disease",
+   "quote": "A urethral obstruction is an absolute emergency, requiring immediate veterinary treatment."
+  },
+  {
+   "id": "cat-not-eating-24h",
+   "label": "Cat has not eaten properly for 24 hours",
+   "urgency": "vet-now",
+   "species": [
+    "cat"
+   ],
+   "source": "https://vcahospitals.com/know-your-pet/recognizing-signs-of-illness-in-cats",
+   "quote": "If your cat has not eaten properly for 24 hours, seek immediate veterinary attention."
+  },
+  {
+   "id": "tremors-wobbly",
+   "label": "Trembling, twitching, stumbling or walking as if drunk",
+   "urgency": "vet-now",
+   "species": [
+    "dog",
+    "cat",
+    "rabbit",
+    "rodent",
+    "bird"
+   ],
+   "source": "https://www.petpoisonhelpline.com/pet-owner-blog/triaging-a-potentially-poisoned-pet-at-home/",
+   "quote": "Confusion, dilated or constricted pupils, ataxia (stumbling), tremors, seizures"
+  },
+  {
+   "id": "heart-weak",
+   "label": "Racing or very slow heartbeat, extreme weakness or tiredness",
+   "urgency": "vet-now",
+   "species": [
+    "dog",
+    "cat"
+   ],
+   "source": "https://www.petpoisonhelpline.com/pet-owner-blog/triaging-a-potentially-poisoned-pet-at-home/",
+   "quote": "Racing or slow heart rate, pale gums, weakness or lethargy, collapse"
+  },
+  {
+   "id": "throat-swelling",
+   "label": "Swollen face, tongue or throat; trouble swallowing",
+   "urgency": "vet-now",
+   "species": [
+    "dog",
+    "cat",
+    "rabbit",
+    "rodent",
+    "bird"
+   ],
+   "source": "https://www.merckvetmanual.com/toxicology/poisonous-plants/houseplants-and-ornamentals-toxic-to-animals",
+   "quote": "edema to the laryngeal region does not cause respiratory distress"
+  },
+  {
+   "id": "bird-floor-fluffed",
+   "label": "Bird fluffed up, sitting on the cage floor or low on the perch, not perching",
+   "urgency": "vet-now",
+   "species": [
+    "bird"
+   ],
+   "source": "https://vcahospitals.com/delaware-valley/know-your-pet/recognizing-the-signs-of-illness-in-pet-birds",
+   "quote": "not perching, sitting on bottom of cage for an extended period",
+   "note": "Same page: \"Do not delay as serious illness can develop quickly.\""
+  },
+  {
+   "id": "bird-tail-bobbing",
+   "label": "Bird breathing with tail bobbing, wheezing or open beak",
+   "urgency": "vet-now",
+   "species": [
+    "bird"
+   ],
+   "source": "https://vcahospitals.com/know-your-pet/respiratory-disease-in-birds",
+   "quote": "A bird showing any of these signs should be seen by a veterinarian immediately."
+  },
+  {
+   "id": "rabbit-no-eating-droppings",
+   "label": "Rabbit not eating, or no droppings, for 12 hours or more",
+   "urgency": "vet-now",
+   "species": [
+    "rabbit"
+   ],
+   "source": "https://rabbit.org/care/gi-stasis/",
+   "quote": "If your rabbit stops eating or producing feces for 12 hours or more",
+   "note": "House Rabbit Society: consider it an EMERGENCY. Merck: \"Diarrhea or no droppings for more than 12 hours\"."
+  },
+  {
+   "id": "rabbit-lethargy",
+   "label": "Rabbit unusually quiet, hunched, not moving, not interested in food",
+   "urgency": "vet-now",
+   "species": [
+    "rabbit"
+   ],
+   "source": "https://rabbit.org/health/is-your-rabbit-sick/",
+   "quote": "needs emergency medical care is a loss of appetite and lethargy"
+  },
+  {
+   "id": "guinea-pig-not-eating",
+   "label": "Guinea pig drooling or not eating",
+   "urgency": "vet-now",
+   "species": [
+    "rodent"
+   ],
+   "source": "https://www.merckvetmanual.com/all-other-pets/guinea-pigs/disorders-and-diseases-of-guinea-pigs",
+   "quote": "If your guinea pig drools or stops eating, see a vet quickly."
+  },
+  {
+   "id": "rodent-breathing",
+   "label": "Hamster, rat or mouse breathing hard, wheezing, or very lethargic",
+   "urgency": "vet-now",
+   "species": [
+    "rodent"
+   ],
+   "source": "https://www.merckvetmanual.com/all-other-pets/hamsters/disorders-and-diseases-of-hamsters",
+   "quote": "Breathing problems can become serious quickly in hamsters.",
+   "note": "Rats: Merck lists \"lethargy, labored breathing\" as reasons to see the vet."
+  },
+  {
+   "id": "hamster-wet-tail",
+   "label": "Hamster with wet fur around the tail, low energy, not eating",
+   "urgency": "vet-now",
+   "species": [
+    "rodent"
+   ],
+   "source": "https://www.merckvetmanual.com/all-other-pets/hamsters/disorders-and-diseases-of-hamsters",
+   "quote": "Signs include wet fur around the tail, low energy, poor appetite"
+  },
+  {
+   "id": "vomit-once",
+   "label": "Vomited once and otherwise acting normally",
+   "urgency": "vet-today",
+   "species": [
+    "dog",
+    "cat"
+   ],
+   "source": "https://www.petpoisonhelpline.com/pet-owner-blog/triaging-a-potentially-poisoned-pet-at-home/",
+   "quote": "Nausea, drooling, vomiting, diarrhea, or decreased appetite",
+   "note": "Outside a possible poisoning a single vomit can often be monitored (VCA); in this app the pet may have eaten something, so call the vet today."
+  },
+  {
+   "id": "diarrhea-mild",
+   "label": "Mild diarrhea (no blood), otherwise acting normally",
+   "urgency": "vet-today",
+   "species": [
+    "dog",
+    "cat"
+   ],
+   "source": "https://www.petpoisonhelpline.com/pet-owner-blog/triaging-a-potentially-poisoned-pet-at-home/",
+   "quote": "Nausea, drooling, vomiting, diarrhea, or decreased appetite"
+  },
+  {
+   "id": "drooling",
+   "label": "Drooling, lip-licking, pawing at the mouth",
+   "urgency": "vet-today",
+   "species": [
+    "dog",
+    "cat",
+    "rabbit",
+    "rodent",
+    "bird"
+   ],
+   "source": "https://www.petpoisonhelpline.com/pet-owner-blog/triaging-a-potentially-poisoned-pet-at-home/",
+   "quote": "Nausea, drooling, vomiting, diarrhea, or decreased appetite",
+   "note": "If drooling comes with mouth swelling or trouble swallowing → throat-swelling (vet-now)."
+  },
+  {
+   "id": "appetite-down",
+   "label": "Eating less than usual but otherwise normal",
+   "urgency": "vet-today",
+   "species": [
+    "dog",
+    "cat"
+   ],
+   "source": "https://www.merckvetmanual.com/multimedia/table/when-to-see-a-veterinarian",
+   "quote": "Lack of appetite but no other signs of illness",
+   "note": "Merck table column inferred. For rabbits and guinea pigs, not eating is vet-now."
+  },
+  {
+   "id": "mild-tiredness",
+   "label": "A bit quieter or sleepier than usual",
+   "urgency": "vet-today",
+   "species": [
+    "dog",
+    "cat"
+   ],
+   "source": "https://www.aspca.org/news/how-do-i-know-if-i-should-bring-my-pet-veterinary-hospital-experts-explain",
+   "quote": "do not wait for the signs to worsen before getting help",
+   "note": "No source ranks \"mild lethargy\" precisely; cautious same-day call."
+  },
+  {
+   "id": "no-signs",
+   "label": "No signs at all (yet)",
+   "urgency": "vet-today",
+   "species": [
+    "dog",
+    "cat",
+    "rabbit",
+    "rodent",
+    "bird"
+   ],
+   "source": "https://www.petpoisonhelpline.com/pet-owner-blog/triaging-a-potentially-poisoned-pet-at-home/",
+   "quote": "Even if your pet is acting normal, contact your veterinarian or Pet Poison Helpline",
+   "note": "Many poisons have delayed signs (rat bait 3–7 days, lilies, xylitol liver injury, grapes, antifreeze)."
   }
+ ],
+ "rules": [
+  {
+   "id": "small-prey-species-minimum",
+   "appliesTo": [
+    "rabbit",
+    "rodent",
+    "bird"
+   ],
+   "rule": "Any sign of illness in a rabbit, rodent or bird → at least \"vet-today\"; listed vet-now signs stay vet-now.",
+   "evidence": [
+    {
+     "source": "https://www.merckvetmanual.com/bird-owners/routine-care-and-safety-of-birds/illness-in-pet-birds",
+     "quote": "birds hide their sickness so they don't appear weak to other animals"
+    },
+    {
+     "source": "https://vcahospitals.com/delaware-valley/know-your-pet/recognizing-the-signs-of-illness-in-pet-birds",
+     "quote": "Do not delay as serious illness can develop quickly."
+    },
+    {
+     "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+     "quote": "Rabbits often hide illness, so quick veterinary care matters."
+    },
+    {
+     "source": "https://www.merckvetmanual.com/exotic-and-laboratory-animals/rodents/overview-of-rodents",
+     "quote": "rodents do not show obvious signs of pain or disease until near death"
+    },
+    {
+     "source": "https://www.merckvetmanual.com/all-other-pets/guinea-pigs/disorders-and-diseases-of-guinea-pigs",
+     "quote": "Guinea pigs hide signs of illness until they are very sick."
+    }
+   ]
+  },
+  {
+   "id": "cannot-vomit",
+   "appliesTo": [
+    "rabbit",
+    "rodent"
+   ],
+   "rule": "Rabbits and rodents cannot vomit: \"no vomiting\" is never reassuring for them, and the app must never suggest making them vomit.",
+   "evidence": [
+    {
+     "source": "https://www.merckvetmanual.com/all-other-pets/rabbits/illness-of-rabbits",
+     "quote": "Rabbits also cannot vomit."
+    },
+    {
+     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3622671",
+     "quote": "the inability to vomit is a general property of Rodentia"
+    },
+    {
+     "source": "https://www.merckvetmanual.com/exotic-and-laboratory-animals/rodents/chinchillas",
+     "quote": "Like other rodents, chinchillas cannot vomit."
+    }
+   ]
+  },
+  {
+   "id": "unknown-ingestion-no-signs",
+   "appliesTo": [
+    "dog",
+    "cat",
+    "rabbit",
+    "rodent",
+    "bird"
+   ],
+   "rule": "Owner believes the pet ate something unknown but there are no signs → \"vet-today\" (call the vet or a poison line now; do not wait for signs). If the owner can see a likely culprit from the list below, switch to the identified-item path.",
+   "evidence": [
+    {
+     "source": "https://www.petpoisonhelpline.com/pet-owner-blog/triaging-a-potentially-poisoned-pet-at-home/",
+     "quote": "Even if your pet is acting normal, contact your veterinarian or Pet Poison Helpline"
+    },
+    {
+     "source": "https://www.aspca.org/news/how-do-i-know-if-i-should-bring-my-pet-veterinary-hospital-experts-explain",
+     "quote": "do not wait for the signs to worsen before getting help"
+    }
+   ]
+  },
+  {
+   "id": "highest-urgency-wins",
+   "appliesTo": [
+    "dog",
+    "cat",
+    "rabbit",
+    "rodent",
+    "bird"
+   ],
+   "rule": "When several signs are ticked, use the most urgent verdict. Any vet-now sign overrides a dose-based \"watch\" or \"vet-today\" from toxins.json.",
+   "evidence": [
+    {
+     "source": "https://vcahospitals.com/know-your-pet/common-emergencies-in-dogs",
+     "quote": "Poisoning of any sort is an emergency."
+    }
+   ]
+  },
+  {
+   "id": "no-home-treatment",
+   "appliesTo": [
+    "dog",
+    "cat",
+    "rabbit",
+    "rodent",
+    "bird"
+   ],
+   "rule": "Never give home-treatment instructions (no inducing vomiting, no salt, no hydrogen peroxide, no milk/oil). Bring the packaging or a photo of the item to the vet.",
+   "evidence": [
+    {
+     "source": "https://www.petpoisonhelpline.com/uncategorized/what-if-my-dog-ate-a-battery/",
+     "quote": "Do not attempt to induce vomiting."
+    },
+    {
+     "source": "https://www.merckvetmanual.com/toxicology/salt-toxicosis/salt-toxicosis-in-animals",
+     "quote": "no longer recommended"
+    }
+   ],
+   "note": "Merck: salt as an emetic is \"no longer recommended\"."
+  }
+ ],
+ "culprits": {
+  "dog": {
+   "ranked": true,
+   "basis": "Pet Poison Helpline 2025 — most frequently encountered (not most toxic)",
+   "source": "https://www.petpoisonhelpline.com/media-releases/top102025/",
+   "quote": "not necessarily the most toxic poisons, they are the most frequently encountered by pets",
+   "items": [
+    {
+     "rank": 1,
+     "label": "Chocolate",
+     "ids": [
+      "chocolate-milk",
+      "chocolate-dark",
+      "chocolate-baking-cocoa"
+     ]
+    },
+    {
+     "rank": 2,
+     "label": "Grapes and raisins",
+     "ids": [
+      "grapes-raisins"
+     ]
+    },
+    {
+     "rank": 3,
+     "label": "Rat bait (bromethalin)",
+     "ids": [
+      "rodenticide-bromethalin",
+      "rodenticide-other"
+     ]
+    },
+    {
+     "rank": 4,
+     "label": "Xylitol (sugar-free gum, sweets)",
+     "ids": [
+      "xylitol"
+     ]
+    },
+    {
+     "rank": 5,
+     "label": "Onion, chives, leek, shallot, garlic",
+     "ids": [
+      "onion-allium",
+      "garlic"
+     ]
+    },
+    {
+     "rank": 6,
+     "label": "Ibuprofen",
+     "ids": [
+      "ibuprofen"
+     ]
+    },
+    {
+     "rank": 7,
+     "label": "Vitamin D3 overdose",
+     "ids": [
+      "vitamin-d",
+      "calcipotriol-cream"
+     ]
+    },
+    {
+     "rank": 8,
+     "label": "Cannabis (THC)",
+     "ids": [
+      "cannabis-thc"
+     ]
+    },
+    {
+     "rank": 9,
+     "label": "Rat bait (anticoagulant)",
+     "ids": [
+      "rodenticide-anticoagulant"
+     ]
+    },
+    {
+     "rank": 10,
+     "label": "Paracetamol / acetaminophen",
+     "ids": [
+      "acetaminophen"
+     ]
+    }
+   ]
+  },
+  "cat": {
+   "ranked": true,
+   "basis": "Pet Poison Helpline 2025 — most frequently encountered (not most toxic)",
+   "source": "https://www.petpoisonhelpline.com/media-releases/top102025/",
+   "quote": "not necessarily the most toxic poisons, they are the most frequently encountered by pets",
+   "items": [
+    {
+     "rank": 1,
+     "label": "Lilies (incl. pollen, vase water)",
+     "ids": [
+      "lilies-true"
+     ]
+    },
+    {
+     "rank": 2,
+     "label": "Onion, garlic, chives, leek",
+     "ids": [
+      "onion-allium",
+      "garlic"
+     ]
+    },
+    {
+     "rank": 3,
+     "label": "Chocolate",
+     "ids": [
+      "chocolate-milk",
+      "chocolate-dark",
+      "chocolate-baking-cocoa"
+     ]
+    },
+    {
+     "rank": 4,
+     "label": "Vitamin D3 overdose",
+     "ids": [
+      "vitamin-d"
+     ]
+    },
+    {
+     "rank": 5,
+     "label": "Ibuprofen",
+     "ids": [
+      "ibuprofen"
+     ]
+    },
+    {
+     "rank": 6,
+     "label": "Alstroemeria (Peruvian lily)",
+     "ids": [],
+     "note": "Not in toxins.json (mild GI); handled by sign path."
+    },
+    {
+     "rank": 7,
+     "label": "ADHD medicines (amphetamines)",
+     "ids": [
+      "adhd-stimulants"
+     ]
+    },
+    {
+     "rank": 8,
+     "label": "Paracetamol / acetaminophen",
+     "ids": [
+      "acetaminophen"
+     ]
+    },
+    {
+     "rank": 9,
+     "label": "Carprofen (pet pain chews)",
+     "ids": [
+      "carprofen-pet-nsaid"
+     ]
+    },
+    {
+     "rank": 10,
+     "label": "Grapes and raisins",
+     "ids": [
+      "grapes-raisins"
+     ]
+    },
+    {
+     "rank": null,
+     "label": "Dog flea spot-on (permethrin)",
+     "ids": [
+      "permethrin-spot-on"
+     ],
+     "note": "not in PPH top 10 but classic cat emergency"
+    }
+   ]
+  },
+  "rabbit": {
+   "ranked": false,
+   "basis": "No frequency ranking found; listed from ASPCA and Pet Poison Helpline rabbit pages (order = editorial, most severe first).",
+   "source": "https://www.aspca.org/news/rabbit-pet-parents-beware-these-common-pet-toxins",
+   "quote": "Even a small amount of fipronil can lead to seizures",
+   "items": [
+    {
+     "label": "Flea products with fipronil (Frontline)",
+     "ids": [
+      "fipronil"
+     ]
+    },
+    {
+     "label": "Rat or mouse bait",
+     "ids": [
+      "rodenticide-anticoagulant",
+      "rodenticide-bromethalin",
+      "rodenticide-other"
+     ]
+    },
+    {
+     "label": "Avocado",
+     "ids": [
+      "avocado"
+     ]
+    },
+    {
+     "label": "Onion and garlic",
+     "ids": [
+      "onion-allium",
+      "garlic"
+     ]
+    },
+    {
+     "label": "Garden plants (foxglove, yew, lily of the valley, daffodil, tulip, azalea)",
+     "ids": [
+      "heart-toxic-plants",
+      "tulip-daffodil-bulbs",
+      "azalea-rhododendron"
+     ],
+     "source": "https://rabbitwelfare.co.uk/poisonous-plants/"
+    },
+    {
+     "label": "Houseplants with oxalates (pothos, philodendron, calla)",
+     "ids": [
+      "oxalate-plants"
+     ]
+    },
+    {
+     "label": "Chocolate and sweets",
+     "ids": [
+      "chocolate-milk",
+      "chocolate-dark",
+      "chocolate-baking-cocoa",
+      "xylitol"
+     ]
+    },
+    {
+     "label": "Human medicines",
+     "ids": [
+      "ibuprofen",
+      "acetaminophen",
+      "naproxen",
+      "aspirin"
+     ]
+    },
+    {
+     "label": "Chewed electrical cords (burns, not poison)",
+     "ids": [],
+     "source": "https://www.petpoisonhelpline.com/uncategorized/dangers-home-rabbit/"
+    }
+   ]
+  },
+  "rodent": {
+   "ranked": false,
+   "basis": "No frequency ranking found; Pet Poison Helpline pocket-pets page + Merck.",
+   "source": "https://petpoisonhelpline.com/pet-safety-tips/whats-poisonous-to-birds-and-pocket-pets",
+   "quote": "Mouse and rat poison can be a danger to",
+   "items": [
+    {
+     "label": "Rat or mouse bait",
+     "ids": [
+      "rodenticide-anticoagulant",
+      "rodenticide-bromethalin",
+      "rodenticide-other"
+     ]
+    },
+    {
+     "label": "Avocado (guinea pigs, rats, mice listed by Merck)",
+     "ids": [
+      "avocado"
+     ]
+    },
+    {
+     "label": "Tobacco / nicotine",
+     "ids": [
+      "nicotine"
+     ]
+    },
+    {
+     "label": "Chocolate",
+     "ids": [
+      "chocolate-milk",
+      "chocolate-dark",
+      "chocolate-baking-cocoa"
+     ],
+     "note": "vet call by caution)"
+    },
+    {
+     "label": "Onion and garlic",
+     "ids": [
+      "onion-allium",
+      "garlic"
+     ]
+    },
+    {
+     "label": "Mouldy food (mycotoxins)",
+     "ids": [],
+     "source": "https://petpoisonhelpline.com/pet-safety-tips/whats-poisonous-to-birds-and-pocket-pets"
+    },
+    {
+     "label": "Fruit pits and seeds",
+     "ids": [
+      "apple-seeds"
+     ],
+     "source": "https://petpoisonhelpline.com/pet-safety-tips/whats-poisonous-to-birds-and-pocket-pets"
+    },
+    {
+     "label": "Human medicines",
+     "ids": [
+      "ibuprofen",
+      "acetaminophen"
+     ]
+    }
+   ],
+   "note": "Merck: many common antibiotics are dangerous for guinea pigs and hamsters — only a vet should medicate them."
+  },
+  "bird": {
+   "ranked": false,
+   "basis": "No frequency ranking found; Pet Poison Helpline \"Top 5\" for birds (not frequency-ordered) + Merck + VCA.",
+   "source": "https://www.petpoisonhelpline.com/pet-safety-tips/top-5-toxins-companion-birds/",
+   "quote": "Zinc poisoning is the most common metal poisoning in caged birds",
+   "items": [
+    {
+     "label": "Overheated non-stick pans / self-cleaning oven fumes",
+     "ids": [
+      "ptfe-fumes"
+     ]
+    },
+    {
+     "label": "Zinc and lead (cage wire, toys, coins, keys, paint)",
+     "ids": [
+      "lead-zinc"
+     ]
+    },
+    {
+     "label": "Avocado",
+     "ids": [
+      "avocado"
+     ]
+    },
+    {
+     "label": "Chocolate",
+     "ids": [
+      "chocolate-milk",
+      "chocolate-dark",
+      "chocolate-baking-cocoa"
+     ]
+    },
+    {
+     "label": "Salty food",
+     "ids": [
+      "salt"
+     ]
+    },
+    {
+     "label": "Caffeine (coffee, tea, soda)",
+     "ids": [
+      "caffeine"
+     ]
+    },
+    {
+     "label": "Aerosols, scented candles, essential oils, bleach fumes",
+     "ids": [
+      "essential-oils",
+      "bleach"
+     ],
+     "source": "https://petpoisonhelpline.com/pet-safety-tips/whats-poisonous-to-birds-and-pocket-pets"
+    },
+    {
+     "label": "Human medicines",
+     "ids": [
+      "ibuprofen",
+      "acetaminophen"
+     ],
+     "source": "https://www.dvm360.com/view/medications-pesticides-continue-poison-birds"
+    },
+    {
+     "label": "Alcohol",
+     "ids": [
+      "alcohol"
+     ]
+    }
+   ]
+  },
+  "allSpeciesCategories": {
+   "ranked": true,
+   "basis": "ASPCA Animal Poison Control Center — Top 10 toxin categories of 2025 (share of exposures)",
+   "source": "https://www.aspca.org/news/top-10-toxins-2025",
+   "quote": "Grapes, raisins, xylitol gums, onions and garlic make up the largest part",
+   "items": [
+    {
+     "rank": 1,
+     "label": "Over-the-counter medicines and supplements",
+     "share": 16.9
+    },
+    {
+     "rank": 2,
+     "label": "Food and drink",
+     "share": 16.4
+    },
+    {
+     "rank": 3,
+     "label": "Human prescription medicines",
+     "share": null
+    },
+    {
+     "rank": 4,
+     "label": "Chocolate",
+     "share": 13.6
+    },
+    {
+     "rank": 5,
+     "label": "Veterinary products",
+     "share": 9.1
+    },
+    {
+     "rank": 6,
+     "label": "Plants and fungi",
+     "share": 7.5
+    },
+    {
+     "rank": 7,
+     "label": "Rodenticides",
+     "share": 6.5
+    },
+    {
+     "rank": 8,
+     "label": "Household products",
+     "share": 6.4
+    },
+    {
+     "rank": 9,
+     "label": "Insecticides",
+     "share": 3.8
+    },
+    {
+     "rank": 10,
+     "label": "Recreational drugs",
+     "share": 1.9
+    }
+   ]
+  }
+ }
 }
