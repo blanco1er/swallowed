@@ -76,3 +76,4 @@ Activity mode:
 - The French "3115" on-call number is not shown — the data could not confirm it on an official page.
 - Slice 3 was built before slice 2 — the Gemini key needed to verify real photos was not yet available; slice 2 resumes as soon as it is.
 - Culprit and contact labels cleaned for display (internal research notes moved to `note` fields; short names, hours and fees added to data/contacts.json).
+- Repository published at https://github.com/blanco1er/swallowed and hosted at https://swallowed.onrender.com (Render free web service from render.yaml) before slice 2, so the phone checks can use HTTPS for the camera and microphone; the Gemini key is added in Render's Environment settings by the learner.
