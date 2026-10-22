@@ -1,0 +1,14 @@
+# Render's free plan sleeps after 15 idle minutes and takes about a minute to wake.
+# Ping it during the hours judges are likely to open the demo (11:00–03:59 UTC, ≈ 17 h a day),
+# which stays well inside the 750 free instance hours a month. GitHub may delay scheduled runs.
+name: Keep the demo warm
+on:
+  schedule:
+    - cron: '7,17,27,37,47,57 0-3,11-23 * * *'
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - run: curl -fsS --max-time 90 --retry 2 https://swallowed.onrender.com/healthz

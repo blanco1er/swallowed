@@ -117,3 +117,18 @@ test('the calculation shows the content value as published (15.5 mg/g, not 16)',
   const v = verdict(dark, 'dog', 8, { grams: 100, form });
   assert.match(v.math.text, /15\.5 mg\/g/);
 });
+
+test('a dose just below a threshold never reads as the threshold (19.8, not 20)', () => {
+  const choc = byId('chocolate-dark');
+  const v = verdict(choc, 'dog', 10, { grams: 36 }); // 36 g × 5.5 mg/g ÷ 10 kg = 19.8 mg/kg
+  assert.equal(v.level, 'watch');
+  assert.ok(Number(v.math.shown) < 20, `shown ${v.math.shown}`);
+  assert.match(v.reason, /below the first level/);
+});
+
+test('ibuprofen forms carry clear labels (200 mg and 400 mg tablets are told apart)', () => {
+  const labels = byId('ibuprofen').content.map((f) => f.label);
+  assert.equal(new Set(labels).size, labels.length);
+  const v = verdict(byId('ibuprofen'), 'dog', 10, { count: 1, form: byId('ibuprofen').content[1] });
+  assert.equal(v.level, 'vet-now'); // 400 mg ÷ 10 kg = 40 mg/kg
+});

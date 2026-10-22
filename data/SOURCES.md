@@ -212,9 +212,10 @@ Real photographs from Unsplash, used under the Unsplash License (free to use, no
 | File | Unsplash image |
 |---|---|
 | hero.jpg (husky and tabby cat) | https://images.unsplash.com/photo-1573435567032-ff5982925350 |
-| chocolate.jpg | https://images.unsplash.com/photo-1643094264639-955fdb53cfc7 |
+| chocolate.jpg | https://images.unsplash.com/photo-1646303339019-a57056b180ae |
 | grapes.jpg | https://images.unsplash.com/photo-1641210444019-f61749d2951f |
 | lily.jpg | https://images.unsplash.com/photo-1501973931234-5ac2964cd94a |
+| icon-*.png | Drawn for Swallowed (General Sans “s.” on red) |
 | pills.jpg | https://images.unsplash.com/photo-1550572017-26b5655c1e8c |
 | gum.jpg | https://images.unsplash.com/photo-1656622051638-23652075c483 |
 | onion.jpg | https://images.unsplash.com/photo-1664975367131-4c7ac2efa704 |
@@ -222,4 +223,4 @@ Real photographs from Unsplash, used under the Unsplash License (free to use, no
 | cat.jpg | https://images.unsplash.com/photo-1583795128727-6ec3642408f8 |
 | rabbit.jpg | https://images.unsplash.com/photo-1452857297128-d9c29adba80b |
 | guineapig.jpg | https://images.unsplash.com/photo-1512483652399-7a1f99aa0dd3 |
-| bird.jpg | https://images.unsplash.com/photo-1594911588637-c9e891bd7858 |
+| bird.jpg | https://images.unsplash.com/photo-1758253292835-0c649b7ad1cc |

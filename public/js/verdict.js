@@ -11,6 +11,12 @@ export const SPECIES = ['dog', 'cat', 'rabbit', 'rodent', 'bird'];
 const round = (n, d = 0) => Math.round(n * 10 ** d) / 10 ** d;
 // Whole numbers from 100 up, otherwise keep one decimal (15.5 mg/g must not read as 16).
 const fmt = (n) => (n >= 100 ? round(n) : n >= 1 ? round(n, 1) : round(n, 2));
+// Below a threshold, the shown number must stay below it (19.96 must not read as 20).
+const fmtBelow = (n, limit) => {
+  let d = n >= 100 ? 0 : n >= 1 ? 1 : 2;
+  while (limit != null && round(n, d) >= limit && d < 6) d += 1;
+  return round(n, d);
+};
 
 // What a content form is measured per: grams, millilitres or a countable thing.
 export function formMeasure(form) {
@@ -98,12 +104,16 @@ export function verdict(item, species, weightKg, amount) {
     }
     const dose = doseFor(item, s, weightKg, amount);
     if (!dose) {
-      return { ...common, level: max(worst, 'vet-today'), kind: 'dose-unknown', reason: 'Without the amount and the weight the dose cannot be worked out, so we assume the worst case.' };
+      const why = weightKg > 0 && amount
+        ? "The dose can't be worked out for this product, so we assume the worst case."
+        : 'Without the amount and the weight the dose cannot be worked out, so we assume the worst case.';
+      return { ...common, level: max(worst, 'vet-today'), kind: 'dose-unknown', reason: why };
     }
     let band = null;
     for (const t of sorted) if (dose.perKg >= t.from) band = t;
     const level = band ? band.verdict : s.below || 'vet-today';
     const first = sorted[0];
+    const shown = band ? fmt(dose.perKg) : fmtBelow(dose.perKg, first?.from);
     return {
       ...common,
       level,
@@ -115,9 +125,9 @@ export function verdict(item, species, weightKg, amount) {
       source: band?.source || common.source,
       quote: band?.quote || common.quote,
       reason: band
-        ? `about ${fmt(dose.perKg)} ${dose.unitPerKg}, at or above the ${band.from} ${dose.unitPerKg} level where veterinary sources report ${band.signs || 'signs'}.`
-        : `about ${fmt(dose.perKg)} ${dose.unitPerKg}, below the first level where signs are reported (${first?.from} ${dose.unitPerKg}).`,
-      math: { text: dose.text, perKg: `${fmt(dose.perKg)} ${dose.unitPerKg}`, firstLevel: first ? `${first.from} ${dose.unitPerKg}` : null, form: dose.form?.form || null },
+        ? `about ${shown} ${dose.unitPerKg}, at or above the ${band.from} ${dose.unitPerKg} level where veterinary sources report ${band.signs || 'signs'}.`
+        : `about ${shown} ${dose.unitPerKg}, below the first level where signs are reported (${first?.from} ${dose.unitPerKg}).`,
+      math: { text: dose.text.replace(/≈ [\d.]+ (\S+)$/, `≈ ${shown} $1`), perKg: `${shown} ${dose.unitPerKg}`, shown, firstLevel: first ? `${first.from} ${dose.unitPerKg}` : null, form: dose.form?.form || null },
     };
   }
   return { ...common, level: 'vet-now', kind: 'no-data', reason: 'We could not assess this one — call your vet.' };

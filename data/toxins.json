@@ -217,6 +217,7 @@
     "content": [
       {
         "form": "unsweetened (baker's) chocolate",
+        "label": "Baking chocolate",
         "unit": "mg/g",
         "value": 15.5,
         "note": "440 mg/oz.",
@@ -224,6 +225,7 @@
       },
       {
         "form": "cocoa powder",
+        "label": "Cocoa powder",
         "unit": "mg/g",
         "value": 28.5,
         "note": "807 mg/oz. Sweetened drinking-chocolate mixes contain less, but no sourced figure — use this value.",
@@ -325,6 +327,7 @@
     "content": [
       {
         "form": "sugar-free gum or mint",
+        "label": "Gum or mint",
         "unit": "g/piece",
         "value": 1,
         "range": [
@@ -336,6 +339,7 @@
       },
       {
         "form": "gum (vet estimation rule)",
+        "label": "Gum, xylitol not 1st ingredient",
         "unit": "g/piece",
         "value": 0.3,
         "note": "ASPCA APCC rule when xylitol is NOT the first sugar alcohol listed; if it is first, assume the label total of sugar alcohols is xylitol.",
@@ -787,6 +791,7 @@
     "content": [
       {
         "form": "caffeine tablet",
+        "label": "Caffeine tablet, 200 mg",
         "unit": "mg/tablet",
         "value": 200,
         "note": "Up to 200 mg per tablet; K2009 mentions 100 mg tablets. Read the label.",
@@ -794,6 +799,7 @@
       },
       {
         "form": "brewed coffee",
+        "label": "Brewed coffee",
         "unit": "mg/ml",
         "value": 0.7,
         "range": [
@@ -805,6 +811,7 @@
       },
       {
         "form": "energy drink",
+        "label": "Energy drink",
         "unit": "mg/ml",
         "value": 0.69,
         "range": [
@@ -1246,6 +1253,7 @@
     "content": [
       {
         "form": "tablet",
+        "label": "200 mg tablet",
         "unit": "mg/tablet",
         "value": 200,
         "note": "Standard adult OTC strength (US). Always use the strength printed on the pack.",
@@ -1253,6 +1261,7 @@
       },
       {
         "form": "tablet",
+        "label": "400 mg tablet",
         "unit": "mg/tablet",
         "value": 400,
         "note": "Prescription strengths 400/600/800 mg (US). 400 mg is also sold OTC in France — not verified against a French source.",
@@ -1260,6 +1269,7 @@
       },
       {
         "form": "children's suspension",
+        "label": "Kids’ liquid, 40 mg/ml",
         "unit": "mg/ml",
         "value": 40,
         "range": [
@@ -1354,6 +1364,7 @@
     "content": [
       {
         "form": "OTC tablet",
+        "label": "220 mg tablet",
         "unit": "mg/tablet",
         "value": 220,
         "note": "Strengths found: 220, 250, 275, 375, 500, 550 mg. Use the printed strength.",
@@ -1361,6 +1372,7 @@
       },
       {
         "form": "tablet",
+        "label": "550 mg tablet",
         "unit": "mg/tablet",
         "value": 550,
         "note": "Highest common strength.",
@@ -2045,6 +2057,7 @@
     "content": [
       {
         "form": "cigarette",
+        "label": "Cigarette",
         "unit": "mg/cigarette",
         "value": 30,
         "range": [
@@ -2056,6 +2069,7 @@
       },
       {
         "form": "vape e-liquid (bottle)",
+        "label": "Vape liquid",
         "unit": "mg/ml",
         "value": 24,
         "note": "Up to 24 mg/ml \"or even higher\"; read the label.",
@@ -2063,6 +2077,7 @@
       },
       {
         "form": "pod (nicotine salt, e.g. JUUL)",
+        "label": "Pod (e.g. JUUL)",
         "unit": "mg/ml",
         "value": 59,
         "note": "Advertised 59 mg/ml; lab measured ~69 mg/ml. EU cap of 20 mg/ml not verified here.",
@@ -2070,6 +2085,7 @@
       },
       {
         "form": "gum, patch, cigar (per product)",
+        "label": "Gum, patch or cigar",
         "unit": "mg/item",
         "value": 114,
         "range": [

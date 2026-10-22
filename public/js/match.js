@@ -7,7 +7,8 @@ export function normalize(text) {
     .toLowerCase()
     .normalize('NFD')
     .replace(/[̀-ͯ]/g, '')
-    .replace(/[^a-z0-9%\s-]/g, ' ')
+    .replace(/[^a-z0-9%.,\s]/g, ' ') // "sugar-free" and "sugar free" are the same words
+    .replace(/(?<!\d)[.,]|[.,](?!\d)/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -22,11 +23,27 @@ function singular(word) {
   return word;
 }
 
-const STOP = new Set(['my', 'the', 'a', 'an', 'some', 'of', 'ate', 'eaten', 'has', 'have', 'just', 'he', 'she', 'it',
-  'dog', 'cat', 'rabbit', 'bird', 'hamster', 'guinea', 'pig', 'rat', 'mouse', 'parrot', 'budgie', 'mon', 'ma', 'le', 'la',
-  'les', 'du', 'de', 'des', 'un', 'une', 'a', 'mange', 'chien', 'chat', 'lapin', 'oiseau', 'piece', 'bit', 'bite', 'whole', 'half']);
+const SPECIES_WORDS = {
+  dog: ['dog', 'puppy', 'chien', 'chiot'],
+  cat: ['cat', 'kitten', 'kitty', 'chat', 'chaton'],
+  rabbit: ['rabbit', 'bunny', 'lapin'],
+  rodent: ['guinea pig', 'hamster', 'rat', 'mouse', 'gerbil', 'cochon d inde', 'souris'],
+  bird: ['bird', 'parrot', 'budgie', 'parakeet', 'cockatiel', 'canary', 'oiseau', 'perruche', 'perroquet'],
+};
+
+// Words that say who ate it, how, or how much — never what was eaten.
+const STOP = new Set([
+  'my', 'our', 'your', 'his', 'her', 'their', 'the', 'a', 'an', 'some', 'of', 'ate', 'eat', 'eaten', 'eating', 'chewed', 'swallowed',
+  'has', 'have', 'had', 'just', 'he', 'she', 'it', 'they', 'i', 'we', 'think', 'maybe', 'probably', 'about', 'around', 'and', 'or',
+  'from', 'on', 'in', 'into', 'with', 'got', 'get', 'into', 'food', 'whole', 'half', 'bit', 'bite', 'piece', 'lot', 'few', 'little',
+  'mg', 'g', 'gram', 'ml', 'kg', 'x', 'tablet', 'pill', 'caplet', 'capsule',
+  'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
+  'mon', 'ma', 'mes', 'le', 'la', 'les', 'du', 'de', 'des', 'un', 'une', 'mange', 'avale', 'il', 'elle', 'je', 'pense',
+  ...Object.values(SPECIES_WORDS).flat().flatMap((w) => w.split(' ')).map(singular),
+]);
 
 const words = (text) => normalize(text).split(' ').filter(Boolean).map(singular);
+const isNumber = (w) => /^\d/.test(w) || /^\d+(mg|g|ml|kg)$/.test(w);
 
 function scoreName(queryWords, name) {
   const nameWords = words(name);
@@ -39,7 +56,7 @@ function scoreName(queryWords, name) {
   if (!hits) {
     // prefix match while typing ("choco" → chocolate)
     const last = queryWords[queryWords.length - 1];
-    if (last && last.length >= 3 && nameWords.some((w) => w.startsWith(last))) return 0.4;
+    if (last && last.length >= 3 && nameWords.some((w) => w.startsWith(last))) return 0.2;
     return 0;
   }
   return 0.5 * (hits / nameWords.length) + 0.3 * (hits / Math.max(queryWords.length, 1));
@@ -47,7 +64,7 @@ function scoreName(queryWords, name) {
 
 // Returns up to `limit` candidates: [{ item, score, matchedName }]
 export function matchItems(catalogue, text, limit = 5) {
-  const queryWords = words(text).filter((w) => !STOP.has(w));
+  const queryWords = words(text).filter((w) => !STOP.has(w) && !isNumber(w));
   if (!queryWords.length) return [];
   const results = [];
   for (const item of catalogue) {
@@ -63,19 +80,39 @@ export function matchItems(catalogue, text, limit = 5) {
   return results.sort((a, b) => b.score - a.score).slice(0, limit);
 }
 
-const SPECIES_WORDS = {
-  dog: ['dog', 'puppy', 'chien', 'chiot'],
-  cat: ['cat', 'kitten', 'chat', 'chaton'],
-  rabbit: ['rabbit', 'bunny', 'lapin'],
-  rodent: ['guinea pig', 'hamster', 'rat', 'mouse', 'gerbil', 'cochon d inde', 'souris'],
-  bird: ['bird', 'parrot', 'budgie', 'parakeet', 'cockatiel', 'canary', 'oiseau', 'perruche', 'perroquet'],
-};
-
-// "my rabbit ate some avocado" → "rabbit"
+// "my rabbit ate some avocado" → "rabbit"; "my cat ate dog food" → "cat" (the animal named first).
 export function detectSpecies(text) {
   const t = ` ${normalize(text)} `;
+  let found = null;
   for (const [species, list] of Object.entries(SPECIES_WORDS)) {
-    if (list.some((w) => t.includes(` ${w} `) || t.includes(` ${w}s `))) return species;
+    for (const w of list) {
+      const hits = [...t.matchAll(new RegExp(` ${w}s? (?!(?:poison|bait|food|treats?|toys?|killer|traps?|chews?|medicine|flea|wormer)\\b)`, 'g'))];
+      const at = hits.length ? hits[0].index : Infinity;
+      if (at < (found?.at ?? Infinity)) found = { species, at };
+    }
   }
-  return null;
+  return found?.species || null;
+}
+
+const NUMBER_WORDS = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, a: 1, an: 1, half: 0.5 };
+
+// Amounts said or typed in the sentence: "3 ibuprofen 200mg", "ibuprofen 400", "two tablets", "50 g of chocolate".
+// A bare number of 50 or more next to a medicine is its strength in mg; a small one is a count.
+export function parseAmounts(text) {
+  const t = normalize(text).replace(/(\d),(\d)/g, '$1.$2');
+  const out = {};
+  const num = (v) => NUMBER_WORDS[v] ?? Number(v);
+  const N = '(\\d+(?:\\.\\d+)?|one|two|three|four|five|six|seven|eight|nine|ten|an?|half)';
+  let m;
+  if ((m = new RegExp(`(\\d+(?:\\.\\d+)?)\\s*mg\\b`).exec(t))) out.tabletMg = Number(m[1]);
+  if ((m = new RegExp(`(\\d+(?:\\.\\d+)?)\\s*ml\\b`).exec(t))) out.ml = Number(m[1]);
+  if ((m = new RegExp(`(\\d+(?:\\.\\d+)?)\\s*(?:g|grams?)\\b`).exec(t))) out.grams = Number(m[1]);
+  if ((m = new RegExp(`\\b${N}\\s*(?:x\\s*)?(?:tablets?|pills?|caplets?|capsules?|pieces?|cigarettes?|pods?|grapes?|raisins?|sticks?)\\b`).exec(t))) out.count = num(m[1]);
+  // bare numbers not followed by a unit
+  for (const b of t.matchAll(/\b(\d+(?:\.\d+)?)\b(?!\s*(?:mg|ml|g|grams?|kg|lbs?|pounds?|tablets?|pills?|caplets?|capsules?|pieces?|cigarettes?|pods?|minutes?|min|hours?|h)\b)/g)) {
+    const n = Number(b[1]);
+    if (n >= 50 && !out.tabletMg) out.tabletMg = n;
+    else if (n > 0 && n < 50 && out.count == null) out.count = n;
+  }
+  return out;
 }

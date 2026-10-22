@@ -10,8 +10,15 @@
   <meta name="description" content="Your dog, cat, rabbit, guinea pig or bird just ate something. Show it, type it or say it, and see how serious it is for your animal, with the veterinary source.">
   <meta property="og:title" content="Swallowed">
   <meta property="og:description" content="Your pet just ate something. How serious is it for this animal, and what to do now.">
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="/img/icon-64.png" type="image/png">
+  <link rel="apple-touch-icon" href="/img/icon-180.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Swallowed">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
 </head>
@@ -34,229 +41,297 @@
       <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M15.2 5.3l3.5 3.5M4.5 19.5l1-4.4L15.9 4.7a1.8 1.8 0 0 1 2.5 0l.9.9a1.8 1.8 0 0 1 0 2.5L8.9 18.5z"/></symbol>
       <symbol id="i-wave" viewBox="0 0 24 24"><path d="M4 10v4M8 7v10M12 4v16M16 7v10M20 10v4"/></symbol>
       <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6.5 3.5h7l4 4v11.5a1.5 1.5 0 0 1-1.5 1.5h-9.5A1.5 1.5 0 0 1 5 19V5a1.5 1.5 0 0 1 1.5-1.5z"/><path d="M13.5 3.5v4h4M8.5 12h7M8.5 15.5h7"/></symbol>
+      <symbol id="i-calc" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2.5"/><path d="M8.5 7.5h7M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01M8.5 15h.01M12 15h.01M15.5 15h.01"/></symbol>
       <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H19v15H7.5A2.5 2.5 0 0 0 5 20.5z"/><path d="M5 20.5A2.5 2.5 0 0 1 7.5 18H19v3H7.5"/></symbol>
     </defs>
   </svg>
 
-  <div class="app">
-    <header class="bar">
-      <button id="back" class="round" type="button" hidden aria-label="Back"><svg class="icon" aria-hidden="true"><use href="#i-chev-l"/></svg></button>
+  <div class="app" id="app">
+    <header class="bar" id="bar">
+      <button id="back" class="bar-back" type="button" hidden aria-label="Back"><svg class="icon" aria-hidden="true"><use href="#i-chev-l"/></svg></button>
       <span id="brand" class="brand">Swallowed</span>
-      <button id="help-open" class="capsule" type="button">Emergency</button>
+      <p id="bar-title" class="bar-title" aria-hidden="true"></p>
+      <button id="help-open" class="capsule" type="button" aria-label="Emergency"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span>Emergency</span></button>
     </header>
 
     <main id="main" class="main" tabindex="-1">
       <!-- 1. Start -->
-      <section class="view view--start" data-view="start" aria-labelledby="start-title">
-        <figure class="hero-photo"><img src="/img/hero.jpg" alt="A husky and a tabby cat resting together on a white sofa" width="1400" height="1050" fetchpriority="high"></figure>
-        <h1 id="start-title" class="display start-title">What did your pet eat?</h1>
-        <p class="kicker">Dogs, cats, rabbits, guinea pigs and birds</p>
+      <section class="view view--start" data-view="start" data-title="" aria-labelledby="start-title">
+        <div class="view-body">
+          <figure class="hero-photo"><img src="/img/hero.jpg" alt="A husky and a tabby cat resting together on a white sofa" width="1400" height="1050" fetchpriority="high"></figure>
+          <h1 id="start-title" class="display start-title">What did your pet eat?</h1>
+          <p class="kicker">Dogs, cats, rabbits, guinea pigs and birds</p>
 
-        <input id="photo-input" type="file" accept="image/*" hidden>
-        <button id="way-photo" type="button" class="btn btn-dark btn-block btn-xl"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg>Take a photo</button>
-        <div class="ways">
-          <button id="tab-type" class="way" type="button" aria-expanded="false" aria-controls="type-panel"><svg class="icon" aria-hidden="true"><use href="#i-pencil"/></svg>Type it</button>
-          <button id="tab-say" class="way" type="button" aria-expanded="false" aria-controls="voice-panel"><svg class="icon" aria-hidden="true"><use href="#i-wave"/></svg>Say it</button>
-        </div>
-
-        <div id="type-panel" class="panel" hidden>
-          <label class="sr-only" for="type-input">What did it eat?</label>
-          <div class="search">
-            <input id="type-input" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Raisins, ibuprofen 400, lily…">
+          <input id="photo-input" type="file" accept="image/*" hidden>
+          <button id="way-photo" type="button" class="btn btn-dark btn-block btn-xl"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg>Take a photo</button>
+          <div class="ways">
+            <button id="tab-type" class="way" type="button" aria-expanded="false" aria-controls="type-panel"><svg class="icon" aria-hidden="true"><use href="#i-pencil"/></svg>Type it</button>
+            <button id="tab-say" class="way" type="button" aria-expanded="false" aria-controls="voice-panel"><svg class="icon" aria-hidden="true"><use href="#i-wave"/></svg>Say it</button>
           </div>
-          <ul id="suggestions" class="rows suggestions" aria-label="Matching items"></ul>
-          <p id="type-empty" class="hint" hidden></p>
+
+          <p id="start-status" class="status" hidden role="status"></p>
+
+          <div id="type-panel" class="panel" hidden>
+            <label class="sr-only" for="type-input">What did it eat?</label>
+            <div class="search">
+              <input id="type-input" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Raisins, ibuprofen 400, lily…">
+            </div>
+            <ul id="suggestions" class="rows suggestions" aria-label="Matching items"></ul>
+            <p id="type-empty" class="hint" hidden></p>
+          </div>
+
+          <div id="voice-panel" class="panel voice" hidden aria-live="polite">
+            <button id="way-voice" class="mic" type="button" aria-label="Start speaking"><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg></button>
+            <p id="voice-status-text" class="voice-status">Tap and say what happened</p>
+            <p id="voice-words" class="voice-words">“My rabbit ate some avocado”</p>
+            <button id="voice-stop" type="button" class="btn btn-light btn-small" hidden>Stop</button>
+          </div>
+
+
+          <div class="section-head">
+            <h2 class="section-title">Most common</h2>
+            <button id="see-all" class="pill-btn" type="button" aria-haspopup="dialog">See all</button>
+          </div>
+          <div class="items" id="quick" aria-label="Most common">
+            <button class="item" type="button" data-q="dark chocolate"><img src="/img/chocolate.jpg" alt="" width="180" height="180" loading="lazy"><span>Chocolate</span></button>
+            <button class="item" type="button" data-q="grapes"><img src="/img/grapes.jpg" alt="" width="180" height="180" loading="lazy"><span>Grapes</span></button>
+            <button class="item" type="button" data-q="lily"><img src="/img/lily.jpg" alt="" width="180" height="180" loading="lazy"><span>Lily</span></button>
+            <button class="item" type="button" data-q="ibuprofen"><img src="/img/pills.jpg" alt="" width="180" height="180" loading="lazy"><span>Ibuprofen</span></button>
+            <button class="item" type="button" data-q="xylitol"><img src="/img/gum.jpg" alt="" width="180" height="180" loading="lazy"><span>Gum</span></button>
+            <button class="item" type="button" data-q="onion"><img src="/img/onion.jpg" alt="" width="180" height="180" loading="lazy"><span>Onion</span></button>
+          </div>
+
+          <button id="way-unknown" class="unknown" type="button">I don't know what it ate</button>
+
+          <div id="install-tip" class="install-tip" hidden>
+            <img src="/img/icon-180.png" alt="" width="44" height="44">
+            <p><b>Keep Swallowed one tap away</b><span>Tap Share, then “Add to Home Screen”.</span></p>
+            <button id="install-close" type="button" class="round round--small" aria-label="Dismiss"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+          </div>
+
+          <p class="fine">Not a substitute for a vet. Photos are sent to Google Gemini only to recognise the item; Swallowed keeps nothing, and on Gemini's free tier Google may use them to improve its products.</p>
         </div>
-
-        <div id="voice-panel" class="panel voice" hidden aria-live="polite">
-          <button id="way-voice" class="mic" type="button" aria-label="Start speaking"><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg></button>
-          <p id="voice-status-text" class="voice-status">Tap and say what happened</p>
-          <p id="voice-words" class="voice-words">“My rabbit ate some avocado”</p>
-          <button id="voice-stop" type="button" class="btn btn-light btn-small" hidden>Stop</button>
-        </div>
-
-        <p id="start-status" class="status" hidden role="status"></p>
-
-        <div class="items" id="quick" aria-label="Most common">
-          <button class="item" type="button" data-q="dark chocolate"><img src="/img/chocolate.jpg" alt="" width="180" height="180" loading="lazy"><span>Chocolate</span></button>
-          <button class="item" type="button" data-q="grapes"><img src="/img/grapes.jpg" alt="" width="180" height="180" loading="lazy"><span>Grapes</span></button>
-          <button class="item" type="button" data-q="lily"><img src="/img/lily.jpg" alt="" width="180" height="180" loading="lazy"><span>Lily</span></button>
-          <button class="item" type="button" data-q="ibuprofen"><img src="/img/pills.jpg" alt="" width="180" height="180" loading="lazy"><span>Ibuprofen</span></button>
-          <button class="item" type="button" data-q="xylitol"><img src="/img/gum.jpg" alt="" width="180" height="180" loading="lazy"><span>Sugar-free gum</span></button>
-          <button class="item" type="button" data-q="onion"><img src="/img/onion.jpg" alt="" width="180" height="180" loading="lazy"><span>Onion</span></button>
-        </div>
-
-        <button id="way-unknown" class="unknown" type="button">I don't know what it ate</button>
-
-        <p class="fine">Swallowed does not replace a vet. Photos go to Google Gemini only to recognise the item and are not kept by Swallowed; on Gemini's free tier Google may use them to improve its products.</p>
       </section>
 
       <!-- 2. Confirm -->
-      <section class="view" data-view="confirm" aria-labelledby="confirm-name" hidden>
-        <p id="confirm-title" class="kicker">Is this it?</p>
-        <h1 id="confirm-name" class="display"></h1>
-        <p id="confirm-detail" class="sub"></p>
-        <img id="confirm-photo" class="confirm-photo" alt="" hidden>
-        <p id="confirm-said" class="said" hidden></p>
-        <div id="change-panel" hidden>
-          <p class="label" id="candidates-label">Closest matches</p>
-          <ul id="candidates" class="rows"></ul>
-          <p class="label">Or search</p>
-          <div class="search"><input id="change-input" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type a name" aria-label="Search another item"></div>
-          <ul id="change-suggestions" class="rows suggestions"></ul>
+      <section class="view" data-view="confirm" data-title="Is this it?" aria-labelledby="confirm-name" hidden>
+        <div class="view-body">
+          <p id="confirm-title" class="kicker">Is this it?</p>
+          <h1 id="confirm-name" class="display"></h1>
+          <p id="confirm-detail" class="sub"></p>
+          <p id="confirm-danger" class="danger-for"></p>
+          <img id="confirm-photo" class="confirm-photo" alt="" hidden>
+          <p id="confirm-said" class="said" hidden></p>
+          <div id="change-panel" hidden>
+            <p class="label" id="candidates-label">Closest matches</p>
+            <ul id="candidates" class="rows"></ul>
+            <p class="label">Or search</p>
+            <div class="search"><input id="change-input" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type a name" aria-label="Search another item"></div>
+            <ul id="change-suggestions" class="rows suggestions"></ul>
+          </div>
         </div>
-        <div class="dock pair">
-          <button id="confirm-change" type="button" class="btn btn-light">Change</button>
-          <button id="confirm-yes" type="button" class="btn btn-dark">That's it</button>
+        <div class="dock">
+          <div class="pair">
+            <button id="confirm-change" type="button" class="btn btn-light">Change</button>
+            <button id="confirm-yes" type="button" class="btn btn-dark">That's it</button>
+          </div>
         </div>
       </section>
 
       <!-- 3. Your pet -->
-      <section class="view" data-view="pet" aria-labelledby="pet-title" hidden>
-        <p id="pet-item" class="kicker"></p>
-        <h1 id="pet-title" class="display">Your pet</h1>
+      <section class="view" data-view="pet" data-title="Your pet" aria-labelledby="pet-title" hidden>
+        <div class="view-body">
+          <p id="pet-item" class="kicker"></p>
+          <h1 id="pet-title" class="display">Your pet</h1>
 
-        <fieldset class="group">
-          <legend class="sr-only">Animal</legend>
-          <div class="species" id="species">
-            <label class="species-tile"><input type="radio" name="species" value="dog"><img class="animal" src="/img/dog.jpg" alt="" width="180" height="180"><span>Dog</span></label>
-            <label class="species-tile"><input type="radio" name="species" value="cat"><img class="animal" src="/img/cat.jpg" alt="" width="180" height="180"><span>Cat</span></label>
-            <label class="species-tile"><input type="radio" name="species" value="rabbit"><img class="animal" src="/img/rabbit.jpg" alt="" width="180" height="180"><span>Rabbit</span></label>
-            <label class="species-tile"><input type="radio" name="species" value="rodent"><img class="animal" src="/img/guineapig.jpg" alt="" width="180" height="180"><span>Guinea pig</span></label>
-            <label class="species-tile"><input type="radio" name="species" value="bird"><img class="animal" src="/img/bird.jpg" alt="" width="180" height="180"><span>Bird</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="group weigh">
-          <legend class="label">Weight</legend>
-          <div class="giant-input">
-            <input id="weight" type="number" inputmode="decimal" min="0.01" step="any" placeholder="0" aria-label="Weight" aria-describedby="weight-hint">
-            <div class="unit-seg" role="radiogroup" aria-label="Unit">
-              <label><input type="radio" name="unit" value="kg" checked><span>kg</span></label>
-              <label><input type="radio" name="unit" value="lb"><span>lb</span></label>
+          <fieldset class="group">
+            <legend class="sr-only">Animal</legend>
+            <div class="species" id="species">
+              <label class="species-tile"><input type="radio" name="species" value="dog"><img class="animal" src="/img/dog.jpg" alt="" width="180" height="180"><span>Dog</span></label>
+              <label class="species-tile"><input type="radio" name="species" value="cat"><img class="animal" src="/img/cat.jpg" alt="" width="180" height="180"><span>Cat</span></label>
+              <label class="species-tile"><input type="radio" name="species" value="rabbit"><img class="animal" src="/img/rabbit.jpg" alt="" width="180" height="180"><span>Rabbit</span></label>
+              <label class="species-tile"><input type="radio" name="species" value="rodent"><img class="animal" src="/img/guineapig.jpg" alt="" width="180" height="180"><span>Guinea pig</span></label>
+              <label class="species-tile"><input type="radio" name="species" value="bird"><img class="animal" src="/img/bird.jpg" alt="" width="180" height="180"><span>Bird</span></label>
             </div>
-          </div>
-          <p id="weight-hint" class="hint"></p>
-        </fieldset>
+          </fieldset>
 
-        <fieldset class="group" id="amount-group" hidden>
-          <legend class="label">What exactly, and how much?</legend>
-          <div class="chips chips--forms" id="form-chips" role="radiogroup" aria-label="Which form"></div>
-          <div id="amount-how">
-            <div class="chips" id="amount-chips" role="radiogroup" aria-label="Amount"></div>
-            <div class="exact">
-              <input id="amount-exact" type="number" inputmode="decimal" min="0" step="any" placeholder="Exact amount" aria-label="Exact amount">
-              <span id="amount-unit">g</span>
+          <fieldset class="group weigh">
+            <legend class="label">Weight</legend>
+            <div class="giant-input">
+              <input id="weight" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-label="Weight" aria-describedby="weight-hint">
+              <div class="unit-seg" role="radiogroup" aria-label="Unit">
+                <label><input type="radio" name="unit" value="kg" checked><span>kg</span></label>
+                <label><input type="radio" name="unit" value="lb"><span>lb</span></label>
+              </div>
             </div>
-          </div>
-        </fieldset>
+            <p id="weight-hint" class="hint"></p>
+          </fieldset>
 
-        <fieldset class="group">
-          <legend class="label">When did it happen?</legend>
-          <div class="chips" role="radiogroup" aria-label="When">
-            <label class="chip"><input type="radio" name="when" value="just now" checked><span>Just now</span></label>
-            <label class="chip"><input type="radio" name="when" value="about 30 minutes ago"><span>30 min</span></label>
-            <label class="chip"><input type="radio" name="when" value="about 1 hour ago"><span>1 hour</span></label>
-            <label class="chip"><input type="radio" name="when" value="2 hours ago or more"><span>2 h +</span></label>
-            <label class="chip"><input type="radio" name="when" value="not sure when"><span>Not sure</span></label>
-          </div>
-        </fieldset>
+          <fieldset class="group" id="amount-group" hidden>
+            <legend class="label">What exactly, and how much?</legend>
+            <p id="form-ask" class="hint form-ask" hidden>Which one was it? The dose depends on it.</p>
+            <div class="chips chips--forms" id="form-chips" role="radiogroup" aria-label="Which form"></div>
+            <div id="amount-how">
+              <div class="chips" id="amount-chips" role="radiogroup" aria-label="Amount"></div>
+              <div class="exact">
+                <input id="amount-exact" type="text" inputmode="decimal" autocomplete="off" placeholder="Exact amount" aria-label="Exact amount">
+                <span id="amount-unit">g</span>
+              </div>
+            </div>
+          </fieldset>
 
-        <p id="pet-error" class="error" role="alert" hidden></p>
+          <fieldset class="group">
+            <legend class="label">When did it happen?</legend>
+            <div class="chips chips--seg" role="radiogroup" aria-label="When">
+              <label class="chip"><input type="radio" name="when" value="just now" checked><span>Now</span></label>
+              <label class="chip"><input type="radio" name="when" value="about 30 minutes ago"><span>30 min</span></label>
+              <label class="chip"><input type="radio" name="when" value="about 1 hour ago"><span>1 h</span></label>
+              <label class="chip"><input type="radio" name="when" value="2 hours ago or more"><span>2 h+</span></label>
+              <label class="chip"><input type="radio" name="when" value="not sure when"><span>Not sure</span></label>
+            </div>
+          </fieldset>
+        </div>
         <div class="dock">
+          <p id="pet-error" class="error" role="alert" hidden></p>
           <button id="pet-go" type="button" class="btn btn-dark btn-block">Show the answer</button>
         </div>
       </section>
 
       <!-- 4. Signs (unknown path) -->
-      <section class="view" data-view="signs" aria-labelledby="signs-title" hidden>
-        <p class="kicker">Tick everything you notice</p>
-        <h1 id="signs-title" class="display">What do you see?</h1>
-        <ul id="signs-list" class="rows checks"></ul>
-        <p class="hint">Nothing yet? Leave it empty — we'll tell you what to do and what to watch for.</p>
+      <section class="view" data-view="signs" data-title="What do you see?" aria-labelledby="signs-title" hidden>
+        <div class="view-body">
+          <p class="kicker">Tick everything you notice</p>
+          <h1 id="signs-title" class="display">What do you see?</h1>
+          <ul id="signs-list" class="rows checks"></ul>
+          <p class="hint">Nothing yet? Leave it empty — we'll tell you what to do and what to watch for.</p>
+        </div>
         <div class="dock">
           <button id="signs-go" type="button" class="btn btn-dark btn-block">Show the answer</button>
         </div>
       </section>
 
       <!-- 5. Verdict -->
-      <section class="view verdict" data-view="verdict" aria-labelledby="verdict-title" hidden>
-        <div class="v-item">
-          <img id="verdict-thumb" class="v-thumb" alt="" width="180" height="180" hidden>
-          <p id="verdict-context" class="v-context"></p>
-        </div>
-
-        <div id="verdict-band" class="v-card">
-          <h1 id="verdict-title" class="v-title"></h1>
-          <div id="numbers-block" class="dose" hidden>
-            <p class="v-dose num"><span id="dose-value"></span><span id="dose-unit" class="v-unit"></span></p>
-            <div class="meter-top" aria-hidden="true"><span id="meter-value" class="meter-value num"></span></div>
-            <div class="meter" aria-hidden="true"><div class="meter-track" id="meter-track"></div><span class="meter-dot" id="meter-dot"></span></div>
-            <div class="meter-ticks num" id="meter-ticks" aria-hidden="true"></div>
+      <section class="view verdict" data-view="verdict" data-title="" aria-labelledby="verdict-title" hidden>
+        <div class="view-body">
+          <div class="v-item">
+            <img id="verdict-thumb" class="v-thumb" alt="" width="180" height="180" hidden>
+            <p id="verdict-context" class="v-context"></p>
           </div>
-          <p id="verdict-reason" class="v-reason"></p>
-        </div>
 
-        <div id="call-now" class="calls" hidden></div>
-
-        <div class="source-row">
-          <svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg>
-          <p id="verdict-source" class="source-body"></p>
-        </div>
-
-        <section class="more" id="more-block" aria-labelledby="more-title">
-          <p id="more-title" class="label">How we worked it out</p>
-          <p id="verdict-math" class="math num"></p>
-          <p id="dose-of" class="hint"></p>
-          <p id="verdict-band-text" class="hint"></p>
-          <div class="live" id="live-controls">
-            <div id="live-amount-wrap">
-              <label class="live-label" for="live-amount">Amount eaten <output id="live-amount-out" class="num"></output></label>
-              <input id="live-amount" type="range" min="0" max="100" step="1">
+          <div id="verdict-band" class="v-card">
+            <h1 id="verdict-title" class="v-title"></h1>
+            <div id="numbers-block" class="dose" hidden>
+              <p class="v-dose num"><span id="dose-value"></span><span id="dose-unit" class="v-unit"></span></p>
+              <div class="meter-top" aria-hidden="true"><span id="meter-value" class="meter-value num"></span></div>
+              <div class="meter" aria-hidden="true"><div class="meter-track" id="meter-track"></div><span class="meter-dot" id="meter-dot"></span></div>
+              <div class="meter-ticks num" id="meter-ticks" aria-hidden="true"></div>
             </div>
-            <label class="live-label" for="live-weight">Weight <output id="live-weight-out" class="num"></output></label>
-            <input id="live-weight" type="range" min="1" max="100" step="1">
+            <p id="verdict-reason" class="v-reason"></p>
           </div>
-        </section>
 
-        <section id="culprits-block" hidden>
-          <p class="label">Look around for these</p>
-          <ul id="culprits" class="rows"></ul>
-          <p class="hint">The most common dangers for this animal at home. Found one? Tap it to see how serious it is.</p>
-        </section>
+          <div id="call-now" class="calls" hidden></div>
 
-        <section class="tile" id="watch-block">
-          <p class="tile-k"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg>Watch for</p>
-          <p id="verdict-signs" class="tile-v"></p>
-          <p id="verdict-onset" class="tile-s"></p>
-        </section>
+          <section class="tile" id="watch-block">
+            <p class="tile-k"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg>Watch for</p>
+            <p id="verdict-signs" class="tile-v"></p>
+            <p id="verdict-onset" class="tile-s"></p>
+          </section>
 
-        <section class="note">
-          <p class="label">Read this to the vet</p>
-          <p id="summary" class="summary"></p>
-          <div class="pair pair--left">
-            <button id="summary-copy" type="button" class="btn btn-light btn-small"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Copy</button>
-            <button id="summary-share" type="button" class="btn btn-light btn-small" hidden><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg>Share</button>
+          <section id="culprits-block" hidden>
+            <p class="label">Look around for these</p>
+            <ul id="culprits" class="rows"></ul>
+            <p class="hint">The most common dangers for this animal at home. Found one? Tap it to see how serious it is.</p>
+          </section>
+
+          <div class="links">
+            <button id="open-math" class="link-row" type="button" aria-haspopup="dialog" hidden>
+              <svg class="icon" aria-hidden="true"><use href="#i-calc"/></svg>
+              <span class="link-body"><b>How we worked it out</b><span>Try other amounts and weights</span></span>
+              <svg class="icon chev" aria-hidden="true"><use href="#i-chev-r"/></svg>
+            </button>
+            <button id="open-note" class="link-row" type="button" aria-haspopup="dialog">
+              <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>
+              <span class="link-body"><b>Note for the vet</b><span>Read it out, copy or share it</span></span>
+              <svg class="icon chev" aria-hidden="true"><use href="#i-chev-r"/></svg>
+            </button>
+            <div class="link-row source-row">
+              <svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg>
+              <p id="verdict-source" class="source-body"></p>
+            </div>
           </div>
-        </section>
 
-        <p class="fine">Swallowed shows published veterinary references and never replaces a vet. Never treat your pet at home without a vet's advice.</p>
-        <button id="restart" type="button" class="btn btn-light btn-block">Start again</button>
+          <p class="fine">Swallowed shows published veterinary references and never replaces a vet. Never treat your pet at home without a vet's advice.</p>
+          <button id="restart" type="button" class="btn btn-light btn-block">Start again</button>
+        </div>
       </section>
     </main>
+
+    <div id="busy" class="busy" hidden role="status" aria-live="polite">
+      <div class="busy-card">
+        <img id="busy-photo" class="busy-photo" alt="" hidden>
+        <span class="spinner" aria-hidden="true"></span>
+        <p id="busy-text" class="busy-text">Looking at your photo…</p>
+        <p id="busy-sub" class="busy-sub" aria-live="polite"></p>
+        <button id="busy-cancel" type="button" class="btn btn-light btn-small">Type it instead</button>
+      </div>
+    </div>
   </div>
 
   <dialog id="help" class="sheet" aria-labelledby="help-title">
+    <div class="grabber" aria-hidden="true"></div>
     <div class="sheet-bar">
       <h2 id="help-title" class="sheet-title">Emergency help</h2>
-      <button id="help-close" type="button" class="round round--small" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+      <button id="help-close" type="button" class="round round--small" data-close aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
     </div>
+    <p class="urgent-banner"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>Collapsed, having a seizure or struggling to breathe? Go to the nearest emergency vet now.</span></p>
     <div class="seg seg--wide" role="radiogroup" aria-label="Country">
       <label class="seg-btn"><input type="radio" name="country" value="US"><span>United States</span></label>
       <label class="seg-btn"><input type="radio" name="country" value="FR"><span>France</span></label>
     </div>
     <ul id="contacts" class="rows"></ul>
-    <p class="hint">Collapsed, seizure or struggling to breathe? Go to the nearest emergency vet now.</p>
+  </dialog>
+
+  <dialog id="sheet-math" class="sheet" aria-labelledby="math-title">
+    <div class="grabber" aria-hidden="true"></div>
+    <div class="sheet-bar">
+      <h2 id="math-title" class="sheet-title">How we worked it out</h2>
+      <button type="button" class="round round--small" data-close aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+    <p id="sheet-live" class="sheet-live num"></p>
+    <p id="verdict-math" class="math num"></p>
+    <p id="dose-of" class="hint"></p>
+    <p id="verdict-band-text" class="hint"></p>
+    <div class="live" id="live-controls">
+      <div id="live-amount-wrap">
+        <label class="live-label" for="live-amount">Amount eaten <output id="live-amount-out" class="num"></output></label>
+        <input id="live-amount" type="range" min="0" max="100" step="1">
+      </div>
+      <label class="live-label" for="live-weight">Weight <output id="live-weight-out" class="num"></output></label>
+      <input id="live-weight" type="range" min="1" max="100" step="1">
+    </div>
+  </dialog>
+
+  <dialog id="sheet-note" class="sheet" aria-labelledby="note-title">
+    <div class="grabber" aria-hidden="true"></div>
+    <div class="sheet-bar">
+      <h2 id="note-title" class="sheet-title">Note for the vet</h2>
+      <button type="button" class="round round--small" data-close aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+    <p id="summary" class="summary"></p>
+    <div class="pair">
+      <button id="summary-copy" type="button" class="btn btn-light"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Copy</button>
+      <button id="summary-share" type="button" class="btn btn-dark" hidden><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg>Share</button>
+    </div>
+  </dialog>
+
+  <dialog id="sheet-all" class="sheet sheet--tall" aria-labelledby="all-title">
+    <div class="grabber" aria-hidden="true"></div>
+    <div class="sheet-bar">
+      <h2 id="all-title" class="sheet-title">Everything we cover</h2>
+      <button type="button" class="round round--small" data-close aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="search search--sheet"><input id="all-input" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search" aria-label="Search everything we cover"></div>
+    <div id="all-list" class="all-list"></div>
   </dialog>
 
   <p id="toast" class="toast" role="status" aria-live="polite" hidden></p>
