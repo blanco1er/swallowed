@@ -110,3 +110,10 @@ test('signs shown are only the ones relevant to the species', () => {
   assert.ok(signsFor(signs, 'cat').some((s) => s.id === 'cat-urine-straining'));
   assert.ok(!signsFor(signs, 'dog').some((s) => s.id === 'cat-urine-straining'));
 });
+
+test('the calculation shows the content value as published (15.5 mg/g, not 16)', () => {
+  const dark = byId('chocolate-dark');
+  const form = adjustForm(dark, dark.content[0], { cocoaPercent: 70 }, toxins);
+  const v = verdict(dark, 'dog', 8, { grams: 100, form });
+  assert.match(v.math.text, /15\.5 mg\/g/);
+});

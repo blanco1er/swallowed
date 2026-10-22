@@ -9,7 +9,8 @@ const max = (a, b) => (rank(a) >= rank(b) ? a : b);
 export const SPECIES = ['dog', 'cat', 'rabbit', 'rodent', 'bird'];
 
 const round = (n, d = 0) => Math.round(n * 10 ** d) / 10 ** d;
-const fmt = (n) => (n >= 100 ? round(n) : n >= 10 ? round(n) : n >= 1 ? round(n, 1) : round(n, 2));
+// Whole numbers from 100 up, otherwise keep one decimal (15.5 mg/g must not read as 16).
+const fmt = (n) => (n >= 100 ? round(n) : n >= 1 ? round(n, 1) : round(n, 2));
 
 // What a content form is measured per: grams, millilitres or a countable thing.
 export function formMeasure(form) {

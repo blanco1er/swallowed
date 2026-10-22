@@ -4,7 +4,7 @@
 
 const MODEL = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
 const ENDPOINT = (model) => `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
-const TIMEOUT_MS = 20_000;
+const TIMEOUT_MS = 15_000;
 export const MAX_IMAGE_BYTES = 4 * 1024 * 1024;
 
 export class IdentifyError extends Error {
@@ -90,25 +90,33 @@ export async function identify({ image, text }, catalogue, { apiKey = process.en
   } else {
     parts.push({ text: `The owner wrote or said: "${String(text).slice(0, 300)}"` });
   }
+  const body = JSON.stringify({
+    contents: [{ role: 'user', parts }],
+    generationConfig: { responseMimeType: 'application/json', responseJsonSchema: SCHEMA, temperature: 0 },
+  });
+  // The free tier is sometimes briefly overloaded: one quick retry on a timeout or a 5xx.
   let res;
-  try {
-    res = await fetchImpl(ENDPOINT(MODEL), {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
-      body: JSON.stringify({
-        contents: [{ role: 'user', parts }],
-        generationConfig: { responseMimeType: 'application/json', responseJsonSchema: SCHEMA, temperature: 0 },
-      }),
-      signal: AbortSignal.timeout(TIMEOUT_MS),
-    });
-  } catch (err) {
-    const timedOut = err?.name === 'TimeoutError' || err?.name === 'AbortError';
-    throw new IdentifyError(timedOut ? 'timeout' : 'network', 'Recognition is not answering right now — type it instead.', 502);
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      res = await fetchImpl(ENDPOINT(MODEL), {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
+        body,
+        signal: AbortSignal.timeout(TIMEOUT_MS),
+      });
+      if (res.status < 500 || attempt === 2) break;
+    } catch (err) {
+      if (attempt === 2) {
+        const timedOut = err?.name === 'TimeoutError' || err?.name === 'AbortError';
+        throw new IdentifyError(timedOut ? 'timeout' : 'network', 'Recognition is not answering right now — type it instead.', 502);
+      }
+    }
+    await new Promise((r) => setTimeout(r, 700));
   }
   if (res.status === 429) throw new IdentifyError('quota', 'Too many photos right now — type it instead, or try again in a minute.', 429);
   if (!res.ok) throw new IdentifyError('upstream', 'Recognition is unavailable right now — type it instead.', 502);
-  const body = await res.json().catch(() => null);
-  const textOut = body?.candidates?.[0]?.content?.parts?.map((p) => p.text || '').join('') || '';
+  const answer = await res.json().catch(() => null);
+  const textOut = answer?.candidates?.[0]?.content?.parts?.map((p) => p.text || '').join('') || '';
   let raw;
   try { raw = JSON.parse(textOut); } catch { throw new IdentifyError('bad-answer', "We couldn't recognise it. Try again or type it.", 502); }
   return cleanResult(raw, catalogue);

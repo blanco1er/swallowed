@@ -19,7 +19,7 @@ Build mode: fast — the learner asked the agent on 22 Oct to build through to s
   Learner check: Open the app, type "dark chocolate", pick a dog of 8 kg and "the whole bar", then slide to "a bite" and watch the verdict change.
   Commit: `Type an item and get a sourced verdict`
 
-- [ ] **2. Show it with a photo or say it out loud**
+- [x] **2. Show it with a photo or say it out loud**
   Becomes usable: Taking a photo of a packaging, a plant, a pill or a food — or saying "my rabbit ate some avocado" — leads to the confirmation screen with what was recognised and the printed quantities, then the same verdict.
   Why now: Photo recognition by Gemini is the biggest technical risk (key, model, accuracy); proving it right after the kernel leaves time to adapt.
   PRD ref: `prd.md > Showing what was eaten`, `prd.md > Confirming the item`, `prd.md > States and Boundaries`
@@ -78,3 +78,4 @@ Activity mode:
 - Culprit and contact labels cleaned for display (internal research notes moved to `note` fields; short names, hours and fees added to data/contacts.json).
 - Repository published at https://github.com/blanco1er/swallowed and hosted at https://swallowed.onrender.com (Render free web service from render.yaml) before slice 2, so the phone checks can use HTTPS for the camera and microphone; the Gemini key is added in Render's Environment settings by the learner.
 - Visual redesign after the learner's review on his phone ("ton app fait trop IA"): moved from iOS grouped lists and the system font to the premium language he approved for his earlier app Pont — white canvas, soft halo, giant General Sans titles (chosen by the learner from a five-font board), black capsule buttons, Photo/Type/Say tabs, one-tap shortcuts, giant weight input, and a dose meter on the verdict. Verdict logic and data unchanged; spec.md > Look and Feel updated.
+- Slice 2 verified with the learner's Gemini key: a photo of a 70% dark-chocolate wrapper → chocolate-dark, 100 g and 70% read, confidence 0.99, end to end to "Call a vet now"; text "my rabbit ate some avocado" → avocado; "lily" on the hosted version → lilies-true. A real lily photo and speech on an iPhone are left to the learner's hands-on check (a browser test cannot speak or take a real plant photo). Added one automatic retry when Gemini's free tier is briefly overloaded (a page test once hung on a slow answer).

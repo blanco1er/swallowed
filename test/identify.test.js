@@ -54,3 +54,15 @@ test('quota errors are reported as such', async () => {
   const { fetchImpl } = fakeGemini({}, 429);
   await assert.rejects(identify({ text: 'grapes' }, catalogue, { apiKey: 'k', fetchImpl }), { code: 'quota' });
 });
+
+test('one retry when Gemini is briefly overloaded', async () => {
+  let calls = 0;
+  const fetchImpl = async () => {
+    calls += 1;
+    if (calls === 1) return new Response('overloaded', { status: 503 });
+    return new Response(JSON.stringify({ candidates: [{ content: { parts: [{ text: JSON.stringify({ matchId: 'lily', label: 'lily', confidence: 0.9, kind: 'plant' }) }] } }] }), { status: 200 });
+  };
+  const r = await identify({ text: 'lily' }, catalogue, { apiKey: 'k', fetchImpl });
+  assert.equal(calls, 2);
+  assert.equal(r.matchId, 'lily');
+});
