@@ -81,6 +81,8 @@ function show(name, { push = true } = {}) {
   const current = document.querySelector('.view:not([hidden])')?.dataset.view;
   if (push && current && current !== name) history.push(current);
   for (const v of document.querySelectorAll('.view')) v.hidden = v.dataset.view !== name;
+  $('halo').classList.toggle('is-off', !['start', 'verdict'].includes(name));
+  if (name !== 'verdict') delete $('halo').dataset.level;
   $('back').hidden = history.length === 0;
   window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'instant' });
   $('main').focus({ preventScroll: true });
@@ -109,12 +111,23 @@ function renderSuggestions(listEl, text, onPick) {
   return results;
 }
 
-$('way-type').addEventListener('click', () => {
-  const panel = $('type-panel');
-  panel.hidden = !panel.hidden;
-  $('way-type').setAttribute('aria-expanded', String(!panel.hidden));
-  if (!panel.hidden) $('type-input').focus();
-});
+function selectTab(which) {
+  const map = { photo: 'panel-photo', type: 'type-panel', say: 'voice-panel' };
+  for (const [k, panel] of Object.entries(map)) {
+    $(`tab-${k}`).setAttribute('aria-selected', String(k === which));
+    $(panel).hidden = k !== which;
+  }
+  if (which === 'type') $('type-input').focus();
+}
+$('tab-photo').addEventListener('click', () => selectTab('photo'));
+$('tab-type').addEventListener('click', () => selectTab('type'));
+$('tab-say').addEventListener('click', () => selectTab('say'));
+
+// One-tap shortcuts for the most common poisonings.
+document.querySelectorAll('#quick [data-q]').forEach((b) => b.addEventListener('click', () => {
+  const results = matchItems(data.toxins, b.dataset.q, 6);
+  if (results.length) pickItem(results[0].item, { candidates: results.map((r) => r.item) });
+}));
 
 $('type-input').addEventListener('input', (e) => {
   const text = e.target.value;
@@ -139,8 +152,10 @@ $('type-input').addEventListener('keydown', async (e) => {
 /* ---------- Start: photo ---------- */
 
 $('way-photo').addEventListener('click', () => $('photo-input').click());
+$('photo-drop').addEventListener('click', () => $('photo-input').click());
+$('photo-upload').addEventListener('click', () => $('photo-library').click());
 
-$('photo-input').addEventListener('change', async (e) => {
+async function onPhotoChosen(e) {
   const file = e.target.files?.[0];
   e.target.value = '';
   if (!file) return;
@@ -151,7 +166,9 @@ $('photo-input').addEventListener('change', async (e) => {
   } catch {
     startStatus("We couldn't open that photo. Try another one, or type it.", true);
   }
-});
+}
+$('photo-input').addEventListener('change', onPhotoChosen);
+$('photo-library').addEventListener('change', onPhotoChosen);
 
 function shrink(file, maxSide) {
   return new Promise((resolve, reject) => {
@@ -201,7 +218,7 @@ async function identify(payload) {
 }
 
 function setWaysDisabled(on) {
-  for (const id of ['way-photo', 'way-type', 'way-voice', 'way-unknown']) $(id).disabled = on;
+  for (const id of ['way-photo', 'photo-upload', 'photo-drop', 'way-voice', 'way-unknown']) $(id).disabled = on;
 }
 
 function handleIdentified(result, payload) {
@@ -227,27 +244,28 @@ function handleIdentified(result, payload) {
 /* ---------- Start: say it ---------- */
 
 $('way-voice').addEventListener('click', () => {
+  if (stopListening) { stopListening(); return; }
   if (!speechSupported) {
-    $('type-panel').hidden = false;
-    $('type-input').focus();
-    startStatus('Voice isn\'t available in this browser — tap the microphone on your keyboard to dictate.');
+    selectTab('type');
+    startStatus("Voice isn't available in this browser — tap the microphone on your keyboard to dictate.");
     return;
   }
   startStatus('');
-  $('voice-panel').hidden = false;
   $('voice-words').textContent = '';
   $('voice-status-text').textContent = 'Listening… say what your pet ate';
+  $('way-voice').classList.add('is-live');
+  $('voice-stop').hidden = false;
+  const done = () => { stopListening = null; $('way-voice').classList.remove('is-live'); $('voice-stop').hidden = true; $('voice-status-text').textContent = 'Tap and say what happened'; };
   stopListening = listen({
     onWords: (text) => { $('voice-words').textContent = text; },
     onError: (code) => {
-      $('voice-panel').hidden = true;
+      done();
       startStatus(code === 'not-allowed' || code === 'service-not-allowed'
         ? 'Microphone access is off. Allow it in your browser settings, or type it.'
         : "We didn't catch that. Try again, or type it.", true);
     },
     onEnd: (finalText) => {
-      stopListening = null;
-      $('voice-panel').hidden = true;
+      done();
       if (finalText) handleSaid(finalText);
     },
   });
@@ -306,7 +324,7 @@ function renderCandidates() {
         el('span', { class: 'suggestion-cat', text: CATEGORY[c.category] || '' }),
       ])))
   );
-  $('candidates').parentElement.querySelector('.list-header').hidden = state.candidates.length === 0;
+  $('candidates-label').hidden = state.candidates.length === 0;
 }
 
 $('confirm-yes').addEventListener('click', () => openPet());
@@ -530,10 +548,53 @@ function amountText() {
   return m.kind === 'count' ? `${qty} ${m.noun}${qty > 1 ? 's' : ''}${what}` : `${Math.round(qty * 10) / 10} ${m.noun}${what}`;
 }
 
+const LEVEL_CLASS = { 'vet-now': 'seg-now', 'vet-today': 'seg-today', watch: 'seg-watch' };
+
+function fmtNum(n) {
+  return n >= 100 ? String(Math.round(n)) : n >= 10 ? String(Math.round(n)) : n >= 1 ? String(Math.round(n * 10) / 10) : String(Math.round(n * 100) / 100);
+}
+
+// Giant dose number + a meter showing where it sits against the sourced thresholds.
+function renderDose(v) {
+  if (v.kind !== 'dose') return;
+  const [mass] = String(v.unit).split('/');
+  $('dose-value').textContent = fmtNum(v.dosePerKg);
+  $('dose-unit').textContent = v.unit;
+  const compound = String(state.item.compound || 'the toxic substance').split(' (')[0];
+  $('dose-of').textContent = `${mass === 'g' ? 'grams' : 'milligrams'} of ${compound} per kg of body weight`;
+  const e = speciesEntry();
+  const th = [...(e?.thresholds || [])].sort((a, b) => a.from - b.from);
+  const top = Math.max((th[th.length - 1]?.from || 1) * 1.5, v.dosePerKg * 1.15);
+  const bands = [{ from: 0, verdict: e?.below || 'vet-today' }, ...th];
+  $('meter-track').replaceChildren(...bands.map((b, i) => {
+    const to = bands[i + 1]?.from ?? top;
+    const span = document.createElement('span');
+    span.className = LEVEL_CLASS[b.verdict] || 'seg-today';
+    span.style.width = `${Math.max(0, ((to - b.from) / top) * 100)}%`;
+    return span;
+  }));
+  $('meter-ticks').replaceChildren(...th.map((t) => {
+    const tick = document.createElement('span');
+    tick.style.left = `${(t.from / top) * 100}%`;
+    tick.textContent = String(t.from);
+    return tick;
+  }));
+  $('meter-dot').style.left = `${Math.min(1, v.dosePerKg / top) * 100}%`;
+}
+
+function verdictContext() {
+  const sp = cap(SPECIES_LABEL[state.species] || '');
+  const kg = state.weightKg ? (state.weightKg < 1 ? `${Math.round(state.weightKg * 1000)} g` : `${Math.round(state.weightKg * 10) / 10} kg`) : '';
+  const what = state.path === 'unknown' ? 'Unknown item' : itemName(state.item);
+  return `${what} · ${sp}${kg ? `, ${kg}` : ''}`;
+}
+
 function renderVerdict() {
   const v = computeVerdict();
   const band = $('verdict-band');
   band.dataset.level = v.level;
+  $('halo').dataset.level = v.level;
+  $('verdict-context').textContent = verdictContext();
   $('verdict-icon-use').setAttribute('href', `#${LEVEL_ICON[v.level]}`);
   $('verdict-title').textContent = LEVEL_LABEL[v.level];
 
@@ -562,6 +623,7 @@ function renderVerdict() {
   if (v.kind === 'dose') {
     $('verdict-math').textContent = v.math.text;
     $('verdict-band-text').textContent = bandText(v);
+    renderDose(v);
     setupLive();
   }
 
@@ -682,6 +744,9 @@ function onLive() {
   const v = computeVerdict();
   const band = $('verdict-band');
   band.dataset.level = v.level;
+  $('halo').dataset.level = v.level;
+  $('verdict-context').textContent = verdictContext();
+  renderDose(v);
   $('verdict-icon-use').setAttribute('href', `#${LEVEL_ICON[v.level]}`);
   $('verdict-title').textContent = LEVEL_LABEL[v.level];
   $('verdict-reason').textContent = `${itemName(state.item)} for a ${SPECIES_LABEL[state.species]}: ${lowerFirst(v.reason)}`;
@@ -711,7 +776,7 @@ $('restart').addEventListener('click', () => {
   history.length = 0;
   $('type-input').value = '';
   $('suggestions').replaceChildren();
-  $('type-panel').hidden = true;
+  selectTab('photo');
   startStatus('');
   show('start', { push: false });
 });
@@ -732,7 +797,7 @@ function telHref(c) {
 }
 
 function callButton(c) {
-  return el('a', { class: 'btn btn-prominent call-btn', href: telHref(c) }, [
+  return el('a', { class: 'btn btn-dark call-btn', href: telHref(c) }, [
     el('span', { class: 'call-name', text: `Call ${shortName(c)}` }),
     el('span', { class: 'call-num', text: c.phone }),
   ]);

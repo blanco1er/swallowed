@@ -43,12 +43,11 @@ Agent recommendations accepted by delegation (see `prd.md > Product Decisions`).
 
 ## Look and Feel
 PRD ref: `prd.md > Look and Feel`.
-- Tokens from `design-system/tokens.css`: iOS grouped background, system font, light/dark automatic.
-- Accent: teal — `--accent: light-dark(#00796B, #0E8A7B)`, `--accent-text: light-dark(#00695C, #3DD1B8)`; white text on accent buttons.
-- Verdict colours only for verdicts, always icon + words: **Call a vet now** = `--status-critical`, **Call your vet today** = `--status-warn`, **Watch at home** = `--status-ok`.
-- Verdict screen: the verdict as a large title in its colour band at the top; then plain-sentence sections (Why, The numbers, Watch for, Source); the amount control sits right under the numbers.
-- Five line-drawn animal icons (1.7 px stroke, same style as the design system's icons), large tappable species tiles.
-- Copy: short, kind, no blame, no "AI" wording; "we" = Swallowed.
+- Revised during the build at the learner's request to match the premium language of his approved app Pont: white canvas, a soft peach-and-mint halo on the home screen (tinted with the verdict colour on the answer), giant **Cabinet Grotesk** titles (its own typeface, loaded from Fontshare), black capsule buttons for the main action, light capsules for the secondary one, `#F5F5F7` tiles with large radii.
+- Start: Photo / Type / Say tabs, a dashed photo zone with a black round camera, Upload + Take photo, one-tap shortcuts for the most common poisonings, and "I don't know what it ate".
+- Your pet: large animal tiles (selected = black), the weight as a giant number with a kg/lb switch.
+- Verdict: the verdict as a giant title in its colour (red / orange / green, always with an icon and words), call buttons right under it when urgent, then the dose as a giant number with a meter showing where it sits against the sourced thresholds, moving live with the sliders.
+- Light theme only, for the same reason as Pont: one luminous, consistent look.
 
 ## Components
 
