@@ -39,7 +39,8 @@ Agent recommendations accepted by delegation (see `prd.md > Product Decisions`).
 - Needs Node 22+ and, for photos, a Gemini API key in `.env` (`GEMINI_API_KEY=`; get one at https://aistudio.google.com/apikey). Without a key the app starts in **demo mode**: typing and speaking known items work; photos return a clearly labelled "photo recognition needs a key" message.
 - Start: `npm install` then `npm start` → open http://localhost:3000. On a phone on the same Wi-Fi: `http://<computer-ip>:3000` (camera and microphone need HTTPS on phones, so phone tests use the hosted version).
 - Hosted demo: the app is published on **GitHub Pages** (https://blanco1er.github.io/swallowed/, from `.github/workflows/pages.yml`) so it opens instantly at any hour; recognition runs on a **Render** web service deployed from `render.yaml` (Starter instance, always on — the learner approved the ~$7/month on 22 Oct after seeing a one-minute wake-up on the free plan), with the key pasted by the learner in Render's environment settings.
-- Demo video: recorded on the hosted version in a phone-sized browser window, with real packaging photos taken by us.
+- Demo video: https://youtu.be/9cUUELaeMVU — recorded on the hosted version in an iPhone-sized browser window (cat + lily, dog + photo of chocolate, "I don't know what it ate", Emergency, French); narration = the learner's own sentences, translated from French and read by his voice clone.
+- Public repository: https://github.com/blanco1er/swallowed (MIT). Devpost page: https://devpost.com/software/swallowed
 
 ## Look and Feel
 PRD ref: `prd.md > Look and Feel`.
