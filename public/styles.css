@@ -1,7 +1,7 @@
 /* Swallowed — spec.md > Look and Feel
    Same premium language as the learner's approved "Pont" design (white canvas, giant grotesk,
    black capsule buttons, #F5F5F7 tiles, a soft halo on the home screen) with its own typeface:
-   Cabinet Grotesk. Colour is reserved for meaning: red / orange / green = the three verdicts. */
+   General Sans (chosen by the learner from five options). Colour is reserved for meaning: red / orange / green = the three verdicts. */
 
 :root {
   --ink: #0E0E10;
@@ -18,7 +18,7 @@
   --watch: #1E9E4A;
   --watch-ink: #167A39;
   --focus: rgba(14, 14, 16, 0.55);
-  --font: "Cabinet Grotesk", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", sans-serif;
+  --font: "General Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --spring: cubic-bezier(0.34, 1.45, 0.64, 1);
   color-scheme: light;
@@ -49,7 +49,7 @@ button { font: inherit; color: inherit; -webkit-tap-highlight-color: transparent
 .round { display: grid; place-items: center; width: 52px; height: 52px; flex: none; border-radius: 50%; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.8); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05); cursor: pointer; -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
 .round--small { width: 40px; height: 40px; box-shadow: none; }
 .round .icon { width: 22px; height: 22px; stroke-width: 2.2; }
-.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; letter-spacing: -0.01em; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; letter-spacing: -0.01em; }
 .brand img { border-radius: 9px; }
 .capsule { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; height: 52px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.8); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05); font-weight: 700; font-size: 16px; cursor: pointer; -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
 .capsule .icon { width: 19px; height: 19px; color: var(--now); stroke-width: 2.1; }
@@ -61,7 +61,7 @@ button { font: inherit; color: inherit; -webkit-tap-highlight-color: transparent
 
 /* Type */
 .kicker { margin: 4px 0 0; color: var(--ink-2); font-size: 17px; font-weight: 500; }
-.display { margin: 6px 0 0; font-size: clamp(38px, 11vw, 46px); font-weight: 800; line-height: 1.02; letter-spacing: -0.03em; text-wrap: balance; }
+.display { margin: 6px 0 0; font-size: clamp(38px, 11vw, 46px); font-weight: 700; line-height: 1.02; letter-spacing: -0.03em; text-wrap: balance; }
 .sub { margin: 14px 0 0; color: var(--ink-2); font-size: 18px; line-height: 1.45; text-wrap: pretty; }
 .label { margin: 30px 0 12px; color: var(--ink-2); font-size: 15px; font-weight: 700; }
 .hint { margin: 12px 0 0; color: var(--ink-3); font-size: 15px; line-height: 1.45; }
@@ -114,7 +114,7 @@ button.row:active, a.row:active { transform: scale(0.99); background: var(--tile
 .row-sub { color: var(--ink-2); font-size: 14.5px; line-height: 1.35; }
 .row .chev { width: 18px; height: 18px; color: var(--ink-3); stroke-width: 2.3; }
 .suggestion-cat { margin-left: auto; color: var(--ink-3); font-size: 14px; white-space: nowrap; }
-.contact-num { color: var(--ink); font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.contact-num { color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 /* Voice */
 .voice { display: grid; justify-items: center; gap: 10px; padding: 26px 20px; border-radius: 30px; background: var(--tile); text-align: center; }
@@ -141,7 +141,7 @@ label.chip input:focus-visible + span { outline: 3px solid var(--focus); outline
 .unknown { display: flex; align-items: center; gap: 14px; width: 100%; margin-top: 26px; padding: 18px; border: 0; border-radius: 26px; background: var(--tile); text-align: left; cursor: pointer; }
 .unknown-icon { display: grid; place-items: center; width: 48px; height: 48px; flex: none; border-radius: 50%; background: var(--white); }
 .unknown-body { display: grid; gap: 2px; flex: 1; }
-.unknown-body b { font-size: 18px; font-weight: 800; }
+.unknown-body b { font-size: 18px; font-weight: 700; }
 .unknown-body span { color: var(--ink-2); font-size: 15px; }
 .unknown .chev { width: 20px; height: 20px; color: var(--ink-3); }
 
@@ -162,7 +162,7 @@ label.chip input:focus-visible + span { outline: 3px solid var(--focus); outline
 .species-tile:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 .giant-input { display: flex; align-items: center; gap: 14px; }
-.giant-input input { width: 100%; min-width: 0; flex: 1; padding: 0; border: 0; background: none; color: var(--ink); font: 800 64px/1 var(--font); letter-spacing: -0.035em; outline: none; -webkit-appearance: none; appearance: none; -moz-appearance: textfield; }
+.giant-input input { width: 100%; min-width: 0; flex: 1; padding: 0; border: 0; background: none; color: var(--ink); font: 700 64px/1 var(--font); letter-spacing: -0.035em; outline: none; -webkit-appearance: none; appearance: none; -moz-appearance: textfield; }
 .giant-input input::-webkit-outer-spin-button, .giant-input input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .giant-input input::placeholder { color: #D0D0D6; }
 .unit-seg { display: flex; padding: 4px; border-radius: 999px; background: var(--tile); flex: none; }
@@ -195,10 +195,10 @@ label.chip input:focus-visible + span { outline: 3px solid var(--focus); outline
 .calls { display: grid; gap: 10px; margin-top: 22px; }
 .call-btn { display: flex; justify-content: space-between; align-items: center; width: 100%; height: 66px; padding: 0 24px; }
 .call-btn .call-name { font-weight: 700; font-size: 17px; text-align: left; line-height: 1.2; }
-.call-btn .call-num { font-weight: 800; font-variant-numeric: tabular-nums; opacity: 0.85; white-space: nowrap; }
+.call-btn .call-num { font-weight: 700; font-variant-numeric: tabular-nums; opacity: 0.85; white-space: nowrap; }
 
 .dose { margin-top: 30px; }
-.hero { margin: 0; font-size: 72px; font-weight: 800; line-height: 1; letter-spacing: -0.04em; }
+.hero { margin: 0; font-size: 72px; font-weight: 700; line-height: 1; letter-spacing: -0.04em; }
 .hero sup { margin-left: 6px; font-size: 24px; letter-spacing: 0; vertical-align: 34px; color: var(--ink-2); }
 .hero-sub { margin: 8px 0 0; color: var(--ink-2); font-size: 16px; }
 .meter { position: relative; margin-top: 22px; height: 14px; }
@@ -213,7 +213,7 @@ label.chip input:focus-visible + span { outline: 3px solid var(--focus); outline
 .math { margin: 18px 0 0; padding: 14px 18px; border-radius: 20px; background: var(--tile); font-size: 15.5px; line-height: 1.5; }
 .live { display: grid; gap: 4px; margin-top: 18px; }
 .live-label { display: flex; justify-content: space-between; margin-top: 10px; color: var(--ink-2); font-size: 15px; font-weight: 700; }
-.live-label output { color: var(--ink); font-weight: 800; }
+.live-label output { color: var(--ink); font-weight: 700; }
 input[type="range"] { width: 100%; height: 44px; margin: 0; accent-color: var(--ink); background: transparent; }
 
 .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 30px; }
@@ -234,7 +234,7 @@ input[type="range"] { width: 100%; height: 44px; margin: 0; accent-color: var(--
 .sheet { width: min(100% - 24px, 30rem); max-height: min(88dvh, 46rem); padding: 24px; border: 0; border-radius: 34px; background: var(--white); color: var(--ink); box-shadow: 0 30px 80px rgba(20, 20, 40, 0.25); }
 .sheet::backdrop { background: rgba(14, 14, 16, 0.35); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
 .sheet-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.sheet-title { margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
+.sheet-title { margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
 
 .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom)); transform: translateX(-50%); margin: 0; padding: 12px 20px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 15px; font-weight: 700; z-index: 50; white-space: nowrap; }
 
