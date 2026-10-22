@@ -62,6 +62,13 @@ function icon(id, cls = 'icon') {
 const cap = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
 const lowerFirst = (s) => (s && !/^[A-Z]{2}/.test(s) ? s.charAt(0).toLowerCase() + s.slice(1) : s);
 const itemName = (item) => cap(item?.names?.en?.[0] || item?.id || '');
+// Real photos (Unsplash License, see data/SOURCES.md) for the most common items and each animal.
+const ITEM_PHOTO = { 'chocolate-milk': 'chocolate', 'chocolate-dark': 'chocolate', 'chocolate-baking-cocoa': 'chocolate', xylitol: 'gum', 'grapes-raisins': 'grapes', 'onion-allium': 'onion', 'lilies-true': 'lily' };
+const SPECIES_PHOTO = { dog: 'dog', cat: 'cat', rabbit: 'rabbit', rodent: 'guineapig', bird: 'bird' };
+function itemPhoto(item) {
+  const name = ITEM_PHOTO[item?.id] || (item?.category === 'human-medicine' ? 'pills' : null);
+  return name ? `/img/${name}.jpg` : null;
+}
 const CATEGORY = { food: 'Food', plant: 'Plant', 'human-medicine': 'Human medicine', household: 'Household product', garden: 'Garden product', 'pest-control': 'Pest control', 'vet-medicine': 'Pet medicine', other: 'Other' };
 
 function toast(text) {
@@ -81,8 +88,6 @@ function show(name, { push = true } = {}) {
   const current = document.querySelector('.view:not([hidden])')?.dataset.view;
   if (push && current && current !== name) history.push(current);
   for (const v of document.querySelectorAll('.view')) v.hidden = v.dataset.view !== name;
-  $('halo').classList.toggle('is-off', !['start', 'verdict'].includes(name));
-  if (name !== 'verdict') delete $('halo').dataset.level;
   $('back').hidden = history.length === 0;
   window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'instant' });
   $('main').focus({ preventScroll: true });
@@ -111,17 +116,22 @@ function renderSuggestions(listEl, text, onPick) {
   return results;
 }
 
+// "Type it" and "Say it" open their panel under the buttons; tapping again closes it.
 function selectTab(which) {
-  const map = { photo: 'panel-photo', type: 'type-panel', say: 'voice-panel' };
+  const map = { type: 'type-panel', say: 'voice-panel' };
   for (const [k, panel] of Object.entries(map)) {
-    $(`tab-${k}`).setAttribute('aria-selected', String(k === which));
+    $(`tab-${k}`).setAttribute('aria-expanded', String(k === which));
     $(panel).hidden = k !== which;
   }
+  if (which !== 'say') stopListening?.();
   if (which === 'type') $('type-input').focus();
 }
-$('tab-photo').addEventListener('click', () => selectTab('photo'));
-$('tab-type').addEventListener('click', () => selectTab('type'));
-$('tab-say').addEventListener('click', () => selectTab('say'));
+$('tab-type').addEventListener('click', () => selectTab($('tab-type').getAttribute('aria-expanded') === 'true' ? null : 'type'));
+$('tab-say').addEventListener('click', () => {
+  if ($('tab-say').getAttribute('aria-expanded') === 'true') { selectTab(null); return; }
+  selectTab('say');
+  $('way-voice').click(); // start listening straight away
+});
 
 // One-tap shortcuts for the most common poisonings.
 document.querySelectorAll('#quick [data-q]').forEach((b) => b.addEventListener('click', () => {
@@ -151,9 +161,8 @@ $('type-input').addEventListener('keydown', async (e) => {
 
 /* ---------- Start: photo ---------- */
 
+// No capture attribute: the phone offers both the camera and the photo library.
 $('way-photo').addEventListener('click', () => $('photo-input').click());
-$('photo-drop').addEventListener('click', () => $('photo-input').click());
-$('photo-upload').addEventListener('click', () => $('photo-library').click());
 
 async function onPhotoChosen(e) {
   const file = e.target.files?.[0];
@@ -168,7 +177,6 @@ async function onPhotoChosen(e) {
   }
 }
 $('photo-input').addEventListener('change', onPhotoChosen);
-$('photo-library').addEventListener('change', onPhotoChosen);
 
 function shrink(file, maxSide) {
   return new Promise((resolve, reject) => {
@@ -218,7 +226,7 @@ async function identify(payload) {
 }
 
 function setWaysDisabled(on) {
-  for (const id of ['way-photo', 'photo-upload', 'photo-drop', 'way-voice', 'way-unknown']) $(id).disabled = on;
+  for (const id of ['way-photo', 'tab-type', 'tab-say', 'way-voice', 'way-unknown']) $(id).disabled = on;
 }
 
 function handleIdentified(result, payload) {
@@ -306,8 +314,10 @@ function pickItem(item, { candidates = [], lowConfidence = false, notListed = fa
     ? 'Not in our list of known pet poisonings — we will not guess.'
     : [CATEGORY[item.category], q].filter(Boolean).join(' · ');
   const photo = $('confirm-photo');
-  photo.hidden = !state.photoUrl;
-  if (state.photoUrl) photo.src = state.photoUrl;
+  const src = state.photoUrl || (notListed ? null : itemPhoto(item));
+  photo.hidden = !src;
+  photo.classList.toggle('is-stock', !state.photoUrl);
+  if (src) photo.src = src;
   $('confirm-said').hidden = !state.said;
   $('confirm-said').textContent = state.said ? `You said: "${state.said}"` : '';
   $('confirm-title').textContent = lowConfidence ? 'Is it one of these?' : 'Is this it?';
@@ -521,8 +531,6 @@ $('signs-go').addEventListener('click', () => { renderVerdict(); show('verdict')
 
 /* ---------- Verdict ---------- */
 
-const LEVEL_ICON = { 'vet-now': 'i-alert', 'vet-today': 'i-clock', watch: 'i-eye' };
-
 function sourceLabel(url) {
   if (!url) return 'Source';
   const host = url.replace(/^https?:\/\//, '').split('/')[0].replace(/^www\./, '');
@@ -579,7 +587,10 @@ function renderDose(v) {
     tick.textContent = String(t.from);
     return tick;
   }));
-  $('meter-dot').style.left = `${Math.min(1, v.dosePerKg / top) * 100}%`;
+  const at = `${Math.min(1, v.dosePerKg / top) * 100}%`;
+  $('meter-dot').style.left = at;
+  $('meter-value').style.left = at;
+  $('meter-value').textContent = fmtNum(v.dosePerKg);
 }
 
 function verdictContext() {
@@ -591,12 +602,13 @@ function verdictContext() {
 
 function renderVerdict() {
   const v = computeVerdict();
-  const band = $('verdict-band');
-  band.dataset.level = v.level;
-  $('halo').dataset.level = v.level;
+  $('verdict-band').dataset.level = v.level;
   $('verdict-context').textContent = verdictContext();
-  $('verdict-icon-use').setAttribute('href', `#${LEVEL_ICON[v.level]}`);
   $('verdict-title').textContent = LEVEL_LABEL[v.level];
+  const thumb = $('verdict-thumb');
+  const thumbSrc = state.path === 'unknown' ? `/img/${SPECIES_PHOTO[state.species]}.jpg` : state.photoUrl || itemPhoto(state.item);
+  thumb.hidden = !thumbSrc;
+  if (thumbSrc) thumb.src = thumbSrc;
 
   // Why
   let reason;
@@ -619,6 +631,7 @@ function renderVerdict() {
   // Numbers (dose only)
   const numbers = $('numbers-block');
   numbers.hidden = v.kind !== 'dose';
+  $('more-block').hidden = v.kind !== 'dose';
   if (v.kind !== 'dose') $('live-amount-wrap').hidden = true;
   if (v.kind === 'dose') {
     $('verdict-math').textContent = v.math.text;
@@ -742,12 +755,9 @@ function onLive() {
   state.weightKg = Number($('live-weight').value);
   updateLiveOutputs();
   const v = computeVerdict();
-  const band = $('verdict-band');
-  band.dataset.level = v.level;
-  $('halo').dataset.level = v.level;
+  $('verdict-band').dataset.level = v.level;
   $('verdict-context').textContent = verdictContext();
   renderDose(v);
-  $('verdict-icon-use').setAttribute('href', `#${LEVEL_ICON[v.level]}`);
   $('verdict-title').textContent = LEVEL_LABEL[v.level];
   $('verdict-reason').textContent = `${itemName(state.item)} for a ${SPECIES_LABEL[state.species]}: ${lowerFirst(v.reason)}`;
   $('verdict-math').textContent = v.math?.text || '';
@@ -776,7 +786,7 @@ $('restart').addEventListener('click', () => {
   history.length = 0;
   $('type-input').value = '';
   $('suggestions').replaceChildren();
-  selectTab('photo');
+  selectTab(null);
   startStatus('');
   show('start', { push: false });
 });
@@ -797,9 +807,12 @@ function telHref(c) {
 }
 
 function callButton(c) {
-  return el('a', { class: 'btn btn-dark call-btn', href: telHref(c) }, [
-    el('span', { class: 'call-name', text: `Call ${shortName(c)}` }),
-    el('span', { class: 'call-num', text: c.phone }),
+  return el('a', { class: 'call-btn', href: telHref(c) }, [
+    icon('i-phone'),
+    el('span', { class: 'call-text' }, [
+      el('span', { class: 'call-name', text: `Call ${shortName(c)}` }),
+      el('span', { class: 'call-num', text: c.phone }),
+    ]),
   ]);
 }
 

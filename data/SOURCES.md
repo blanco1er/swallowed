@@ -204,3 +204,22 @@ Checked: 2026-10-22. Files: `toxins.json` (48 entries), `signs.json`, `contacts.
 - **Blocked pages**: AAHA (403), some Cornell pages (403/certificate), PubMed (blocked), a VIN page (CAPTCHA, not bypassed), two ASPCA PDFs unreadable.
 - **Myths deliberately left out**: iceberg lettuce as a rabbit poison (no reference source classifies it as toxic); "a few apple seeds kill" (ASPCA/Merck: unlikely; whole seeds do not release cyanide).
 - **Not covered as entries (gaps)**: stone-fruit pits, hops, mothballs, detergent pods, organophosphate/carbamate insecticides (mentioned in the fertilizer note), kratom, psilocybin (only via wild mushrooms), alstroemeria, rhubarb leaves, ferric-phosphate slug bait, ferrets.
+
+## Photos in the app (public/img)
+
+Real photographs from Unsplash, used under the Unsplash License (free to use, no permission needed; https://unsplash.com/license). No generated images.
+
+| File | Unsplash image |
+|---|---|
+| hero.jpg (husky and tabby cat) | https://images.unsplash.com/photo-1573435567032-ff5982925350 |
+| chocolate.jpg | https://images.unsplash.com/photo-1643094264639-955fdb53cfc7 |
+| grapes.jpg | https://images.unsplash.com/photo-1641210444019-f61749d2951f |
+| lily.jpg | https://images.unsplash.com/photo-1501973931234-5ac2964cd94a |
+| pills.jpg | https://images.unsplash.com/photo-1550572017-26b5655c1e8c |
+| gum.jpg | https://images.unsplash.com/photo-1656622051638-23652075c483 |
+| onion.jpg | https://images.unsplash.com/photo-1664975367131-4c7ac2efa704 |
+| dog.jpg | https://images.unsplash.com/photo-1558788353-f76d92427f16 |
+| cat.jpg | https://images.unsplash.com/photo-1583795128727-6ec3642408f8 |
+| rabbit.jpg | https://images.unsplash.com/photo-1452857297128-d9c29adba80b |
+| guineapig.jpg | https://images.unsplash.com/photo-1512483652399-7a1f99aa0dd3 |
+| bird.jpg | https://images.unsplash.com/photo-1594911588637-c9e891bd7858 |

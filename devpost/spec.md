@@ -43,11 +43,11 @@ Agent recommendations accepted by delegation (see `prd.md > Product Decisions`).
 
 ## Look and Feel
 PRD ref: `prd.md > Look and Feel`.
-- Revised during the build at the learner's request to match the premium language of his approved app Pont: white canvas, a soft peach-and-mint halo on the home screen (tinted with the verdict colour on the answer), giant **General Sans** titles (its own typeface, chosen by the learner from a five-font board on 22 Oct, loaded from Fontshare), black capsule buttons for the main action, light capsules for the secondary one, `#F5F5F7` tiles with large radii.
-- Start: Photo / Type / Say tabs, a dashed photo zone with a black round camera, Upload + Take photo, one-tap shortcuts for the most common poisonings, and "I don't know what it ate".
-- Your pet: large animal tiles (selected = black), the weight as a giant number with a kg/lb switch.
-- Verdict: the verdict as a giant title in its colour (red / orange / green, always with an icon and words), call buttons right under it when urgent, then the dose as a giant number with a meter showing where it sits against the sourced thresholds, moving live with the sliders.
-- Light theme only, for the same reason as Pont: one luminous, consistent look.
+- Revised twice during the build at the learner's request. Final look: mock-up **A**, chosen by the learner from three directions (A photo-led, B strong brand colour, C studio objects) after he said the previous version still looked AI-made. White canvas, **real photos** (Unsplash License, credited in data/SOURCES.md — never generated images), **General Sans** titles (chosen by the learner from a five-font board, loaded from Fontshare), black rounded-rectangle main buttons, light grey tiles, the red Emergency button always at the top right.
+- Start: the "Swallowed" wordmark, a full-width photo of a dog and a cat, "What did your pet eat?", a black "Take a photo" button (the phone offers camera or library), "Type it" and "Say it" tiles that open their panel underneath ("Say it" starts listening at once), a sideways row of photo thumbnails for the most common poisonings, and "I don't know what it ate".
+- Your pet: round photos of the five animals (selected = black ring), the weight as a giant number with a kg/lb switch.
+- Verdict: a thumbnail (the owner's own photo, else the item's photo, else the animal's) with "Item · Animal, weight", then one card tinted in the verdict colour holding the verdict in words, the dose as a giant number and a meter against the sourced thresholds; call buttons right under it when urgent, then the source, how it was worked out (moving live with the sliders), what to watch for and the note for the vet.
+- Light theme only: one luminous, consistent look.
 
 ## Components
 
