@@ -8,6 +8,9 @@ import { buildSummary, LEVEL_LABEL, SPECIES_LABEL } from './summary.js';
 import { speechSupported, listen } from './speech.js';
 
 const $ = (id) => document.getElementById(id);
+// The page is served by GitHub Pages (never sleeps, opens instantly); recognition runs on the
+// Render server, which may sleep on its free plan. On Render itself the API is same-origin.
+const API = /(^|\.)github\.io$/.test(location.hostname) ? 'https://swallowed.onrender.com' : '';
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const WEIGHT_HINT = {
@@ -67,7 +70,7 @@ const ITEM_PHOTO = { 'chocolate-milk': 'chocolate', 'chocolate-dark': 'chocolate
 const SPECIES_PHOTO = { dog: 'dog', cat: 'cat', rabbit: 'rabbit', rodent: 'guineapig', bird: 'bird' };
 function itemPhoto(item) {
   const name = ITEM_PHOTO[item?.id] || (item?.category === 'human-medicine' ? 'pills' : null);
-  return name ? `/img/${name}.jpg` : null;
+  return name ? `img/${name}.jpg` : null;
 }
 const CATEGORY = { food: 'Food', plant: 'Plant', 'human-medicine': 'Human medicine', household: 'Household product', garden: 'Garden product', 'pest-control': 'Pest control', 'vet-medicine': 'Pet medicine', other: 'Other' };
 
@@ -510,7 +513,7 @@ async function identify(payload) {
   const slow = setTimeout(() => { $('busy-sub').textContent = 'Waking up the recognition server — this can take up to a minute.'; }, 6000);
   const hard = setTimeout(() => ctrl.abort('timeout'), 75000);
   try {
-    const res = await fetch('/api/identify', {
+    const res = await fetch(`${API}/api/identify`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(payload),
@@ -542,7 +545,7 @@ $('busy-cancel').addEventListener('click', () => {
 });
 
 // Wake a sleeping server early: when the app opens and whenever it comes back to the screen.
-function wakeServer() { fetch('/healthz', { cache: 'no-store' }).then((r) => r.text()).catch(() => {}); }
+function wakeServer() { fetch(`${API}/healthz`, { cache: 'no-store' }).then((r) => r.text()).catch(() => {}); }
 document.addEventListener('visibilitychange', () => { if (!document.hidden) wakeServer(); });
 
 function setWaysDisabled(on) {
@@ -1019,7 +1022,7 @@ function renderVerdict({ live = false } = {}) {
   $('verdict-title').textContent = LEVEL_LABEL[v.level];
   document.querySelector('[data-view="verdict"]').dataset.title = LEVEL_LABEL[v.level];
   const thumb = $('verdict-thumb');
-  const thumbSrc = state.path === 'unknown' ? `/img/${SPECIES_PHOTO[state.species]}.jpg` : state.photoUrl || itemPhoto(state.item);
+  const thumbSrc = state.path === 'unknown' ? `img/${SPECIES_PHOTO[state.species]}.jpg` : state.photoUrl || itemPhoto(state.item);
   thumb.hidden = !thumbSrc;
   if (thumbSrc) thumb.src = thumbSrc;
 
@@ -1268,7 +1271,7 @@ document.querySelectorAll('input[name="country"]').forEach((r) => r.addEventList
 async function boot() {
   try {
     const [toxins, signs, contacts] = await Promise.all(
-      ['toxins', 'signs', 'contacts'].map((n) => fetch(`/data/${n}.json`).then((r) => { if (!r.ok) throw new Error(n); return r.json(); }))
+      ['toxins', 'signs', 'contacts'].map((n) => fetch(`data/${n}.json`).then((r) => { if (!r.ok) throw new Error(n); return r.json(); }))
     );
     data.toxins = Array.isArray(toxins) ? toxins : toxins.items || [];
     data.signs = signs;
@@ -1281,5 +1284,5 @@ async function boot() {
 boot();
 wakeServer();
 if ('serviceWorker' in navigator && location.hostname !== 'localhost') {
-  addEventListener('load', () => navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' }).catch(() => {}));
+  addEventListener('load', () => navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(() => {}));
 }

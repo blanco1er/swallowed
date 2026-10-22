@@ -16,6 +16,16 @@ app.disable('x-powered-by');
 app.set('trust proxy', true);
 // Marks our own responses, so the offline cache never stores Render's "waking up" page by mistake (public/sw.js).
 app.use((req, res, next) => { res.set('X-Swallowed', '1'); next(); });
+// The front end also runs on GitHub Pages (instant, never sleeps) and calls this API from there.
+const ALLOWED_ORIGINS = new Set(['https://blanco1er.github.io']);
+app.use(['/api', '/healthz'], (req, res, next) => {
+  const origin = req.get('origin');
+  if (origin && ALLOWED_ORIGINS.has(origin)) {
+    res.set({ 'Access-Control-Allow-Origin': origin, Vary: 'Origin', 'Access-Control-Allow-Methods': 'GET, POST', 'Access-Control-Allow-Headers': 'content-type', 'Access-Control-Max-Age': '86400' });
+  }
+  if (req.method === 'OPTIONS') return res.sendStatus(204);
+  next();
+});
 // Cheap endpoint for Render's health check, the keep-warm ping and the page's "wake up" request.
 app.get('/healthz', (req, res) => res.set('cache-control', 'no-store').type('text').send('ok'));
 app.use(express.static(path.join(here, 'public'), { extensions: ['html'] }));

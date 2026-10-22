@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#FFFFFF">
-  <link rel="preload" as="image" href="/img/hero.jpg">
+  <link rel="preload" as="image" href="img/hero.jpg">
   <title>Swallowed — your pet just ate something</title>
   <meta name="description" content="Your dog, cat, rabbit, guinea pig or bird just ate something. Show it, type it or say it, and see how serious it is for your animal, with the veterinary source.">
   <meta property="og:title" content="Swallowed">
   <meta property="og:description" content="Your pet just ate something. How serious is it for this animal, and what to do now.">
-  <link rel="icon" href="/img/icon-64.png" type="image/png">
-  <link rel="apple-touch-icon" href="/img/icon-180.png">
-  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="img/icon-64.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/icon-180.png">
+  <link rel="manifest" href="manifest.webmanifest">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Swallowed">
@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://api.fontshare.com">
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -58,7 +58,7 @@
       <!-- 1. Start -->
       <section class="view view--start" data-view="start" data-title="" aria-labelledby="start-title">
         <div class="view-body">
-          <figure class="hero-photo"><img src="/img/hero.jpg" alt="A husky and a tabby cat resting together on a white sofa" width="1400" height="1050" fetchpriority="high"></figure>
+          <figure class="hero-photo"><img src="img/hero.jpg" alt="A husky and a tabby cat resting together on a white sofa" width="1400" height="1050" fetchpriority="high"></figure>
           <h1 id="start-title" class="display start-title">What did your pet eat?</h1>
           <p class="kicker">Dogs, cats, rabbits, guinea pigs and birds</p>
 
@@ -93,18 +93,18 @@
             <button id="see-all" class="pill-btn" type="button" aria-haspopup="dialog">See all</button>
           </div>
           <div class="items" id="quick" aria-label="Most common">
-            <button class="item" type="button" data-q="dark chocolate"><img src="/img/chocolate.jpg" alt="" width="180" height="180" loading="lazy"><span>Chocolate</span></button>
-            <button class="item" type="button" data-q="grapes"><img src="/img/grapes.jpg" alt="" width="180" height="180" loading="lazy"><span>Grapes</span></button>
-            <button class="item" type="button" data-q="lily"><img src="/img/lily.jpg" alt="" width="180" height="180" loading="lazy"><span>Lily</span></button>
-            <button class="item" type="button" data-q="ibuprofen"><img src="/img/pills.jpg" alt="" width="180" height="180" loading="lazy"><span>Ibuprofen</span></button>
-            <button class="item" type="button" data-q="xylitol"><img src="/img/gum.jpg" alt="" width="180" height="180" loading="lazy"><span>Gum</span></button>
-            <button class="item" type="button" data-q="onion"><img src="/img/onion.jpg" alt="" width="180" height="180" loading="lazy"><span>Onion</span></button>
+            <button class="item" type="button" data-q="dark chocolate"><img src="img/chocolate.jpg" alt="" width="180" height="180" loading="lazy"><span>Chocolate</span></button>
+            <button class="item" type="button" data-q="grapes"><img src="img/grapes.jpg" alt="" width="180" height="180" loading="lazy"><span>Grapes</span></button>
+            <button class="item" type="button" data-q="lily"><img src="img/lily.jpg" alt="" width="180" height="180" loading="lazy"><span>Lily</span></button>
+            <button class="item" type="button" data-q="ibuprofen"><img src="img/pills.jpg" alt="" width="180" height="180" loading="lazy"><span>Ibuprofen</span></button>
+            <button class="item" type="button" data-q="xylitol"><img src="img/gum.jpg" alt="" width="180" height="180" loading="lazy"><span>Gum</span></button>
+            <button class="item" type="button" data-q="onion"><img src="img/onion.jpg" alt="" width="180" height="180" loading="lazy"><span>Onion</span></button>
           </div>
 
           <button id="way-unknown" class="unknown" type="button">I don't know what it ate</button>
 
           <div id="install-tip" class="install-tip" hidden>
-            <img src="/img/icon-180.png" alt="" width="44" height="44">
+            <img src="img/icon-180.png" alt="" width="44" height="44">
             <p><b>Keep Swallowed one tap away</b><span>Tap Share, then “Add to Home Screen”.</span></p>
             <button id="install-close" type="button" class="round round--small" aria-label="Dismiss"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
           </div>
@@ -147,11 +147,11 @@
           <fieldset class="group">
             <legend class="sr-only">Animal</legend>
             <div class="species" id="species">
-              <label class="species-tile"><input type="radio" name="species" value="dog"><img class="animal" src="/img/dog.jpg" alt="" width="180" height="180"><span>Dog</span></label>
-              <label class="species-tile"><input type="radio" name="species" value="cat"><img class="animal" src="/img/cat.jpg" alt="" width="180" height="180"><span>Cat</span></label>
-              <label class="species-tile"><input type="radio" name="species" value="rabbit"><img class="animal" src="/img/rabbit.jpg" alt="" width="180" height="180"><span>Rabbit</span></label>
-              <label class="species-tile"><input type="radio" name="species" value="rodent"><img class="animal" src="/img/guineapig.jpg" alt="" width="180" height="180"><span>Guinea pig</span></label>
-              <label class="species-tile"><input type="radio" name="species" value="bird"><img class="animal" src="/img/bird.jpg" alt="" width="180" height="180"><span>Bird</span></label>
+              <label class="species-tile"><input type="radio" name="species" value="dog"><img class="animal" src="img/dog.jpg" alt="" width="180" height="180"><span>Dog</span></label>
+              <label class="species-tile"><input type="radio" name="species" value="cat"><img class="animal" src="img/cat.jpg" alt="" width="180" height="180"><span>Cat</span></label>
+              <label class="species-tile"><input type="radio" name="species" value="rabbit"><img class="animal" src="img/rabbit.jpg" alt="" width="180" height="180"><span>Rabbit</span></label>
+              <label class="species-tile"><input type="radio" name="species" value="rodent"><img class="animal" src="img/guineapig.jpg" alt="" width="180" height="180"><span>Guinea pig</span></label>
+              <label class="species-tile"><input type="radio" name="species" value="bird"><img class="animal" src="img/bird.jpg" alt="" width="180" height="180"><span>Bird</span></label>
             </div>
           </fieldset>
 
@@ -335,6 +335,6 @@
   </dialog>
 
   <p id="toast" class="toast" role="status" aria-live="polite" hidden></p>
-  <script type="module" src="/js/app.js"></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

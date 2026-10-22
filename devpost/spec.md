@@ -38,7 +38,7 @@ Agent recommendations accepted by delegation (see `prd.md > Product Decisions`).
 ## Where It Runs and How Someone Tries It
 - Needs Node 22+ and, for photos, a Gemini API key in `.env` (`GEMINI_API_KEY=`; get one at https://aistudio.google.com/apikey). Without a key the app starts in **demo mode**: typing and speaking known items work; photos return a clearly labelled "photo recognition needs a key" message.
 - Start: `npm install` then `npm start` → open http://localhost:3000. On a phone on the same Wi-Fi: `http://<computer-ip>:3000` (camera and microphone need HTTPS on phones, so phone tests use the hosted version).
-- Hosted demo: **Render**, free web service, deployed from the public GitHub repo with `render.yaml`; the key is pasted by the learner in Render's environment settings. Free services sleep when idle (first load can take ~1 minute) — acceptable for judging; no billing set up.
+- Hosted demo: the app is published on **GitHub Pages** (https://blanco1er.github.io/swallowed/, from `.github/workflows/pages.yml`) so it opens instantly at any hour; recognition runs on a **Render** free web service deployed from `render.yaml`, with the key pasted by the learner in Render's environment settings. Render's free service sleeps when idle: the app wakes it as soon as it opens, a keep-warm ping runs at judging hours, and while it wakes the app says so and offers "Type it instead". No billing set up.
 - Demo video: recorded on the hosted version in a phone-sized browser window, with real packaging photos taken by us.
 
 ## Look and Feel

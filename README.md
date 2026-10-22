@@ -1,9 +1,11 @@
 # Swallowed
 
+**Try it:** https://blanco1er.github.io/swallowed/ (on an iPhone: Share › Add to Home Screen)
+
 Your dog, cat, rabbit, guinea pig or hamster, or bird just ate something. Show it (a photo of the packaging, the plant, the pill or the food), type it, or say it — Swallowed tells you how serious it is **for this animal, at this weight and this amount**, and what to do now:
 
 - **Call a vet now**, **Call your vet today** or **Watch at home**, with the reason;
-- the calculation when a dose applies (e.g. `100 g × 5.5 mg/g = 550 mg of theobromine ÷ 8 kg ≈ 69 mg/kg`), updated live when you change the amount or the weight;
+- the calculation when a dose applies (e.g. `100 g × 5.5 mg/g = 550 mg of theobromine ÷ 8 kg ≈ 68.8 mg/kg`), updated live when you change the amount or the weight;
 - the signs to watch for and the veterinary source for every verdict;
 - a short summary to read to the vet, and the emergency numbers (US and France).
 
