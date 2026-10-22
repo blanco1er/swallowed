@@ -39,7 +39,7 @@ Build mode: fast — the learner asked the agent on 22 Oct to build through to s
   Learner check: Choose "I don't know what it ate", a cat, tick drooling and wobbling, and read the summary you would read to a vet.
   Commit: `Unknown item path, vet summary and emergency numbers`
 
-- [ ] **4. A calm, finished experience on any screen, online for the judges**
+- [x] **4. A calm, finished experience on any screen, online for the judges**
   Becomes usable: Every state from the PRD (identifying, blurry photo, not in the list, no data for a species, camera or microphone refused, offline) has a clear message; phone and computer layouts in light and dark pass the design checklist; the app runs on a public URL.
   Why now: With the whole journey working, the finish and the hosted version decide Design and Presentation.
   PRD ref: `prd.md > States and Boundaries`, `prd.md > Look and Feel`, `prd.md > Screens and Layout`
@@ -51,23 +51,26 @@ Build mode: fast — the learner asked the agent on 22 Oct to build through to s
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored — after slice 2 (typed, photo and voice journeys), on the learner's phone
-- [ ] Final kick-the-tires exploration and feedback completed
+- [x] Early usable behavior explored — after slice 2 (typed, photo and voice journeys), on the learner's phone
+  Feedback (22 Oct, on his iPhone): looked AI-made → design redone twice (mock-up A chosen); "behaves like a website" → app shell; Render wake-up page → app moved to GitHub Pages.
+- [x] Final kick-the-tires exploration and feedback completed
+  Feedback (22 Oct, on his iPhone, with a real photo of a pizza): too many steps and an unclear result → simplified flow and plain result; "not real — when does the app know?" → "Why this result"; no language choice → FR / EN switch (English by default); slow analysis → always-on Starter instance (approved); result not premium and the photo button ambiguous → minimal result, "Photograph what it ate". All resolved (see Revisions).
 
 ## Final Review
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+- [x] Final review complete — feedback resolved and learner confirms ready to ship
+  Learner confirmation, 22 Oct 2026: "Vas-y c'est bon mtn je valide". Checks at that point: `npm test` 28/28, 14 browser scenarios on the live URL, universal UX audit 0 high / 0 medium.
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
-- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+- [x] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
+- [x] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
+- [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence:
-Route and stops:
-Edit outcome:
-Reflection:
+Activity and evidence: brief evidence-based recap (not a hands-on tour) — the "ibuprofen 400" dose bug found by writing concrete expected-result scenarios and running them in a browser, kept as tests (test/verdict.test.js, test/match.test.js).
+Route and stops: reference route in devpost/app-map.html (pickItem/afterItem → verdict/doseFor → renderVerdict/facts), not toured interactively.
+Edit outcome: not applicable (no edit made).
+Reflection: transfer question offered in the hand-off message; answer, if any, kept in the learner profile.
 Activity mode:
 
 ## Revisions

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swallowed — App map</title>
+<style>
+  :root { --ink: #0e0e10; --ink-2: #5e5e66; --line: #e6e6ea; --tile: #f3f3f5; --red: #d92b16; --green: #1e9e4a; color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #fff; color: var(--ink); font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { margin: 0; font-size: 32px; letter-spacing: -0.02em; }
+  h2 { margin: 36px 0 10px; font-size: 20px; }
+  p.lead { color: var(--ink-2); font-size: 18px; }
+  code { font: 14px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--tile); padding: 2px 6px; border-radius: 6px; }
+  .card { padding: 16px 18px; border-radius: 16px; background: var(--tile); }
+  ol.route { padding-left: 22px; } ol.route li { margin-bottom: 12px; }
+  ul { padding-left: 22px; }
+  svg { width: 100%; height: auto; }
+  details { margin-top: 10px; } summary { cursor: pointer; font-weight: 600; }
+  .muted { color: var(--ink-2); font-size: 14px; }
+  a { color: var(--ink); }
+  :focus-visible { outline: 3px solid #555; outline-offset: 3px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Swallowed — app map</h1>
+  <p class="lead">Your pet just ate something. Swallowed recognises it (photo, typing or voice), checks it for your animal in curated veterinary data, and tells you how urgent it is, why, and what to do.</p>
+
+  <h2>The few main pieces</h2>
+  <ul>
+    <li><strong>The page</strong> — <code>public/index.html</code>, <code>public/styles.css</code>, <code>public/js/app.js</code>: screens, navigation, the result.</li>
+    <li><strong>The veterinary data</strong> — <code>data/toxins.json</code> (48 items × 5 animals, each with its source), <code>data/signs.json</code> (the "I don't know" path), <code>data/contacts.json</code>, <code>data/fr.json</code> (French texts).</li>
+    <li><strong>The decision</strong> — <code>public/js/verdict.js</code>: pure functions that turn an item, an animal, a weight and an amount into a verdict. No AI here.</li>
+    <li><strong>Recognition</strong> — <code>server.js</code> and <code>src/identify.js</code> on Render: Google Gemini says only <em>what</em> is in the photo or sentence, chosen from our list; it never judges danger.</li>
+  </ul>
+
+  <h2>One action, end to end</h2>
+  <p>Tap <strong>Chocolate</strong>, enter <strong>8 kg</strong> and <strong>100 g</strong> → "Call a vet now".</p>
+  <svg viewBox="0 0 720 170" role="img" aria-label="Tap chocolate, then pickItem and afterItem in app.js, then verdict in verdict.js with toxins.json, then renderVerdict in app.js shows the result">
+    <g font-family="-apple-system, system-ui, sans-serif" font-size="13">
+      <rect x="4" y="40" width="150" height="74" rx="14" fill="#f3f3f5"/><text x="20" y="68" font-weight="700">Tap "Chocolate"</text><text x="20" y="90" fill="#5e5e66">index.html #quick</text>
+      <rect x="190" y="40" width="160" height="74" rx="14" fill="#f3f3f5"/><text x="206" y="68" font-weight="700">pickItem → afterItem</text><text x="206" y="90" fill="#5e5e66">public/js/app.js</text>
+      <rect x="386" y="40" width="160" height="74" rx="14" fill="#fdeeec"/><text x="402" y="68" font-weight="700">verdict(), doseFor()</text><text x="402" y="90" fill="#5e5e66">verdict.js + toxins.json</text>
+      <rect x="582" y="40" width="134" height="74" rx="14" fill="#f3f3f5"/><text x="598" y="68" font-weight="700">renderVerdict</text><text x="598" y="90" fill="#5e5e66">result screen</text>
+      <g stroke="#0e0e10" stroke-width="2" fill="none"><path d="M154 77h30"/><path d="M350 77h30"/><path d="M546 77h30"/></g>
+      <g fill="#0e0e10"><path d="M184 72l8 5-8 5z"/><path d="M380 72l8 5-8 5z"/><path d="M576 72l8 5-8 5z"/></g>
+      <text x="190" y="150" fill="#5e5e66">A photo or a sentence first goes to /api/identify (server.js → src/identify.js) to find which item it is.</text>
+    </g>
+  </svg>
+
+  <h2>Reference route (3 stops)</h2>
+  <p class="muted">A route to follow in the code; it was summarised in conversation rather than toured step by step.</p>
+  <ol class="route">
+    <li><strong>The item comes in</strong> — <code>public/js/app.js</code>, search <code>function pickItem</code> and <code>function afterItem</code>. Every way in (tap, typing, voice, photo) ends here; <code>afterItem</code> asks for the pet once, asks the amount only when it changes the answer, then shows the result.</li>
+    <li><strong>The decision</strong> — <code>public/js/verdict.js</code>, search <code>export function verdict</code> and <code>export function doseFor</code>. The item's entry for your animal in <code>data/toxins.json</code> says "any amount", "no data", "low" or gives dose levels; for doses, amount × content ÷ weight is compared with those levels.</li>
+    <li><strong>The result</strong> — <code>public/js/app.js</code>, search <code>function renderVerdict</code>, <code>function facts</code> (the "Why this result" table), <code>function plainSentence</code> and <code>function stepsFor</code> (the three steps).</li>
+  </ol>
+
+  <h2>To change this, start here</h2>
+  <ul>
+    <li>A wording on screen → <code>public/index.html</code> (English) and the <code>FR</code> list in <code>public/js/i18n.js</code> (French).</li>
+    <li>The three steps of a verdict → <code>const STEPS</code> in <code>public/js/app.js</code>.</li>
+    <li>A dose level or a sign for an item → its entry in <code>data/toxins.json</code> (keep the <code>source</code>), then run <code>npm test</code>.</li>
+    <li>The emergency numbers → <code>data/contacts.json</code>.</li>
+    <li>The look → <code>public/styles.css</code> (colours at the top, in <code>:root</code>).</li>
+  </ul>
+
+  <h2>A practice to reuse</h2>
+  <div class="card">
+    <p><strong>Turn real use into small, checkable scenarios.</strong> Typing the placeholder's own example, "ibuprofen 400", was calculated with a 200 mg tablet — half the real dose. It was found by writing down concrete situations with an expected result ("ibuprofen 400, 1 tablet, 10 kg → Call a vet now") and running them in a browser, then kept as tests (<code>test/verdict.test.js</code>: "ibuprofen forms carry clear labels"; <code>test/match.test.js</code>: "amounts in a sentence").</p>
+    <p>On another project, write a handful of "I do X, I expect to see Y" scenarios from real use before calling a feature done, and keep them as automatic checks.</p>
+  </div>
+
+  <h2>Run it again</h2>
+  <ul>
+    <li>Online: <a href="https://blanco1er.github.io/swallowed/">blanco1er.github.io/swallowed</a> (FR / EN button at the top).</li>
+    <li>On a computer: <code>npm install</code>, then <code>npm start</code>, then open <code>http://localhost:3000</code>. Photos need a Gemini key in <code>.env</code> (see <code>.env.example</code>).</li>
+    <li>Checks: <code>npm test</code>.</li>
+  </ul>
+  <details>
+    <summary>About this map</summary>
+    <p class="muted">Snapshot of the code at commit <code>080069b</code> (22 Oct 2026). The code can change after this; search the function names above if line positions move.</p>
+  </details>
+</main>
+</body>
+</html>
