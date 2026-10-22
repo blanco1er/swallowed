@@ -75,8 +75,9 @@ img { display: block; }
 .bar.is-titled .capsule { padding: 0; width: 44px; }
 .bar.is-titled .capsule span { display: none; }
 #back:not([hidden]) + .brand { display: none; }
-.lang-switch { height: 32px; min-width: 44px; padding: 0 10px; border: 0; border-radius: 999px; background: var(--tile); color: var(--ink); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; cursor: pointer; box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.08); position: relative; }
-.lang-switch::after { content: ""; position: absolute; inset: -6px 0; }
+/* 44 pt touch area, 32 pt visible pill */
+.lang-switch { position: relative; z-index: 0; height: 44px; min-width: 48px; padding: 0 12px; border: 0; background: none; color: var(--ink); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; cursor: pointer; }
+.lang-switch::before { content: ""; position: absolute; inset: 6px 0; z-index: -1; border-radius: 999px; background: var(--tile); box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.08); }
 #back:not([hidden]) ~ .lang-switch { display: none; }
 
 .main { position: absolute; inset: 0; outline: none; }
@@ -104,9 +105,14 @@ img { display: block; }
 /* Start: the photo bleeds to the screen edges and fades into the page */
 .hero-photo { position: relative; margin: 0 calc(-1 * var(--gutter)); height: min(25svh, 220px); overflow: hidden; }
 .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent); mask-image: linear-gradient(to bottom, #000 72%, transparent); }
-.start-title { margin-top: 2px; font-size: clamp(30px, 8.4vw, 38px); }
+.start-title { margin-top: 22px; font-size: clamp(30px, 8.4vw, 38px); }
 
 /* Your pet, chosen once and remembered */
+.pets-label { margin: 14px 0 0; color: var(--ink-2); font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.pets-label + .pets { margin-top: 10px; }
+.btn-photo { height: auto; min-height: 68px; padding: 10px 22px; font-size: 18px; }
+.btn-lines { display: grid; text-align: left; line-height: 1.2; }
+.btn-lines small { margin-top: 2px; color: rgba(255, 255, 255, 0.7); font-size: 14px; font-weight: 500; }
 .pets { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; margin-top: 16px; }
 .pet { position: relative; display: grid; justify-items: center; align-content: start; gap: 6px; color: var(--ink-2); font-size: 13px; font-weight: 500; text-align: center; line-height: 1.15; cursor: pointer; }
 .pet input { position: absolute; opacity: 0; pointer-events: none; }
@@ -277,11 +283,17 @@ label.chip input:focus-visible + span { outline: 3px solid var(--focus); outline
 
 /* Verdict: what and who, then one tinted card with the answer and the number */
 .v-item { display: flex; align-items: center; gap: 16px; margin-top: 4px; }
-.v-thumb { width: 64px; height: 64px; flex: none; border-radius: 16px; object-fit: cover; background: var(--tile); }
-.v-context { flex: 1; margin: 0; font-size: 19px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; }
+.v-thumb { width: 52px; height: 52px; flex: none; border-radius: 16px; object-fit: cover; background: var(--tile); }
+.v-item-text { flex: 1; min-width: 0; }
+.v-context { margin: 0; font-size: 18px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; }
+.v-pet { margin: 2px 0 0; color: var(--ink-2); font-size: 15px; }
+.v-pet:empty { display: none; }
 .v-change { flex: none; height: 44px; padding: 0 4px; border: 0; background: none; color: var(--ink-2); font-size: 15px; font-weight: 600; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .v-kicker:empty { display: none; }
-.v-plain { margin: 12px 0 0; color: var(--ink); font-size: 19px; font-weight: 500; line-height: 1.4; text-wrap: pretty; }
+.v-status { display: inline-flex; align-items: center; gap: 8px; margin: 0; color: var(--c-ink); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.v-status-dot { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--c); color: #fff; }
+.v-status-dot .icon { width: 15px; height: 15px; stroke-width: 2.6; }
+.v-plain { margin: 10px 0 0; color: var(--ink-2); font-size: 16px; font-weight: 500; line-height: 1.45; text-wrap: pretty; }
 .v-card .dose { margin-top: 18px; }
 
 /* What to do now: three numbered steps, the call buttons right under */
@@ -293,18 +305,32 @@ label.chip input:focus-visible + span { outline: 3px solid var(--focus); outline
 .why-list .icon { width: 20px; height: 20px; flex: none; margin-top: 1px; color: var(--watch); stroke-width: 2.6; }
 .steps { margin-top: 14px; padding: 20px 20px 18px; border-radius: var(--radius); background: var(--white); box-shadow: 0 0 0 1px var(--line), 0 6px 20px rgba(0, 0, 0, 0.05); }
 .steps-title { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
-.steps-list { margin: 14px 0 0; padding: 0; list-style: none; counter-reset: step; display: grid; gap: 12px; }
-.steps-list li { position: relative; padding-left: 40px; font-size: 17px; line-height: 1.4; counter-increment: step; }
-.steps-list li::before { content: counter(step); position: absolute; left: 0; top: -1px; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 15px; font-weight: 700; }
+/* Section labels and the "why" facts table */
+.section-label { margin: 26px 0 10px; color: var(--ink-2); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.facts { margin: 0; border-radius: var(--radius); background: var(--tile); box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.06); }
+.fact { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 14px 18px; }
+.fact + .fact { border-top: 0.5px solid rgba(60, 60, 67, 0.18); }
+.fact dt { color: var(--ink-2); font-size: 15px; }
+.fact dd { margin: 0; display: grid; gap: 2px; font-size: 15.5px; font-weight: 600; line-height: 1.35; }
+.fact dd a { color: var(--ink); text-decoration: none; }
+.fact dd a::after { content: " ›"; color: var(--ink-3); }
+.fact dd small { color: var(--ink-2); font-size: 13.5px; font-weight: 500; }
+.sign-chips { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.sign-chips li { padding: 8px 14px; border-radius: 999px; background: var(--tile); font-size: 15px; font-weight: 500; line-height: 1.3; box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.06); }
+#watch-block .hint { margin-top: 10px; font-size: 14px; }
+.steps-list { margin: 0; padding: 0; list-style: none; counter-reset: step; display: grid; gap: 0; border-radius: var(--radius); background: var(--tile); box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.06); }
+.steps-list li { position: relative; padding: 14px 18px 14px 56px; font-size: 16px; font-weight: 600; line-height: 1.35; counter-increment: step; }
+.steps-list li + li { border-top: 0.5px solid rgba(60, 60, 67, 0.18); }
+.steps-list li::before { content: counter(step); position: absolute; left: 18px; top: 12px; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 15px; font-weight: 700; }
 .steps .calls { margin-top: 16px; }
 .sign-list { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
 .sign-list li { position: relative; padding-left: 18px; font-size: 17px; font-weight: 500; line-height: 1.4; }
 .sign-list li::before { content: ""; position: absolute; left: 2px; top: 0.6em; width: 7px; height: 7px; border-radius: 50%; background: var(--ink-3); }
-.v-card { --c: var(--now); --c-ink: var(--now-ink); --c-bg: var(--now-bg); margin-top: 18px; padding: 24px 22px 22px; border-radius: 26px; background: var(--c-bg); }
+.v-card { --c: var(--now); --c-ink: var(--now-ink); --c-bg: var(--now-bg); margin-top: 16px; padding: 20px 20px 20px; border-radius: 24px; background: var(--c-bg); }
 .v-card[data-level="vet-today"] { --c: var(--today); --c-ink: var(--today-ink); --c-bg: var(--today-bg); }
 .v-card[data-level="watch"] { --c: var(--watch); --c-ink: var(--watch-ink); --c-bg: var(--watch-bg); }
-.v-title { margin: 0; color: var(--c-ink); font-size: clamp(32px, 9.4vw, 42px); font-weight: 700; line-height: 1.02; letter-spacing: -0.035em; text-wrap: balance; }
-:lang(fr) .v-title { font-size: clamp(28px, 8.2vw, 36px); }
+.v-title { margin: 12px 0 0; color: var(--ink); font-size: clamp(28px, 8vw, 34px); font-weight: 700; line-height: 1.02; letter-spacing: -0.035em; text-wrap: balance; }
+
 :lang(fr) .source-body a:first-child::before { content: "Source : "; }
 .v-dose { display: flex; align-items: baseline; gap: 10px; margin: 14px 0 0; color: var(--c-ink); }
 .v-dose #dose-value { font-size: clamp(76px, 24vw, 104px); font-weight: 700; line-height: 0.95; letter-spacing: -0.05em; }
@@ -325,7 +351,7 @@ label.chip input:focus-visible + span { outline: 3px solid var(--focus); outline
 .meter-ticks span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
 
 .calls { display: grid; gap: 10px; margin-top: 14px; }
-.calls--light .call-btn { background: var(--tile); color: var(--ink); box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.06); }
+.call-btn--light, .calls--light .call-btn { background: var(--tile); color: var(--ink); box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.06); }
 .call-btn { display: flex; align-items: center; gap: 18px; min-height: 76px; padding: 12px 22px; border-radius: 22px; background: var(--ink); color: #fff; text-decoration: none; transition: transform 0.25s var(--spring); }
 .call-btn:active { transform: scale(0.98); }
 .call-btn .icon { width: 26px; height: 26px; fill: currentColor; stroke-width: 0; }

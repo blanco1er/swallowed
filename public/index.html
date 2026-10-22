@@ -43,6 +43,7 @@
       <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6.5 3.5h7l4 4v11.5a1.5 1.5 0 0 1-1.5 1.5h-9.5A1.5 1.5 0 0 1 5 19V5a1.5 1.5 0 0 1 1.5-1.5z"/><path d="M13.5 3.5v4h4M8.5 12h7M8.5 15.5h7"/></symbol>
       <symbol id="i-calc" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2.5"/><path d="M8.5 7.5h7M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01M8.5 15h.01M12 15h.01M15.5 15h.01"/></symbol>
       <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m15.5 15.5 4.5 4.5"/></symbol>
+      <symbol id="i-ok" viewBox="0 0 24 24"><path d="m6 12.5 4 4 8-9"/></symbol>
       <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H19v15H7.5A2.5 2.5 0 0 0 5 20.5z"/><path d="M5 20.5A2.5 2.5 0 0 1 7.5 18H19v3H7.5"/></symbol>
     </defs>
   </svg>
@@ -61,8 +62,8 @@
       <section class="view view--start" data-view="start" data-title="" aria-labelledby="start-title">
         <div class="view-body">
           <figure class="hero-photo"><img src="img/hero.jpg" alt="A husky and a tabby cat resting together on a white sofa" width="1400" height="1050" fetchpriority="high"></figure>
-          <h1 id="start-title" class="display start-title">What did your pet eat?</h1>
 
+          <p class="pets-label">Your pet</p>
           <div class="pets" role="radiogroup" aria-label="Your pet">
             <label class="pet"><input type="radio" name="species" value="dog"><img src="img/dog.jpg" alt="" width="180" height="180"><span>Dog</span></label>
             <label class="pet"><input type="radio" name="species" value="cat"><img src="img/cat.jpg" alt="" width="180" height="180"><span>Cat</span></label>
@@ -71,8 +72,10 @@
             <label class="pet"><input type="radio" name="species" value="bird"><img src="img/bird.jpg" alt="" width="180" height="180"><span>Bird</span></label>
           </div>
 
+          <h1 id="start-title" class="display start-title">What did your pet eat?</h1>
+
           <input id="photo-input" type="file" accept="image/*" hidden>
-          <button id="way-photo" type="button" class="btn btn-dark btn-block btn-xl"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg>Take a photo of it</button>
+          <button id="way-photo" type="button" class="btn btn-dark btn-block btn-xl btn-photo"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg><span class="btn-lines"><span>Photograph what it ate</span><small>Packaging, plant, pill or food</small></span></button>
 
           <div class="searchbar" id="type-panel">
             <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
@@ -198,12 +201,15 @@
         <div class="view-body">
           <div class="v-item">
             <img id="verdict-thumb" class="v-thumb" alt="" width="180" height="180" hidden>
-            <p id="verdict-context" class="v-context"></p>
+            <div class="v-item-text">
+              <p id="verdict-context" class="v-context"></p>
+              <p id="verdict-pet" class="v-pet"></p>
+            </div>
             <button id="verdict-change" class="v-change" type="button">Change</button>
           </div>
 
           <div id="verdict-band" class="v-card">
-            <p class="v-kicker" id="verdict-kicker"></p>
+            <p class="v-status"><span class="v-status-dot" aria-hidden="true"><svg class="icon"><use id="verdict-icon" href="#i-alert"/></svg></span><span id="verdict-kicker"></span></p>
             <h1 id="verdict-title" class="v-title"></h1>
             <p id="verdict-plain" class="v-plain"></p>
             <div id="numbers-block" class="dose" hidden>
@@ -214,25 +220,22 @@
             <p id="verdict-reason" class="sr-only"></p>
           </div>
 
-          <section class="why" aria-labelledby="why-title">
-            <h2 id="why-title" class="why-title">How Swallowed decided</h2>
-            <ol id="why" class="why-list"></ol>
-          </section>
+          <div id="call-now" class="calls" hidden></div>
 
-          <section class="steps" aria-labelledby="steps-title">
-            <h2 id="steps-title" class="steps-title">What to do now</h2>
-            <ol id="steps" class="steps-list"></ol>
-            <div id="call-now" class="calls" hidden></div>
-          </section>
+          <h2 class="section-label" id="why-title">Why this result</h2>
+          <dl id="why" class="facts" aria-labelledby="why-title"></dl>
 
-          <section class="tile" id="watch-block">
-            <p class="tile-k"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg>Signs to watch for</p>
-            <ul id="verdict-signs" class="sign-list"></ul>
-            <p id="verdict-onset" class="tile-s"></p>
+          <h2 class="section-label" id="steps-title">What to do</h2>
+          <ol id="steps" class="steps-list" aria-labelledby="steps-title"></ol>
+
+          <section id="watch-block">
+            <h2 class="section-label">Signs to watch for</h2>
+            <ul id="verdict-signs" class="sign-chips"></ul>
+            <p id="verdict-onset" class="hint"></p>
           </section>
 
           <section id="culprits-block" hidden>
-            <p class="label">Look around for these</p>
+            <h2 class="section-label">Look around for these</h2>
             <ul id="culprits" class="rows"></ul>
             <p class="hint">The most common dangers for this animal at home. Found one? Tap it.</p>
           </section>
@@ -248,10 +251,7 @@
               <span class="link-body"><b>Note for the vet</b><span>Read it out, copy or share it</span></span>
               <svg class="icon chev" aria-hidden="true"><use href="#i-chev-r"/></svg>
             </button>
-            <div class="link-row source-row">
-              <svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg>
-              <p id="verdict-source" class="source-body"></p>
-            </div>
+            <p id="verdict-source" class="sr-only"></p>
           </div>
 
           <p class="fine">Swallowed shows published veterinary references and never replaces a vet. Never treat your pet at home without a vet's advice.</p>

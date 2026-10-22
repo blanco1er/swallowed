@@ -1074,10 +1074,10 @@ function renderDose(v) {
 const SHORT_NAME = (item) => String(item?.names?.en?.[0] || 'it').split(' (')[0];
 const article = (word) => (/^(8|11|18|[aeiou])/i.test(String(word)) ? 'an' : 'a');
 const weightWord = (kg) => (kg < 1 ? `${Math.round(kg * 1000)} g` : `${Math.round(kg * 10) / 10} kg`);
-const PLURAL = { dog: 'dogs', cat: 'cats', rabbit: 'rabbits', rodent: 'guinea pigs and other rodents', bird: 'birds' };
+const PLURAL = { dog: 'dogs', cat: 'cats', rabbit: 'rabbits', rodent: 'rodents', bird: 'birds' };
 
 // One sentence a worried owner understands at once.
-const PLURAL_FR = { dog: 'chiens', cat: 'chats', rabbit: 'lapins', rodent: 'cobayes et autres rongeurs', bird: 'oiseaux' };
+const PLURAL_FR = { dog: 'chiens', cat: 'chats', rabbit: 'lapins', rodent: 'rongeurs', bird: 'oiseaux' };
 const de = (word) => (/^[aeiouyhéèêàâîôû]/i.test(word) ? `d’${word}` : `de ${word}`);
 
 function plainSentenceFr(v) {
@@ -1164,18 +1164,56 @@ function whyLines(v) {
   return [via + '.', checked, rule];
 }
 
+const STATUS = {
+  'vet-now': { icon: 'i-alert', en: 'Urgent', fr: 'Urgent', title: { en: 'Call a vet now', fr: 'Appelez un vétérinaire' } },
+  'vet-today': { icon: 'i-clock', en: 'Today', fr: 'Aujourd’hui', title: { en: 'Call your vet today', fr: 'Appelez votre vétérinaire' } },
+  watch: { icon: 'i-ok', en: 'No emergency', fr: 'Pas d’urgence', title: { en: 'Watch at home', fr: 'Surveillez à la maison' } },
+};
+const PET_SHORT = { dog: ['Dog', 'Chien'], cat: ['Cat', 'Chat'], rabbit: ['Rabbit', 'Lapin'], rodent: ['Guinea pig', 'Cobaye'], bird: ['Bird', 'Oiseau'] };
+
+// "Why this result": three short facts — what was recognised, where it was checked, which rule applied.
+function facts(v) {
+  const L = (en, fr) => (FR ? fr : en);
+  if (state.path === 'unknown') {
+    const short = (x) => trData(x.label).split(':')[0].split(' (')[0].trim();
+    return [
+      { k: L('You saw', 'Vous voyez'), v: v.chosen.length ? v.chosen.map(short).slice(0, 3).join(', ') + (v.chosen.length > 3 ? '…' : '') : L('No signs yet', 'Aucun signe pour l’instant') },
+      { k: L('Checked in', 'Vérifié dans'), v: L('Veterinary guides to poisoning signs', 'Guides vétérinaires des signes d’intoxication') },
+      { k: L('Rule', 'Règle'), v: v.chosen.length ? L('The most serious sign decides', 'Le signe le plus grave décide') : L('No signs is no reason to wait', 'Pas de signe ne veut pas dire attendre') },
+    ];
+  }
+  const how = { photo: L('from your photo', 'sur votre photo'), said: L('from what you said', 'd’après ce que vous avez dit'), typed: L('from what you typed', 'd’après ce que vous avez écrit'), list: L('chosen from the list', 'choisi dans la liste') }[state.via] || '';
+  const read = state.recognisedLabel && normalize(state.recognisedLabel) !== normalize(itemName(state.item)) ? `“${state.recognisedLabel}” → ` : '';
+  const recognised = { k: L('Recognised', 'Reconnu'), v: itemName(state.item), sub: `${read}${how}`.trim() };
+  if (state.item?.id === 'not-listed') {
+    return [recognised, { k: L('Checked in', 'Vérifié dans'), v: L(`Our list of ${data.toxins.length} pet poisons`, `Notre liste de ${data.toxins.length} poisons`) }, { k: L('Rule', 'Règle'), v: L('Not listed: we never guess', 'Absent : on ne devine jamais') }];
+  }
+  const quote = v.quote ? `“${trData(v.quote)}”` : '';
+  const source = { k: L('Source', 'Source'), v: v.source ? sourceLabel(v.source) : L('Veterinary references', 'Références vétérinaires'), href: v.source || null, sub: quote.length > 140 ? `${quote.slice(0, 137)}…”` : quote };
+  let rule;
+  if (v.kind === 'any') rule = L('No safe amount is known', 'Aucune quantité sans danger');
+  else if (v.kind === 'no-data') rule = L(`No reliable data for this ${SPECIES_LABEL[state.species]}`, `Pas de données fiables pour cet animal`);
+  else if (v.kind === 'low') rule = L('Usually low risk', 'Risque en général faible');
+  else if (v.kind === 'dose') {
+    const th = [...(speciesEntry()?.thresholds || [])].sort((a, b) => a.from - b.from);
+    rule = L(`${v.math.shown} ${v.unit} · problems from ${th[0]?.from}`, `${decimal(v.math.shown)} ${v.unit} · problèmes dès ${decimal(th[0]?.from)}`);
+  } else rule = L("Dose can't be calculated: cautious answer", 'Dose incalculable : réponse prudente');
+  return [recognised, source, { k: L('Rule', 'Règle'), v: rule }];
+}
+
 const STEPS = {
-  'vet-now': ['Call a vet or a pet poison line now — tap a number below.', "Don't try to make your pet vomit unless a vet tells you to.", 'Keep the packaging, and note what time it happened.'],
-  'vet-today': ['Call your vet today and tell them what and how much it ate.', 'Keep an eye on your pet for the signs below.', 'If a sign appears, call a vet or a poison line straight away.'],
-  watch: ['No need to rush to the vet for this amount.', 'Watch your pet closely for the next 24 hours.', 'If any sign below appears, call your vet.'],
+  'vet-now': [['Call now', 'Appelez maintenant'], ["Don't make it vomit", 'Ne le faites pas vomir'], ['Keep the packaging, note the time', 'Gardez l’emballage, notez l’heure']],
+  'vet-today': [['Call your vet today', 'Appelez votre vétérinaire aujourd’hui'], ['Watch for the signs below', 'Surveillez les signes ci-dessous'], ['Any sign: call straight away', 'Au moindre signe, appelez']],
+  watch: [['No vet visit needed for this amount', 'Pas besoin de vétérinaire pour cette quantité'], ['Watch your pet for 24 hours', 'Surveillez votre animal 24 heures'], ['Any sign: call your vet', 'Au moindre signe, appelez votre vétérinaire']],
 };
 function stepsFor(v) {
+  const pick = (pairs) => pairs.map(([en, fr]) => (FR ? fr : en));
   if (state.path === 'unknown' && !v.chosen.length) {
-    return ["Call your vet or a pet poison line today — don't wait for signs.", 'Look around for what it could have eaten (list below).', 'Keep any packaging or leftovers you find.'];
+    return pick([["Call today, don't wait for signs", 'Appelez aujourd’hui, sans attendre'], ['Look for what it could have eaten', 'Cherchez ce qu’il a pu manger'], ['Keep any packaging or leftovers', 'Gardez emballages et restes']]);
   }
-  return STEPS[v.level];
+  return pick(STEPS[v.level]);
 }
-const stepsText = (v) => stepsFor(v).map((t) => tr(t));
+const stepsText = (v) => stepsFor(v);
 
 // "Vomiting, lethargy, then little or no urine (kidney failure)" → short separate lines.
 function signLines(text) {
@@ -1201,8 +1239,7 @@ function verdictContext() {
 function renderVerdict({ live = false } = {}) {
   const v = computeVerdict();
   $('verdict-band').dataset.level = v.level;
-  $('verdict-context').textContent = verdictContext();
-  $('verdict-title').textContent = LEVEL_LABEL[v.level];
+  $('verdict-context').textContent = state.path === 'unknown' ? tr('Unknown item') : itemName(state.item);
   document.querySelector('[data-view="verdict"]').dataset.title = LEVEL_LABEL[v.level];
   const thumb = $('verdict-thumb');
   const thumbSrc = state.path === 'unknown' ? `img/${SPECIES_PHOTO[state.species]}.jpg` : state.photoUrl || itemPhoto(state.item);
@@ -1225,7 +1262,18 @@ function renderVerdict({ live = false } = {}) {
   $('sheet-reason').textContent = FR ? plainSentence(v) : reason;
   $('verdict-plain').textContent = plainSentence(v);
   $('steps').replaceChildren(...stepsText(v).map((t) => el('li', { text: t })));
-  $('why').replaceChildren(...whyLines(v).map((t) => el('li', {}, [icon('i-check'), el('span', { text: t })])));
+  $('why').replaceChildren(...facts(v).map((f) => el('div', { class: 'fact' }, [
+    el('dt', { text: f.k }),
+    el('dd', {}, [
+      f.href ? el('a', { href: f.href, target: '_blank', rel: 'noopener noreferrer', text: f.v }) : el('span', { text: f.v }),
+      f.sub ? el('small', { text: f.sub }) : null,
+    ]),
+  ])));
+  const st = STATUS[v.level];
+  $('verdict-kicker').textContent = FR ? st.fr : st.en;
+  $('verdict-icon').setAttribute('href', `#${st.icon}`);
+  $('verdict-title').textContent = FR ? st.title.fr : st.title.en;
+  $('verdict-pet').textContent = [PET_SHORT[state.species]?.[FR ? 1 : 0], state.weightKg ? decimal(weightWord(state.weightKg)) : ''].filter(Boolean).join(' · ');
   $('verdict-change').hidden = state.path === 'unknown';
 
   // Call buttons right under the steps when a vet is needed
@@ -1423,7 +1471,11 @@ function renderCalls(level) {
   const call = $('call-now');
   call.hidden = level === 'watch';
   call.classList.toggle('calls--light', level === 'vet-today');
-  if (level !== 'watch') call.replaceChildren(...callable(contactsFor(state.country)).slice(0, 2).map((c) => callButton(c)));
+  if (level !== 'watch') call.replaceChildren(...callable(contactsFor(state.country)).slice(0, 2).map((c, i) => {
+    const b = callButton(c);
+    if (i > 0) b.classList.add('call-btn--light');
+    return b;
+  }));
 }
 
 function callButton(c) {
