@@ -23,7 +23,7 @@ function weightText(kg) {
 // answers: { species, weightKg, when, itemName?, amountText?, signs?: [labels], level }
 export function buildSummary(a) {
   const lines = [];
-  lines.push(`My ${SPECIES_LABEL[a.species] || 'pet'}, ${weightText(a.weightKg)}.`);
+  lines.push(a.weightKg ? `My ${SPECIES_LABEL[a.species] || 'pet'}, ${weightText(a.weightKg)}.` : `My ${SPECIES_LABEL[a.species] || 'pet'}.`);
   if (a.itemName) {
     lines.push(`Ate: ${a.itemName}${a.amountText ? ` — about ${a.amountText}` : ''}.`);
   } else {

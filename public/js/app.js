@@ -30,8 +30,13 @@ let stopListening = null;
 function freshState() {
   return {
     path: 'item', item: null, candidates: [], quantities: {}, photoUrl: null, said: null, recognisedLabel: null, typed: '', spoken: {},
-    species: null, weightKg: null, when: 'just now', amount: null, option: null, signs: [], country: guessCountry(),
+    species: rememberedSpecies(), weightKg: null, amount: null, option: null, signs: [], country: guessCountry(),
   };
+}
+
+function rememberedSpecies() {
+  const s = storeGet('species');
+  return ['dog', 'cat', 'rabbit', 'rodent', 'bird'].includes(s) ? s : null;
 }
 
 function guessCountry() {
@@ -351,17 +356,13 @@ function renderSuggestions(listEl, text, onPick) {
   return results;
 }
 
-// "Type it" and "Say it" open their panel under the buttons; tapping again closes it.
+// One search bar: type what it ate, or tap its microphone to say it.
 function selectTab(which) {
-  const map = { type: 'type-panel', say: 'voice-panel' };
-  for (const [k, panel] of Object.entries(map)) {
-    $(`tab-${k}`).setAttribute('aria-expanded', String(k === which));
-    $(panel).hidden = k !== which;
-  }
+  $('tab-say').setAttribute('aria-expanded', String(which === 'say'));
+  $('voice-panel').hidden = which !== 'say';
   if (which !== 'say') stopListening?.();
   if (which === 'type') $('type-input').focus();
 }
-$('tab-type').addEventListener('click', () => selectTab($('tab-type').getAttribute('aria-expanded') === 'true' ? null : 'type'));
 $('tab-say').addEventListener('click', () => {
   if ($('tab-say').getAttribute('aria-expanded') === 'true') { selectTab(null); return; }
   selectTab('say');
@@ -549,7 +550,7 @@ function wakeServer() { fetch(`${API}/healthz`, { cache: 'no-store' }).then((r) 
 document.addEventListener('visibilitychange', () => { if (!document.hidden) wakeServer(); });
 
 function setWaysDisabled(on) {
-  for (const id of ['way-photo', 'tab-type', 'tab-say', 'way-voice', 'way-unknown']) $(id).disabled = on;
+  for (const id of ['way-photo', 'type-input', 'tab-say', 'way-voice', 'way-unknown']) $(id).disabled = on;
 }
 
 function handleIdentified(result, payload) {
@@ -645,6 +646,13 @@ function pickItem(item, { candidates = [], lowConfidence = false, notListed = fa
   state.path = 'item';
   state.item = item;
   state.candidates = candidates.filter((c) => c && c.id !== item.id).slice(0, 4);
+  fillConfirm(item, { lowConfidence, notListed });
+  // Ask "is this it?" only when there is a real doubt (a low-confidence photo, or close alternatives).
+  if (lowConfidence) show('confirm');
+  else afterItem();
+}
+
+function fillConfirm(item, { lowConfidence = false, notListed = false } = {}) {
   $('confirm-name').textContent = itemName(item);
   const q = quantitiesText(state.quantities);
   const read = state.recognisedLabel && normalize(state.recognisedLabel) !== normalize(itemName(item)) ? `We read “${state.recognisedLabel}”` : '';
@@ -665,8 +673,42 @@ function pickItem(item, { candidates = [], lowConfidence = false, notListed = fa
   renderCandidates();
   $('change-panel').hidden = !lowConfidence;
   $('confirm-change').hidden = lowConfidence;
-  show('confirm');
 }
+
+// After the item: the pet (asked once, then remembered), then the amount only when it changes
+// the answer, then the result.
+let afterPet = false;
+function afterItem() {
+  if (!state.species) { afterPet = true; syncPets(); openSheet($('sheet-pet')); return; }
+  if (state.path === 'unknown') { renderSigns(); show('signs'); return; }
+  if (doseApplies()) { openPet(); return; }
+  state.weightKg = null;
+  renderVerdict();
+  show('verdict');
+}
+
+function syncPets() {
+  for (const r of document.querySelectorAll('input[name="species"], input[name="species-pick"]')) r.checked = r.value === state.species;
+}
+function setSpecies(species) {
+  state.species = species;
+  storeSet('species', species);
+  syncPets();
+}
+for (const r of document.querySelectorAll('input[name="species"]')) r.addEventListener('change', () => setSpecies(r.value));
+for (const r of document.querySelectorAll('input[name="species-pick"]')) r.addEventListener('change', () => {
+  setSpecies(r.value);
+  closeSheet($('sheet-pet'));
+  if (afterPet) { afterPet = false; setTimeout(afterItem, 200); }
+});
+syncPets();
+
+$('verdict-change').addEventListener('click', () => {
+  fillConfirm(state.item, {});
+  $('change-panel').hidden = false;
+  $('confirm-change').hidden = true;
+  show('confirm');
+});
 
 function renderCandidates() {
   $('candidates').replaceChildren(
@@ -679,7 +721,7 @@ function renderCandidates() {
   $('candidates-label').hidden = state.candidates.length === 0;
 }
 
-$('confirm-yes').addEventListener('click', () => openPet());
+$('confirm-yes').addEventListener('click', () => afterItem());
 $('confirm-change').addEventListener('click', () => {
   $('change-panel').hidden = false;
   $('confirm-change').hidden = true;
@@ -705,14 +747,10 @@ $('change-input').addEventListener('keydown', (e) => {
 /* ---------- Your pet ---------- */
 
 function openPet() {
-  $('pet-item').textContent = state.path === 'unknown'
-    ? 'Tell us about your pet, then what you see.'
-    : `${itemName(state.item)}${quantitiesText(state.quantities) ? ` · ${quantitiesText(state.quantities)}` : ''}`;
-  $('pet-go').textContent = state.path === 'unknown' ? 'Next' : 'Show the answer';
+  $('pet-item').textContent = `${itemName(state.item)} · ${cap(SPECIES_LABEL[state.species])}${quantitiesText(state.quantities) ? ` · ${quantitiesText(state.quantities)}` : ''}`;
   $('pet-error').hidden = true;
-  for (const r of document.querySelectorAll('input[name="species"]')) r.checked = r.value === state.species;
-  if (state.species) applySpecies(state.species);
-  else { $('weight-hint').textContent = ''; $('amount-group').hidden = true; }
+  $('weight').value = '';
+  applySpecies(state.species);
   show('pet');
 }
 
@@ -739,7 +777,6 @@ function applySpecies(species) {
   renderAmount();
 }
 
-document.querySelectorAll('input[name="species"]').forEach((r) => r.addEventListener('change', () => applySpecies(r.value)));
 document.querySelector('[data-view="pet"]').addEventListener('input', () => { $('pet-error').hidden = true; });
 document.querySelector('[data-view="pet"]').addEventListener('change', () => { $('pet-error').hidden = true; });
 document.querySelectorAll('input[name="unit"]').forEach((r) => r.addEventListener('change', () => {
@@ -908,7 +945,6 @@ function readWeightKg() {
 
 $('pet-go').addEventListener('click', () => {
   const err = $('pet-error');
-  if (!state.species) { err.textContent = 'Choose the animal.'; err.hidden = false; return; }
   const kg = readWeightKg();
   if (!kg) { err.textContent = 'Enter the weight — a rough guess is fine.'; err.hidden = false; $('weight').focus(); return; }
   if (kg < 0.01 || kg > 150) { err.textContent = 'Check the weight and the kg / lb switch.'; err.hidden = false; $('weight').focus(); return; }
@@ -917,17 +953,16 @@ $('pet-go').addEventListener('click', () => {
   err.hidden = true;
   state.weightKg = kg;
   storeSet(`weight:${state.species}`, String(+kg.toFixed(3)));
-  state.when = document.querySelector('input[name="when"]:checked')?.value || 'just now';
-  if (state.path === 'unknown') { renderSigns(); show('signs'); } else { renderVerdict(); show('verdict'); }
+  renderVerdict();
+  show('verdict');
 });
 
 /* ---------- Unknown path ---------- */
 
 $('way-unknown').addEventListener('click', () => {
   if (!data.signs) { startStatus('Swallowed could not load its veterinary data. Check your connection and reload — or press Emergency.', true); return; }
-  const species = state.species;
-  Object.assign(state, freshState(), { path: 'unknown', species });
-  openPet();
+  Object.assign(state, freshState(), { path: 'unknown' });
+  afterItem();
 });
 
 function renderSigns() {
@@ -953,6 +988,10 @@ function sourceLabel(url) {
   const names = {
     'merckvetmanual.com': 'Merck Veterinary Manual', 'aspca.org': 'ASPCA Animal Poison Control', 'petpoisonhelpline.com': 'Pet Poison Helpline',
     'vcahospitals.com': 'VCA Animal Hospitals', 'fda.gov': 'U.S. Food & Drug Administration',
+    'pmc.ncbi.nlm.nih.gov': 'Peer-reviewed study (NIH PubMed Central)', 'pubmed.ncbi.nlm.nih.gov': 'Peer-reviewed study (PubMed)',
+    'dvm360.com': 'dvm360 (veterinary journal)', 'vet.cornell.edu': 'Cornell University College of Veterinary Medicine',
+    'digitalcommons.usu.edu': 'Utah State University', 'rabbitwelfare.co.uk': 'Rabbit Welfare Association', 'anses.fr': 'ANSES (French health agency)',
+    'rabbit.org': 'House Rabbit Society', 'todaysveterinarypractice.com': "Today's Veterinary Practice", 'vetmeds.org': 'VetMeds',
   };
   return names[host] || host;
 }
@@ -994,10 +1033,12 @@ function renderDose(v) {
     span.style.width = `${Math.max(0, ((to - b.from) / top) * 100)}%`;
     return span;
   }));
-  $('meter-ticks').replaceChildren(...th.filter((t) => Math.abs(t.from - v.dosePerKg) / top > 0.06).map((t) => {
+  const BAND_NAME = { watch: 'Low', 'vet-today': 'Vet today', 'vet-now': 'Vet now' };
+  $('meter-ticks').replaceChildren(...bands.map((b, i) => {
+    const to = bands[i + 1]?.from ?? top;
     const tick = document.createElement('span');
-    tick.style.left = `${(t.from / top) * 100}%`;
-    tick.textContent = String(t.from);
+    tick.style.left = `${((b.from + to) / 2 / top) * 100}%`;
+    tick.textContent = BAND_NAME[b.verdict] || '';
     return tick;
   }));
   $('sheet-live').textContent = `≈ ${v.math.shown} ${v.unit} · ${LEVEL_LABEL[v.level]}`;
@@ -1006,6 +1047,59 @@ function renderDose(v) {
   $('meter-dot').style.left = at;
   $('meter-value').style.left = `clamp(14px, ${at}, calc(100% - 14px))`;
   $('meter-value').textContent = String(v.math.shown);
+}
+
+const SHORT_NAME = (item) => String(item?.names?.en?.[0] || 'it').split(' (')[0];
+const article = (word) => (/^(8|11|18|[aeiou])/i.test(String(word)) ? 'an' : 'a');
+const weightWord = (kg) => (kg < 1 ? `${Math.round(kg * 1000)} g` : `${Math.round(kg * 10) / 10} kg`);
+const PLURAL = { dog: 'dogs', cat: 'cats', rabbit: 'rabbits', rodent: 'guinea pigs and other rodents', bird: 'birds' };
+
+// One sentence a worried owner understands at once.
+function plainSentence(v) {
+  const sp = SPECIES_LABEL[state.species] || 'pet';
+  if (state.path === 'unknown') {
+    if (!v.chosen.length) return "Your pet may have eaten something harmful. Don't wait for signs to appear.";
+    return v.level === 'vet-now' ? 'These signs can mean serious poisoning.' : `These signs need a vet's opinion${v.raisedBySpecies ? ` — small animals hide illness until it is serious` : ''}.`;
+  }
+  const what = SHORT_NAME(state.item).toLowerCase();
+  if (state.item?.id === 'not-listed') return `We have no reliable information on ${what} for pets, so a vet should decide.`;
+  if (v.kind === 'any') return `Even a small amount of ${what} can poison ${article(sp)} ${sp}.`;
+  if (v.kind === 'no-data') return `There is no reliable information on ${what} for ${PLURAL[state.species] || 'this animal'}, so a vet should decide.`;
+  if (v.kind === 'low') return `${cap(what)} is usually low risk for ${article(sp)} ${sp}.`;
+  if (v.kind === 'dose') {
+    const amt = amountText();
+    const who = `${article(weightWord(state.weightKg))} ${weightWord(state.weightKg)} ${sp}`;
+    if (v.level === 'vet-now') return `${cap(amt)} of ${what} is a dangerous amount for ${who}.`;
+    if (v.level === 'vet-today') return `${cap(amt)} of ${what} can make ${who} ill.`;
+    return `${cap(amt)} of ${what} is below the amount that usually causes problems for ${who}.`;
+  }
+  return "We can't work out the dose for this product, so a vet should decide.";
+}
+
+const STEPS = {
+  'vet-now': ['Call a vet or a pet poison line now — tap a number below.', "Don't try to make your pet vomit unless a vet tells you to.", 'Keep the packaging, and note what time it happened.'],
+  'vet-today': ['Call your vet today and tell them what and how much it ate.', 'Keep an eye on your pet for the signs below.', 'If a sign appears, call a vet or a poison line straight away.'],
+  watch: ['No need to rush to the vet for this amount.', 'Watch your pet closely for the next 24 hours.', 'If any sign below appears, call your vet.'],
+};
+function stepsFor(v) {
+  if (state.path === 'unknown' && !v.chosen.length) {
+    return ["Call your vet or a pet poison line today — don't wait for signs.", 'Look around for what it could have eaten (list below).', 'Keep any packaging or leftovers you find.'];
+  }
+  return STEPS[v.level];
+}
+
+// "Vomiting, lethargy, then little or no urine (kidney failure)" → short separate lines.
+function signLines(text) {
+  const out = [];
+  let depth = 0;
+  let cur = '';
+  for (const ch of String(text || '')) {
+    if (ch === '(') depth += 1;
+    if (ch === ')') depth -= 1;
+    if ((ch === ',' || ch === ';') && depth === 0) { out.push(cur); cur = ''; } else cur += ch;
+  }
+  out.push(cur);
+  return out.map((x) => cap(x.trim().replace(/^(then|and|or)\s+/i, '').replace(/\.$/, ''))).filter(Boolean);
 }
 
 function verdictContext() {
@@ -1039,8 +1133,12 @@ function renderVerdict({ live = false } = {}) {
     reason = cap(v.reason);
   }
   $('verdict-reason').textContent = reason;
+  $('sheet-reason').textContent = reason;
+  $('verdict-plain').textContent = plainSentence(v);
+  $('steps').replaceChildren(...stepsFor(v).map((t) => el('li', { text: t })));
+  $('verdict-change').hidden = state.path === 'unknown';
 
-  // Call buttons first when urgent
+  // Call buttons right under the steps when a vet is needed
   renderCalls(v.level);
 
   // Numbers (dose only)
@@ -1050,6 +1148,7 @@ function renderVerdict({ live = false } = {}) {
   if (v.kind !== 'dose') $('live-amount-wrap').hidden = true;
   if (v.kind === 'dose') {
     $('verdict-math').textContent = v.math.text;
+    $('open-math-sub').textContent = `${v.math.perKg} — step by step, try other amounts`;
     $('verdict-band-text').textContent = bandText(v);
     renderDose(v);
     if (!live) setupLive();
@@ -1083,12 +1182,13 @@ function renderVerdict({ live = false } = {}) {
   const watch = $('watch-block');
   if (state.path === 'unknown') {
     const urgent = signsFor(data.signs, state.species).filter((s) => s.urgency === 'vet-now').map((s) => s.label.split(':')[0].split(' (')[0].toLowerCase());
-    $('verdict-signs').textContent = `Go to a vet at once if you see: ${urgent.slice(0, 6).join('; ')}.`;
-    $('verdict-onset').textContent = '';
+    $('verdict-signs').replaceChildren(...urgent.slice(0, 6).map((t) => el('li', { text: cap(t) })));
+    $('verdict-onset').textContent = 'Go to a vet at once if you see any of these.';
     watch.hidden = false;
   } else {
-    $('verdict-signs').textContent = v.signs ? cap(v.signs) : 'Any change in behaviour, eating, breathing or balance.';
-    $('verdict-onset').textContent = v.onset && v.kind !== 'no-data' ? `Timing: ${lowerFirst(v.onset)}` : '';
+    const lines = v.signs ? signLines(v.signs) : ['Any change in behaviour, eating, breathing or balance'];
+    $('verdict-signs').replaceChildren(...lines.map((t) => el('li', { text: t })));
+    $('verdict-onset').textContent = v.onset && v.kind !== 'no-data' ? `When: ${lowerFirst(v.onset)}` : '';
     watch.hidden = false;
   }
 
@@ -1125,7 +1225,6 @@ function renderSummary(v) {
   const text = buildSummary({
     species: state.species,
     weightKg: state.weightKg,
-    when: state.when,
     itemName: state.path === 'unknown' ? null : itemName(state.item) + (state.option?.noDose ? ` (${state.option.noDose})` : quantitiesText(state.quantities) ? ` (${quantitiesText(state.quantities)})` : ''),
     amountText: state.path === 'unknown' ? null : amountText(),
     signs: signLabels,
@@ -1199,7 +1298,6 @@ $('restart').addEventListener('click', () => {
   Object.assign(state, freshState(), { species });
   closeAllSheets();
   navStack.length = 0;
-  for (const r of document.querySelectorAll('input[name="when"]')) r.checked = r.value === 'just now';
   $('change-input').value = '';
   $('change-suggestions').replaceChildren();
   try { window.history.replaceState(null, ''); } catch { /* sandboxed */ }

@@ -99,9 +99,31 @@ img { display: block; }
 .error { margin: 16px 0 0; color: var(--now-ink); font-weight: 600; }
 
 /* Start: the photo bleeds to the screen edges and fades into the page */
-.hero-photo { position: relative; margin: 0 calc(-1 * var(--gutter)); height: min(33svh, 290px); overflow: hidden; }
+.hero-photo { position: relative; margin: 0 calc(-1 * var(--gutter)); height: min(25svh, 220px); overflow: hidden; }
 .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent); mask-image: linear-gradient(to bottom, #000 72%, transparent); }
-.start-title { margin-top: 2px; font-size: clamp(32px, 9vw, 40px); }
+.start-title { margin-top: 2px; font-size: clamp(30px, 8.4vw, 38px); }
+
+/* Your pet, chosen once and remembered */
+.pets { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; margin-top: 16px; }
+.pet { position: relative; display: grid; justify-items: center; align-content: start; gap: 6px; color: var(--ink-2); font-size: 13px; font-weight: 500; text-align: center; line-height: 1.15; cursor: pointer; }
+.pet input { position: absolute; opacity: 0; pointer-events: none; }
+.pet img { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2.5px var(--white), 0 0 0 2.5px transparent; transition: box-shadow 0.2s var(--ease), opacity 0.2s; }
+.pets:has(input:checked) .pet:not(:has(input:checked)) img { opacity: 0.55; }
+.pet:has(input:checked) { color: var(--ink); font-weight: 700; }
+.pet:has(input:checked) img { box-shadow: 0 0 0 2.5px var(--white), 0 0 0 5px var(--ink); }
+.pet:has(input:focus-visible) img { outline: 3px solid var(--focus); outline-offset: 5px; }
+.pets--sheet { margin: 18px 0 6px; }
+.pets--sheet .pet img { width: 60px; height: 60px; }
+
+/* One search bar: type, or tap the microphone */
+.searchbar { display: flex; align-items: center; gap: 10px; height: 56px; margin-top: 10px; padding: 0 6px 0 18px; border-radius: var(--radius); background: var(--tile); box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.06); }
+.searchbar > .icon { color: var(--ink-3); }
+.searchbar input { flex: 1; min-width: 0; height: 100%; border: 0; background: none; color: var(--ink); font: inherit; font-size: 18px; outline: none; -webkit-appearance: none; appearance: none; }
+.searchbar input::placeholder { color: var(--ink-2); }
+.searchbar input::-webkit-search-cancel-button { -webkit-appearance: none; }
+.searchbar:focus-within { box-shadow: inset 0 0 0 2px var(--ink); background: var(--white); }
+.searchbar-mic { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border: 0; border-radius: 50%; background: var(--white); color: var(--ink); cursor: pointer; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+.searchbar-mic[aria-expanded="true"] { background: var(--now); color: #fff; }
 
 /* Buttons: rounded rectangles, black = the main action */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 56px; padding: 0 24px; border: 0; border-radius: 18px; font-size: 18px; font-weight: 600; cursor: pointer; text-decoration: none; transition: transform 0.25s var(--spring), opacity 0.2s; }
@@ -144,7 +166,8 @@ img { display: block; }
 .section-head { position: relative; z-index: 0; }
 
 /* "I don't know what it ate" */
-.unknown { display: block; width: 100%; margin-top: 22px; padding: 20px 0 6px; border: 0; border-top: 1px solid var(--line); background: none; color: #5B5F78; font-size: 17px; font-weight: 500; text-align: center; cursor: pointer; }
+.unknown { display: block; width: 100%; margin-top: 20px; padding: 18px 0 6px; border: 0; border-top: 1px solid var(--line); background: none; color: var(--ink); font-size: 17px; font-weight: 600; text-align: center; cursor: pointer; }
+.unknown span { color: var(--ink-2); font-weight: 500; }
 .unknown:active { opacity: 0.6; }
 
 /* Search and rows */
@@ -217,6 +240,7 @@ label.chip input:focus-visible + span { outline: 3px solid var(--focus); outline
 .group > legend { padding: 0; }
 .group + .group { margin-top: 30px; }
 .group > legend.label { margin: 0 0 12px; }
+[data-view="pet"] .sub + .group { margin-top: 28px; }
 .species { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin-top: 24px; }
 .species-tile { position: relative; display: grid; align-content: start; justify-items: center; gap: 8px; padding: 4px 0; font-size: 14px; font-weight: 500; text-align: center; line-height: 1.15; cursor: pointer; color: var(--ink-2); }
 .species-tile input { position: absolute; opacity: 0; pointer-events: none; }
@@ -251,7 +275,22 @@ label.chip input:focus-visible + span { outline: 3px solid var(--focus); outline
 /* Verdict: what and who, then one tinted card with the answer and the number */
 .v-item { display: flex; align-items: center; gap: 16px; margin-top: 4px; }
 .v-thumb { width: 64px; height: 64px; flex: none; border-radius: 16px; object-fit: cover; background: var(--tile); }
-.v-context { margin: 0; font-size: 19px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; }
+.v-context { flex: 1; margin: 0; font-size: 19px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; }
+.v-change { flex: none; height: 44px; padding: 0 4px; border: 0; background: none; color: var(--ink-2); font-size: 15px; font-weight: 600; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.v-kicker:empty { display: none; }
+.v-plain { margin: 12px 0 0; color: var(--ink); font-size: 19px; font-weight: 500; line-height: 1.4; text-wrap: pretty; }
+.v-card .dose { margin-top: 18px; }
+
+/* What to do now: three numbered steps, the call buttons right under */
+.steps { margin-top: 14px; padding: 20px 20px 18px; border-radius: var(--radius); background: var(--white); box-shadow: 0 0 0 1px var(--line), 0 6px 20px rgba(0, 0, 0, 0.05); }
+.steps-title { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+.steps-list { margin: 14px 0 0; padding: 0; list-style: none; counter-reset: step; display: grid; gap: 12px; }
+.steps-list li { position: relative; padding-left: 40px; font-size: 17px; line-height: 1.4; counter-increment: step; }
+.steps-list li::before { content: counter(step); position: absolute; left: 0; top: -1px; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 15px; font-weight: 700; }
+.steps .calls { margin-top: 16px; }
+.sign-list { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.sign-list li { position: relative; padding-left: 18px; font-size: 17px; font-weight: 500; line-height: 1.4; }
+.sign-list li::before { content: ""; position: absolute; left: 2px; top: 0.6em; width: 7px; height: 7px; border-radius: 50%; background: var(--ink-3); }
 .v-card { --c: var(--now); --c-ink: var(--now-ink); --c-bg: var(--now-bg); margin-top: 18px; padding: 24px 22px 22px; border-radius: 26px; background: var(--c-bg); }
 .v-card[data-level="vet-today"] { --c: var(--today); --c-ink: var(--today-ink); --c-bg: var(--today-bg); }
 .v-card[data-level="watch"] { --c: var(--watch); --c-ink: var(--watch-ink); --c-bg: var(--watch-bg); }
@@ -271,9 +310,8 @@ label.chip input:focus-visible + span { outline: 3px solid var(--focus); outline
 .seg-now { background: #EE4733; }
 .meter-dot { position: absolute; top: -6px; bottom: -6px; width: 3px; margin-left: -1.5px; border-radius: 2px; background: var(--ink); transition: left 0.35s var(--spring); }
 .meter-dot::before { content: ""; position: absolute; top: -5px; left: 50%; width: 11px; height: 11px; margin-left: -5.5px; border-radius: 50%; background: var(--ink); }
-.meter-ticks { position: relative; height: 22px; margin-top: 10px; color: var(--ink-3); font-size: 13px; font-weight: 600; }
+.meter-ticks { position: relative; height: 20px; margin-top: 10px; color: var(--ink-2); font-size: 13px; font-weight: 600; }
 .meter-ticks span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
-.meter-ticks span::before { content: ""; position: absolute; top: -8px; left: 50%; width: 1px; height: 5px; background: currentColor; }
 
 .calls { display: grid; gap: 10px; margin-top: 14px; }
 .calls--light .call-btn { background: var(--tile); color: var(--ink); box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.06); }
