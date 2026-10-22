@@ -6,6 +6,8 @@
 // (WebKit bugs 225298 and 239816), so those are treated as unsupported, and a
 // start that never happens is caught by a timer instead of hanging on "Listening…".
 
+import { LANG } from './i18n.js';
+
 const Recognition = globalThis.SpeechRecognition || globalThis.webkitSpeechRecognition;
 const ua = navigator.userAgent;
 const isIOS = /iP(hone|ad|od)/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
@@ -25,7 +27,7 @@ export const speechSupported = Boolean(Recognition) && !failedBefore() && !(isIO
 // listen({ onWords(text, final), onEnd(text), onError(code) }) → stop()
 export function listen({ onWords, onEnd, onError }) {
   const rec = new Recognition();
-  rec.lang = 'en-US';
+  rec.lang = LANG === 'fr' ? 'fr-FR' : 'en-US';
   rec.interimResults = true;
   rec.continuous = false;
   rec.maxAlternatives = 1;

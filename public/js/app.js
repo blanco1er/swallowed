@@ -6,6 +6,10 @@ import { matchItems, detectSpecies, parseAmounts, normalize } from './match.js';
 import { verdict, signsVerdict, signsFor, doseForms, formMeasure, adjustForm, SPECIES as SPECIES_ALL } from './verdict.js';
 import { buildSummary, LEVEL_LABEL, SPECIES_LABEL } from './summary.js';
 import { speechSupported, listen } from './speech.js';
+import { LANG, tr, trData, setDataFr, translatePage } from './i18n.js';
+
+const FR = LANG === 'fr';
+translatePage();
 
 const $ = (id) => document.getElementById(id);
 // The page is served by GitHub Pages (never sleeps, opens instantly); recognition runs on the
@@ -69,7 +73,7 @@ function icon(id, cls = 'icon') {
 }
 const cap = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
 const lowerFirst = (s) => (s && !/^[A-Z]{2}/.test(s) ? s.charAt(0).toLowerCase() + s.slice(1) : s);
-const itemName = (item) => cap(item?.names?.en?.[0] || item?.id || '');
+const itemName = (item) => cap((FR && item?.names?.fr?.[0]) || item?.names?.en?.[0] || item?.id || '');
 // Real photos (Unsplash License, see data/SOURCES.md) for the most common items and each animal.
 const ITEM_PHOTO = { 'chocolate-milk': 'chocolate', 'chocolate-dark': 'chocolate', 'chocolate-baking-cocoa': 'chocolate', xylitol: 'gum', 'grapes-raisins': 'grapes', 'onion-allium': 'onion', 'lilies-true': 'lily' };
 const SPECIES_PHOTO = { dog: 'dog', cat: 'cat', rabbit: 'rabbit', rodent: 'guineapig', bird: 'bird' };
@@ -80,8 +84,9 @@ function itemPhoto(item) {
 const CATEGORY = { food: 'Food', plant: 'Plant', 'human-medicine': 'Human medicine', household: 'Household product', garden: 'Garden product', 'pest-control': 'Pest control', 'vet-medicine': 'Pet medicine', other: 'Other' };
 
 // Each new way of showing the item starts clean (no photo, quantities or words from before).
-function freshInput() {
+function freshInput(via = null) {
   identifying?.abort('cancel');
+  state.via = via;
   state.photoUrl = null;
   state.quantities = {};
   state.said = null;
@@ -112,7 +117,7 @@ const FALLBACK_CONTACTS = {
 
 function toast(text) {
   const t = $('toast');
-  t.textContent = text;
+  t.textContent = tr(text);
   t.hidden = false;
   clearTimeout(toast.timer);
   toast.timer = setTimeout(() => { t.hidden = true; }, 2600);
@@ -348,9 +353,9 @@ function renderSuggestions(listEl, text, onPick) {
         el('span', { class: 'row-body' }, [
           el('span', { class: 'row-title', text: itemName(item) }),
           matchedName.toLowerCase() !== (item.names.en[0] || '').toLowerCase()
-            ? el('span', { class: 'row-sub', text: `Matches “${matchedName}”` }) : null,
+            ? el('span', { class: 'row-sub', text: tr('Matches “{name}”', { name: matchedName }) }) : null,
         ]),
-        el('span', { class: 'suggestion-cat', text: CATEGORY[item.category] || '' }),
+        el('span', { class: 'suggestion-cat', text: tr(CATEGORY[item.category] || '') }),
       ])))
   );
   return results;
@@ -371,7 +376,7 @@ $('tab-say').addEventListener('click', () => {
 
 // One-tap shortcuts for the most common poisonings.
 document.querySelectorAll('#quick [data-q]').forEach((b) => b.addEventListener('click', () => {
-  freshInput();
+  freshInput('list');
   noteWords(b.dataset.q);
   const results = matchItems(data.toxins, b.dataset.q, 6);
   if (results.length) pickItem(results[0].item, { candidates: results.map((r) => r.item) });
@@ -384,10 +389,10 @@ function renderAll(text = '') {
   const items = q ? matchItems(data.toxins, q, 48).map((r) => r.item) : data.toxins;
   const groups = CATEGORY_ORDER.map((cat) => [cat, items.filter((t) => (t.category || 'other') === cat)]).filter(([, list]) => list.length);
   $('all-list').replaceChildren(...groups.map(([cat, list]) => el('section', { class: 'all-group' }, [
-    el('h3', { class: 'all-cat', text: CATEGORY[cat] || 'Other' }),
+    el('h3', { class: 'all-cat', text: tr(CATEGORY[cat] || 'Other') }),
     el('ul', { class: 'rows' }, list.map((item) => el('li', {}, el('button', { class: 'row', type: 'button', onclick: () => {
       closeAllSheets();
-      state.quantities = {}; state.photoUrl = null; state.said = null;
+      freshInput('list');
       pickItem(item);
     } }, [
       itemPhoto(item) ? el('img', { class: 'row-thumb', src: itemPhoto(item), alt: '', width: 44, height: 44, loading: 'lazy' }) : el('span', { class: 'row-thumb row-thumb--letter', 'aria-hidden': 'true', text: itemName(item).charAt(0) }),
@@ -395,7 +400,7 @@ function renderAll(text = '') {
       icon('i-chev-r', 'icon chev'),
     ])))),
   ])));
-  if (!groups.length) $('all-list').replaceChildren(el('p', { class: 'hint', text: 'Not in our list. Type it on the main screen and we will look it up.' }));
+  if (!groups.length) $('all-list').replaceChildren(el('p', { class: 'hint', text: tr('Not in our list. Type it on the main screen and we will look it up.') }));
 }
 $('see-all').addEventListener('click', () => { $('all-input').value = ''; renderAll(); openSheet($('sheet-all')); });
 $('all-input').addEventListener('input', (e) => renderAll(e.target.value));
@@ -403,12 +408,12 @@ $('all-input').addEventListener('input', (e) => renderAll(e.target.value));
 $('type-input').addEventListener('input', (e) => {
   const text = e.target.value;
   const results = renderSuggestions($('suggestions'), text, (item, res, matchedName) => {
-    freshInput();
+    freshInput('typed');
     noteWords(`${text} ${matchedName}`);
     pickItem(item, { candidates: res.map((r) => r.item) });
   });
   $('type-empty').hidden = !(text.trim().length >= 3 && results.length === 0);
-  $('type-empty').textContent = 'Not in our list yet — press Search on the keyboard and we will recognise it.';
+  $('type-empty').textContent = tr('Not in our list yet — press Search on the keyboard and we will recognise it.');
 });
 
 $('type-input').addEventListener('keydown', async (e) => {
@@ -416,7 +421,7 @@ $('type-input').addEventListener('keydown', async (e) => {
   e.preventDefault();
   const text = e.target.value.trim();
   if (!text) return;
-  freshInput();
+  freshInput('typed');
   noteWords(text);
   const results = matchItems(data.toxins, text, 6);
   if (results.length && results[0].score >= 0.5) {
@@ -435,7 +440,7 @@ async function onPhotoChosen(e) {
   const file = e.target.files?.[0];
   e.target.value = '';
   if (!file) return;
-  freshInput();
+  freshInput('photo');
   let dataUrl;
   try {
     dataUrl = await shrink(file, 1280);
@@ -487,7 +492,7 @@ function shrink(file, maxSide) {
 
 function startStatus(text, isError = false) {
   const s = $('start-status');
-  s.textContent = text || '';
+  s.textContent = tr(text || '');
   s.hidden = !text;
   s.classList.toggle('is-error', isError);
 }
@@ -495,7 +500,7 @@ function startStatus(text, isError = false) {
 function busy(on, payload = {}) {
   $('busy').hidden = !on;
   if (!on) return;
-  $('busy-text').textContent = payload.image ? 'Looking at your photo…' : 'Looking it up…';
+  $('busy-text').textContent = tr(payload.image ? 'Looking at your photo…' : 'Looking it up…');
   $('busy-sub').textContent = '';
   $('busy-photo').hidden = !payload.image;
   if (payload.image) $('busy-photo').src = payload.image;
@@ -511,7 +516,7 @@ async function identify(payload) {
   setWaysDisabled(true);
   const ctrl = new AbortController();
   identifying = ctrl;
-  const slow = setTimeout(() => { $('busy-sub').textContent = 'Waking up the recognition server — this can take up to a minute.'; }, 6000);
+  const slow = setTimeout(() => { $('busy-sub').textContent = tr('Waking up the recognition server — this can take up to a minute.'); }, 6000);
   const hard = setTimeout(() => ctrl.abort('timeout'), 75000);
   try {
     const res = await fetch(`${API}/api/identify`, {
@@ -595,10 +600,10 @@ $('way-voice').addEventListener('click', () => {
   }
   startStatus('');
   $('voice-words').textContent = '';
-  $('voice-status-text').textContent = 'Listening… say what your pet ate';
+  $('voice-status-text').textContent = tr('Listening… say what your pet ate');
   $('way-voice').classList.add('is-live');
   $('voice-stop').hidden = false;
-  const done = () => { stopListening = null; $('way-voice').classList.remove('is-live'); $('voice-stop').hidden = true; $('voice-status-text').textContent = 'Tap and say what happened'; };
+  const done = () => { stopListening = null; $('way-voice').classList.remove('is-live'); $('voice-stop').hidden = true; $('voice-status-text').textContent = tr('Tap and say what happened'); };
   stopListening = listen({
     onWords: (text) => { $('voice-words').textContent = text; },
     onError: (code) => {
@@ -618,7 +623,7 @@ $('way-voice').addEventListener('click', () => {
 $('voice-stop').addEventListener('click', () => stopListening?.());
 
 async function handleSaid(text) {
-  freshInput();
+  freshInput('said');
   noteWords(text);
   state.said = text;
   const species = detectSpecies(text);
@@ -655,21 +660,21 @@ function pickItem(item, { candidates = [], lowConfidence = false, notListed = fa
 function fillConfirm(item, { lowConfidence = false, notListed = false } = {}) {
   $('confirm-name').textContent = itemName(item);
   const q = quantitiesText(state.quantities);
-  const read = state.recognisedLabel && normalize(state.recognisedLabel) !== normalize(itemName(item)) ? `We read “${state.recognisedLabel}”` : '';
+  const read = state.recognisedLabel && normalize(state.recognisedLabel) !== normalize(itemName(item)) ? tr('We read “{label}”', { label: state.recognisedLabel }) : '';
   $('confirm-detail').textContent = notListed
-    ? 'Not in our list of known pet poisonings — we will not guess.'
-    : [read, CATEGORY[item.category], q].filter(Boolean).join(' · ');
+    ? tr('Not in our list of known pet poisonings — we will not guess.')
+    : [read, tr(CATEGORY[item.category] || ''), q].filter(Boolean).join(' · ');
   // Only when the data says so for all five animals — a partial list could read as "safe for the others".
   const everyPet = !notListed && SPECIES_ALL.every((sp) => ['dose', 'any'].includes(item.species?.[sp]?.risk));
-  $('confirm-danger').textContent = everyPet ? 'Dangerous for every pet' : '';
+  $('confirm-danger').textContent = everyPet ? tr('Dangerous for every pet') : '';
   const photo = $('confirm-photo');
   const src = state.photoUrl || (notListed ? null : itemPhoto(item));
   photo.hidden = !src;
   photo.classList.toggle('is-stock', !state.photoUrl);
   if (src) photo.src = src;
   $('confirm-said').hidden = !state.said;
-  $('confirm-said').textContent = state.said ? `You said: "${state.said}"` : '';
-  $('confirm-title').textContent = lowConfidence ? 'Best guess — or pick one below' : 'Is this it?';
+  $('confirm-said').textContent = state.said ? tr('You said: "{said}"', { said: state.said }) : '';
+  $('confirm-title').textContent = tr(lowConfidence ? 'Best guess — or pick one below' : 'Is this it?');
   renderCandidates();
   $('change-panel').hidden = !lowConfidence;
   $('confirm-change').hidden = lowConfidence;
@@ -715,7 +720,7 @@ function renderCandidates() {
     ...state.candidates.map((c) =>
       el('li', {}, el('button', { class: 'row', type: 'button', onclick: () => pickItem(c, { candidates: [state.item, ...state.candidates] }) }, [
         el('span', { class: 'row-body' }, el('span', { class: 'row-title', text: itemName(c) })),
-        el('span', { class: 'suggestion-cat', text: CATEGORY[c.category] || '' }),
+        el('span', { class: 'suggestion-cat', text: tr(CATEGORY[c.category] || '') }),
       ])))
   );
   $('candidates-label').hidden = state.candidates.length === 0;
@@ -763,7 +768,7 @@ function weightHints() {
   if (!hint) return;
   const lb = currentUnit() === 'lb';
   $('weight').placeholder = lb ? String(+(hint.kg / LB).toFixed(1)) : String(hint.kg);
-  $('weight-hint').textContent = lb ? hint.lb : hint.text;
+  $('weight-hint').textContent = lb ? hint.lb : tr(hint.text);
 }
 
 function applySpecies(species) {
@@ -804,7 +809,7 @@ function formOptions() {
   const e = speciesEntry();
   const opts = [];
   if (doseBasis() === 'product') {
-    opts.push({ label: cap(state.item.names.en[0]), form: null, measure: { kind: 'grams', noun: 'g' } });
+    opts.push({ label: itemName(state.item), form: null, measure: { kind: 'grams', noun: 'g' } });
   } else {
     const forms = doseForms(state.item);
     const strength = num(state.quantities?.tabletMg || state.spoken?.tabletMg);
@@ -816,10 +821,10 @@ function formOptions() {
     for (const f of forms) {
       if (mgCount.includes(f) && q.tabletMg) { if (adjusted) continue; adjusted = true; }
       const form = adjustForm(state.item, f, q, data.toxins);
-      opts.push({ label: cap(form.adjusted ? form.form : f.label || f.form), form, measure: formMeasure(f) });
+      opts.push({ label: cap(trData(form.adjusted ? form.form : f.label || f.form)), form, measure: formMeasure(f) });
     }
   }
-  for (const nd of e?.noDoseMath?.forms || []) opts.push({ label: cap(nd), noDose: nd, measure: { kind: 'none' } });
+  for (const nd of e?.noDoseMath?.forms || []) opts.push({ label: cap(trData(nd)), noDose: nd, measure: { kind: 'none' } });
   return opts;
 }
 
@@ -857,13 +862,21 @@ function defaultOption(opts) {
   return null;
 }
 
+const NOUN_FR = { tablet: ['comprimé', 'comprimés'], piece: ['morceau', 'morceaux'], cigarette: ['cigarette', 'cigarettes'], item: ['unité', 'unités'], pod: ['capsule', 'capsules'], capsule: ['gélule', 'gélules'] };
+// "3 tablets" / "3 comprimés"
+function countWord(n, noun) {
+  if (FR && NOUN_FR[noun]) return NOUN_FR[noun][n > 1 ? 1 : 0];
+  return `${noun}${n > 1 ? 's' : ''}`;
+}
+const decimal = (v) => (FR ? String(v).replace('.', ',') : String(v));
+
 function measure() {
   return state.option?.measure || { kind: 'grams', noun: 'g' };
 }
 
 function amountChoices() {
   const m = measure();
-  if (m.kind === 'count') return [1, 2, 3, 5].map((n) => ({ label: `${n} ${m.noun}${n > 1 ? 's' : ''}`, amount: { count: n } }));
+  if (m.kind === 'count') return [1, 2, 3, 5].map((n) => ({ label: `${n} ${countWord(n, m.noun)}`, amount: { count: n } }));
   if (m.kind === 'ml') return [5, 15, 50, 100].map((n) => ({ label: `${n} ml`, amount: { ml: n } }));
   if (m.kind === 'none') return [];
   const net = Number(state.quantities?.netWeightG);
@@ -871,10 +884,10 @@ function amountChoices() {
     const r = (g) => Math.max(1, Math.round(g));
     const bite = r(Math.min(5, net * 0.05));
     return [
-      { label: `A bite (≈ ${bite} g)`, amount: { grams: bite } },
-      { label: `A quarter (≈ ${r(net / 4)} g)`, amount: { grams: r(net / 4) } },
-      { label: `Half (≈ ${r(net / 2)} g)`, amount: { grams: r(net / 2) } },
-      { label: `All of it (${r(net)} g)`, amount: { grams: r(net) } },
+      { label: tr('A bite (≈ {n} g)', { n: bite }), amount: { grams: bite } },
+      { label: tr('A quarter (≈ {n} g)', { n: r(net / 4) }), amount: { grams: r(net / 4) } },
+      { label: tr('Half (≈ {n} g)', { n: r(net / 2) }), amount: { grams: r(net / 2) } },
+      { label: tr('All of it ({n} g)', { n: r(net) }), amount: { grams: r(net) } },
     ];
   }
   return [5, 20, 50, 100].map((g) => ({ label: `${g} g`, amount: { grams: g } }));
@@ -905,7 +918,7 @@ function renderAmountChips() {
   $('amount-exact').value = '';
   $('amount-how').hidden = !state.option || m.kind === 'none';
   if (!state.option) return;
-  $('amount-unit').textContent = m.kind === 'count' ? `${m.noun}s` : m.noun;
+  $('amount-unit').textContent = m.kind === 'count' ? countWord(2, m.noun) : m.noun;
   $('amount-chips').replaceChildren(
     ...amountChoices().map((c, i) =>
       el('label', { class: 'chip' }, [
@@ -946,10 +959,10 @@ function readWeightKg() {
 $('pet-go').addEventListener('click', () => {
   const err = $('pet-error');
   const kg = readWeightKg();
-  if (!kg) { err.textContent = 'Enter the weight — a rough guess is fine.'; err.hidden = false; $('weight').focus(); return; }
-  if (kg < 0.01 || kg > 150) { err.textContent = 'Check the weight and the kg / lb switch.'; err.hidden = false; $('weight').focus(); return; }
-  if (doseApplies() && !state.option) { err.textContent = 'Choose which one it was.'; err.hidden = false; return; }
-  if (doseApplies() && !state.option?.noDose && !state.amount) { err.textContent = 'Choose roughly how much it ate.'; err.hidden = false; return; }
+  if (!kg) { err.textContent = tr('Enter the weight — a rough guess is fine.'); err.hidden = false; $('weight').focus(); return; }
+  if (kg < 0.01 || kg > 150) { err.textContent = tr('Check the weight and the kg / lb switch.'); err.hidden = false; $('weight').focus(); return; }
+  if (doseApplies() && !state.option) { err.textContent = tr('Choose which one it was.'); err.hidden = false; return; }
+  if (doseApplies() && !state.option?.noDose && !state.amount) { err.textContent = tr('Choose roughly how much it ate.'); err.hidden = false; return; }
   err.hidden = true;
   state.weightKg = kg;
   storeSet(`weight:${state.species}`, String(+kg.toFixed(3)));
@@ -973,7 +986,7 @@ function renderSigns() {
           state.signs = e.target.checked ? [...state.signs, s.id] : state.signs.filter((x) => x !== s.id);
         } }),
         el('span', { class: 'check-box' }, icon('i-check')),
-        el('span', { class: 'row-body' }, el('span', { class: 'row-title', text: s.label })),
+        el('span', { class: 'row-body' }, el('span', { class: 'row-title', text: trData(s.label) })),
       ])))
   );
 }
@@ -993,6 +1006,13 @@ function sourceLabel(url) {
     'digitalcommons.usu.edu': 'Utah State University', 'rabbitwelfare.co.uk': 'Rabbit Welfare Association', 'anses.fr': 'ANSES (French health agency)',
     'rabbit.org': 'House Rabbit Society', 'todaysveterinarypractice.com': "Today's Veterinary Practice", 'vetmeds.org': 'VetMeds',
   };
+  const namesFr = {
+    'pmc.ncbi.nlm.nih.gov': 'Étude scientifique (NIH PubMed Central)', 'pubmed.ncbi.nlm.nih.gov': 'Étude scientifique (PubMed)',
+    'dvm360.com': 'dvm360 (revue vétérinaire)', 'vet.cornell.edu': 'Faculté vétérinaire de Cornell', 'digitalcommons.usu.edu': 'Université d’État de l’Utah',
+    'anses.fr': 'Anses', 'fda.gov': 'FDA (agence sanitaire américaine)', 'vcahospitals.com': 'Cliniques vétérinaires VCA',
+    'aspca.org': 'Centre antipoison ASPCA', 'rabbitwelfare.co.uk': 'Rabbit Welfare Association', 'rabbit.org': 'House Rabbit Society',
+  };
+  if (FR && namesFr[host]) return namesFr[host];
   return names[host] || host;
 }
 
@@ -1008,7 +1028,7 @@ function amountText() {
   const m = measure();
   const qty = a.count ?? a.ml ?? a.grams;
   const what = state.option && formOptions().length > 1 ? ` (${state.option.label.toLowerCase()})` : '';
-  return m.kind === 'count' ? `${qty} ${m.noun}${qty > 1 ? 's' : ''}${what}` : `${Math.round(qty * 10) / 10} ${m.noun}${what}`;
+  return m.kind === 'count' ? `${decimal(qty)} ${countWord(qty, m.noun)}${what}` : `${decimal(Math.round(qty * 10) / 10)} ${m.noun}${what}`;
 }
 
 const LEVEL_CLASS = { 'vet-now': 'seg-now', 'vet-today': 'seg-today', watch: 'seg-watch' };
@@ -1021,7 +1041,9 @@ function renderDose(v) {
   $('dose-value').textContent = String(v.math.shown);
   $('dose-unit').textContent = v.unit;
   const compound = String(state.item.compound || 'the toxic substance').split(' (')[0];
-  $('dose-of').textContent = `${mass === 'g' ? 'grams' : 'milligrams'} of ${compound} per kg of body weight`;
+  $('dose-of').textContent = FR
+    ? `${mass === 'g' ? 'grammes' : 'milligrammes'} ${de(trData(compound))} par kg de poids`
+    : `${mass === 'g' ? 'grams' : 'milligrams'} of ${compound} per kg of body weight`;
   const e = speciesEntry();
   const th = [...(e?.thresholds || [])].sort((a, b) => a.from - b.from);
   const top = Math.max((th[th.length - 1]?.from || 1) * 1.5, v.dosePerKg * 1.15);
@@ -1038,10 +1060,10 @@ function renderDose(v) {
     const to = bands[i + 1]?.from ?? top;
     const tick = document.createElement('span');
     tick.style.left = `${((b.from + to) / 2 / top) * 100}%`;
-    tick.textContent = BAND_NAME[b.verdict] || '';
+    tick.textContent = tr(BAND_NAME[b.verdict] || '');
     return tick;
   }));
-  $('sheet-live').textContent = `≈ ${v.math.shown} ${v.unit} · ${LEVEL_LABEL[v.level]}`;
+  $('sheet-live').textContent = `≈ ${decimal(v.math.shown)} ${v.unit} · ${LEVEL_LABEL[v.level]}`;
   $('sheet-live').dataset.level = v.level;
   const at = `${Math.min(1, v.dosePerKg / top) * 100}%`;
   $('meter-dot').style.left = at;
@@ -1055,7 +1077,32 @@ const weightWord = (kg) => (kg < 1 ? `${Math.round(kg * 1000)} g` : `${Math.roun
 const PLURAL = { dog: 'dogs', cat: 'cats', rabbit: 'rabbits', rodent: 'guinea pigs and other rodents', bird: 'birds' };
 
 // One sentence a worried owner understands at once.
+const PLURAL_FR = { dog: 'chiens', cat: 'chats', rabbit: 'lapins', rodent: 'cobayes et autres rongeurs', bird: 'oiseaux' };
+const de = (word) => (/^[aeiouyhéèêàâîôû]/i.test(word) ? `d’${word}` : `de ${word}`);
+
+function plainSentenceFr(v) {
+  const sp = SPECIES_LABEL[state.species] || 'animal';
+  if (state.path === 'unknown') {
+    if (!v.chosen.length) return 'Votre animal a peut-être mangé quelque chose de dangereux. N’attendez pas que des signes apparaissent.';
+    return v.level === 'vet-now' ? 'Ces signes peuvent indiquer une intoxication grave.' : `Ces signes demandent l’avis d’un vétérinaire${v.raisedBySpecies ? ' — les petits animaux cachent leur maladie jusqu’à ce qu’elle soit grave' : ''}.`;
+  }
+  const what = itemName(state.item).toLowerCase();
+  if (state.item?.id === 'not-listed') return `Nous n’avons aucune information fiable sur « ${state.item.names.en[0]} » pour les animaux : un vétérinaire doit décider.`;
+  if (v.kind === 'any') return `Même une petite quantité ${de(what)} peut empoisonner un ${sp}.`;
+  if (v.kind === 'no-data') return `Il n’existe pas d’information fiable sur ${what} pour les ${PLURAL_FR[state.species] || 'animaux'} : un vétérinaire doit décider.`;
+  if (v.kind === 'low') return `${cap(what)} présente en général peu de risque pour un ${sp}.`;
+  if (v.kind === 'dose') {
+    const amt = amountText();
+    const who = `un ${sp} de ${decimal(weightWord(state.weightKg))}`;
+    if (v.level === 'vet-now') return `${cap(amt)} ${de(what)}, c’est une quantité dangereuse pour ${who}.`;
+    if (v.level === 'vet-today') return `${cap(amt)} ${de(what)} peut rendre malade ${who}.`;
+    return `${cap(amt)} ${de(what)} reste sous la quantité qui pose d’habitude problème pour ${who}.`;
+  }
+  return 'Impossible de calculer la dose pour ce produit : un vétérinaire doit décider.';
+}
+
 function plainSentence(v) {
+  if (FR) return plainSentenceFr(v);
   const sp = SPECIES_LABEL[state.species] || 'pet';
   if (state.path === 'unknown') {
     if (!v.chosen.length) return "Your pet may have eaten something harmful. Don't wait for signs to appear.";
@@ -1076,6 +1123,47 @@ function plainSentence(v) {
   return "We can't work out the dose for this product, so a vet should decide.";
 }
 
+// "How Swallowed decided": what was recognised, where it was checked, which rule applied.
+function whyLines(v) {
+  const sp = SPECIES_LABEL[state.species] || (FR ? 'animal' : 'pet');
+  const plural = (FR ? PLURAL_FR : PLURAL)[state.species] || (FR ? 'cet animal' : 'this animal');
+  const level = LEVEL_LABEL[v.level];
+  if (state.path === 'unknown') {
+    const short = (x) => trData(x.label).split(':')[0].split(' (')[0].trim().toLowerCase();
+    const seen = v.chosen.length ? v.chosen.map(short).join(', ') : (FR ? 'aucun signe pour l’instant' : 'no signs yet');
+    return FR
+      ? [`Vous avez signalé : ${seen}.`, `Comparé aux guides vétérinaires des signes d’intoxication pour un ${sp}.`, v.chosen.length ? `Le signe le plus grave décide : ${level.toLowerCase()}.` : 'Sans signe, un vétérinaire doit quand même être appelé aujourd’hui.']
+      : [`You reported: ${seen}.`, `Compared with veterinary guides to poisoning signs in a ${sp}.`, v.chosen.length ? `The most serious sign decides: ${level.toLowerCase()}.` : 'Without signs, a vet should still be called today.'];
+  }
+  const name = itemName(state.item);
+  const via = {
+    photo: FR ? `Reconnu sur votre photo : ${name}` : `Recognised in your photo: ${name}`,
+    said: FR ? `Vous avez dit : ${name}` : `You said: ${name}`,
+    typed: FR ? `Vous avez écrit : ${name}` : `You typed: ${name}`,
+    list: FR ? `Vous avez choisi : ${name}` : `You chose: ${name}`,
+  }[state.via] || name;
+  if (state.item?.id === 'not-listed') {
+    return FR
+      ? [via + '.', `Absent de notre liste de ${data.toxins.length} poisons connus pour les animaux.`, 'Nous ne devinons jamais : un vétérinaire doit décider.']
+      : [via + '.', `Not in our list of ${data.toxins.length} known pet poisons.`, 'We never guess, so a vet must decide.'];
+  }
+  const src = v.source ? sourceLabel(v.source) : (FR ? 'nos références vétérinaires' : 'our veterinary references');
+  const checked = FR ? `Vérifié pour un ${sp} dans : ${src}.` : `Checked for a ${sp} in: ${src}.`;
+  let rule;
+  if (v.kind === 'any') rule = FR ? `Pour les ${plural}, aucune quantité sans danger n’est connue.` : `For ${plural}, no safe amount is known.`;
+  else if (v.kind === 'no-data') rule = FR ? `Pas de données vétérinaires fiables pour les ${plural} : nous ne devinons pas.` : `No reliable veterinary data for ${plural}, so we don't guess.`;
+  else if (v.kind === 'low') rule = FR ? `Risque en général faible pour les ${plural}.` : `Usually low risk for ${plural}.`;
+  else if (v.kind === 'dose') {
+    const th = [...(speciesEntry()?.thresholds || [])].sort((a, b) => a.from - b.from);
+    const serious = th.find((t) => t.verdict === 'vet-now');
+    const u = v.unit;
+    rule = FR
+      ? `Dose estimée : ${decimal(v.math.shown)} ${u}. Les problèmes commencent à ${decimal(th[0]?.from)} ${u}${serious && serious !== th[0] ? `, graves à partir de ${decimal(serious.from)} ${u}` : ''}.`
+      : `Estimated dose: ${v.math.shown} ${u}. Problems start at ${th[0]?.from} ${u}${serious && serious !== th[0] ? `, serious from ${serious.from} ${u}` : ''}.`;
+  } else rule = FR ? 'La dose ne peut pas être calculée pour ce produit : on prend le cas le plus prudent.' : "The dose can't be worked out for this product, so we take the cautious answer.";
+  return [via + '.', checked, rule];
+}
+
 const STEPS = {
   'vet-now': ['Call a vet or a pet poison line now — tap a number below.', "Don't try to make your pet vomit unless a vet tells you to.", 'Keep the packaging, and note what time it happened.'],
   'vet-today': ['Call your vet today and tell them what and how much it ate.', 'Keep an eye on your pet for the signs below.', 'If a sign appears, call a vet or a poison line straight away.'],
@@ -1087,6 +1175,7 @@ function stepsFor(v) {
   }
   return STEPS[v.level];
 }
+const stepsText = (v) => stepsFor(v).map((t) => tr(t));
 
 // "Vomiting, lethargy, then little or no urine (kidney failure)" → short separate lines.
 function signLines(text) {
@@ -1099,13 +1188,13 @@ function signLines(text) {
     if ((ch === ',' || ch === ';') && depth === 0) { out.push(cur); cur = ''; } else cur += ch;
   }
   out.push(cur);
-  return out.map((x) => cap(x.trim().replace(/^(then|and|or)\s+/i, '').replace(/\.$/, ''))).filter(Boolean);
+  return out.map((x) => cap(x.trim().replace(/^(then|and|or|puis|et|ou)\s+/i, '').replace(/\.$/, ''))).filter(Boolean);
 }
 
 function verdictContext() {
   const sp = cap(SPECIES_LABEL[state.species] || '');
-  const kg = state.weightKg ? (state.weightKg < 1 ? `${Math.round(state.weightKg * 1000)} g` : `${Math.round(state.weightKg * 10) / 10} kg`) : '';
-  const what = state.path === 'unknown' ? 'Unknown item' : itemName(state.item);
+  const kg = state.weightKg ? decimal(state.weightKg < 1 ? `${Math.round(state.weightKg * 1000)} g` : `${Math.round(state.weightKg * 10) / 10} kg`) : '';
+  const what = state.path === 'unknown' ? tr('Unknown item') : itemName(state.item);
   return `${what} · ${sp}${kg ? `, ${kg}` : ''}`;
 }
 
@@ -1133,9 +1222,10 @@ function renderVerdict({ live = false } = {}) {
     reason = cap(v.reason);
   }
   $('verdict-reason').textContent = reason;
-  $('sheet-reason').textContent = reason;
+  $('sheet-reason').textContent = FR ? plainSentence(v) : reason;
   $('verdict-plain').textContent = plainSentence(v);
-  $('steps').replaceChildren(...stepsFor(v).map((t) => el('li', { text: t })));
+  $('steps').replaceChildren(...stepsText(v).map((t) => el('li', { text: t })));
+  $('why').replaceChildren(...whyLines(v).map((t) => el('li', {}, [icon('i-check'), el('span', { text: t })])));
   $('verdict-change').hidden = state.path === 'unknown';
 
   // Call buttons right under the steps when a vet is needed
@@ -1147,8 +1237,8 @@ function renderVerdict({ live = false } = {}) {
   $('open-math').hidden = v.kind !== 'dose';
   if (v.kind !== 'dose') $('live-amount-wrap').hidden = true;
   if (v.kind === 'dose') {
-    $('verdict-math').textContent = v.math.text;
-    $('open-math-sub').textContent = `${v.math.perKg} — step by step, try other amounts`;
+    $('verdict-math').textContent = FR ? v.math.text.replace(/ of (.+?) ÷/, (m0, c) => ` ${de(trData(c))} ÷`).replace(/(\d)\.(\d)/g, '$1,$2').replace(/\btablets?\b/g, (w) => countWord(w.endsWith('s') ? 2 : 1, 'tablet')).replace(/\bpieces?\b/g, (w) => countWord(w.endsWith('s') ? 2 : 1, 'piece')) : v.math.text;
+    $('open-math-sub').textContent = tr('{perKg} — step by step, try other amounts', { perKg: decimal(v.math.perKg) });
     $('verdict-band-text').textContent = bandText(v);
     renderDose(v);
     if (!live) setupLive();
@@ -1161,19 +1251,19 @@ function renderVerdict({ live = false } = {}) {
     const rows = v.culprits.map((c) => {
         const item = data.toxins.find((t) => t.id === c.ids?.[0]);
         const e = item?.species?.[state.species];
-        const why = e?.signs || (e?.risk === 'no-data' ? 'No reliable data for this animal — a vet should decide.' : '');
+        const why = trData(e?.signs) || (e?.risk === 'no-data' ? tr('No reliable data for this animal — a vet should decide.') : '');
         const body = el('span', { class: 'row-body' }, [
-          el('span', { class: 'row-title', text: c.label }),
+          el('span', { class: 'row-title', text: trData(c.label) }),
           why ? el('span', { class: 'culprit-why', text: cap(why) }) : null,
         ]);
         const photo = itemPhoto(item);
         const thumb = photo ? el('img', { class: 'row-thumb', src: photo, alt: '', width: 40, height: 40 }) : null;
         return el('li', {}, item
-          ? el('button', { class: 'row', type: 'button', onclick: () => { freshInput(); pickItem(item); } }, [thumb, body, icon('i-chev-r', 'icon chev')])
+          ? el('button', { class: 'row', type: 'button', onclick: () => { freshInput('list'); pickItem(item); } }, [thumb, body, icon('i-chev-r', 'icon chev')])
           : el('div', { class: 'row' }, [thumb, body]));
       });
     const more = rows.length > 5
-      ? el('li', {}, el('button', { class: 'row row--more', type: 'button', onclick: (e) => { $('culprits').replaceChildren(...rows); } }, el('span', { class: 'row-body' }, el('span', { class: 'row-title', text: `Show all ${rows.length}` }))))
+      ? el('li', {}, el('button', { class: 'row row--more', type: 'button', onclick: (e) => { $('culprits').replaceChildren(...rows); } }, el('span', { class: 'row-body' }, el('span', { class: 'row-title', text: tr('Show all {n}', { n: rows.length }) }))))
       : null;
     $('culprits').replaceChildren(...rows.slice(0, 5), more);
   }
@@ -1181,14 +1271,14 @@ function renderVerdict({ live = false } = {}) {
   // Watch for
   const watch = $('watch-block');
   if (state.path === 'unknown') {
-    const urgent = signsFor(data.signs, state.species).filter((s) => s.urgency === 'vet-now').map((s) => s.label.split(':')[0].split(' (')[0].toLowerCase());
+    const urgent = signsFor(data.signs, state.species).filter((s) => s.urgency === 'vet-now').map((s) => trData(s.label).split(':')[0].split(' (')[0].trim().toLowerCase());
     $('verdict-signs').replaceChildren(...urgent.slice(0, 6).map((t) => el('li', { text: cap(t) })));
-    $('verdict-onset').textContent = 'Go to a vet at once if you see any of these.';
+    $('verdict-onset').textContent = tr('Go to a vet at once if you see any of these.');
     watch.hidden = false;
   } else {
-    const lines = v.signs ? signLines(v.signs) : ['Any change in behaviour, eating, breathing or balance'];
+    const lines = v.signs ? signLines(trData(v.signs)) : [tr('Any change in behaviour, eating, breathing or balance')];
     $('verdict-signs').replaceChildren(...lines.map((t) => el('li', { text: t })));
-    $('verdict-onset').textContent = v.onset && v.kind !== 'no-data' ? `When: ${lowerFirst(v.onset)}` : '';
+    $('verdict-onset').textContent = v.onset && v.kind !== 'no-data' ? tr('When: {onset}', { onset: lowerFirst(trData(v.onset)) }) : '';
     watch.hidden = false;
   }
 
@@ -1199,14 +1289,14 @@ function renderVerdict({ live = false } = {}) {
     const seen = new Set();
     const links = urls.filter((u) => !seen.has(sourceLabel(u)) && seen.add(sourceLabel(u)));
     src.replaceChildren(...links.map((u, i) => [i ? ' · ' : '', el('a', { href: u, target: '_blank', rel: 'noopener noreferrer', text: sourceLabel(u) })]).flat());
-    if (!src.childNodes.length) src.textContent = 'Signs from veterinary references listed in the app.';
+    if (!src.childNodes.length) src.textContent = tr('Signs from veterinary references listed in the app.');
   } else if (v.source) {
     src.replaceChildren(
       el('a', { href: v.source, target: '_blank', rel: 'noopener noreferrer', text: sourceLabel(v.source) }),
-      v.quote ? el('span', { class: 'quote', text: `“${v.quote}”` }) : ''
+      v.quote ? el('span', { class: 'quote', text: `“${trData(v.quote)}”` }) : ''
     );
   } else {
-    src.textContent = 'No veterinary data for this item and animal — that is why we say to call your vet.';
+    src.textContent = tr('No veterinary data for this item and animal — that is why we say to call your vet.');
   }
 
   renderSummary(v);
@@ -1215,6 +1305,11 @@ function renderVerdict({ live = false } = {}) {
 function bandText(v) {
   if (!v.math) return '';
   const parts = [];
+  if (FR) {
+    if (v.math.form) parts.push(`Calculé pour : ${trData(v.math.form)}.`);
+    if (v.math.firstLevel) parts.push(`Les sources vétérinaires signalent les premiers signes à partir de ${decimal(v.math.firstLevel)}.`);
+    return parts.join(' ');
+  }
   if (v.math.form) parts.push(`Calculated for: ${v.math.form}.`);
   if (v.math.firstLevel) parts.push(`Veterinary sources report the first signs from ${v.math.firstLevel}.`);
   return parts.join(' ');
@@ -1228,7 +1323,7 @@ function renderSummary(v) {
     itemName: state.path === 'unknown' ? null : itemName(state.item) + (state.option?.noDose ? ` (${state.option.noDose})` : quantitiesText(state.quantities) ? ` (${quantitiesText(state.quantities)})` : ''),
     amountText: state.path === 'unknown' ? null : amountText(),
     signs: signLabels,
-    doseText: v.kind === 'dose' ? v.math.perKg : null,
+    doseText: v.kind === 'dose' ? decimal(v.math.perKg) : null,
     level: v.level,
   });
   $('summary').textContent = text;
@@ -1262,7 +1357,7 @@ function setupLive() {
 function updateLiveOutputs() {
   const m = measure();
   const a = Math.round(num($('live-amount').value) * 100) / 100;
-  $('live-amount-out').textContent = m.kind === 'count' ? `${a} ${m.noun}${a > 1 ? 's' : ''}` : `${a} ${m.noun}`;
+  $('live-amount-out').textContent = m.kind === 'count' ? `${decimal(a)} ${countWord(a, m.noun)}` : `${decimal(a)} ${m.noun}`;
   const w = Number($('live-weight').value);
   $('live-weight-out').textContent = w < 1 ? `${Math.round(w * 1000)} g` : `${Math.round(w * 10) / 10} kg`;
 }
@@ -1287,7 +1382,7 @@ $('summary-copy').addEventListener('click', async () => {
   catch { toast('Select the text and copy it'); }
 });
 $('summary-share').addEventListener('click', async () => {
-  try { await navigator.share({ title: 'For the vet', text: $('summary').textContent }); } catch { /* cancelled */ }
+  try { await navigator.share({ title: FR ? 'Pour le vétérinaire' : 'For the vet', text: $('summary').textContent }); } catch { /* cancelled */ }
 });
 
 $('open-math').addEventListener('click', () => openSheet($('sheet-math')));
@@ -1335,7 +1430,7 @@ function callButton(c) {
   return el('a', { class: 'call-btn', href: telHref(c) }, [
     icon('i-phone'),
     el('span', { class: 'call-text' }, [
-      el('span', { class: 'call-name', text: `Call ${shortName(c)}` }),
+      el('span', { class: 'call-name', text: tr('Call {name}', { name: shortName(c) }) }),
       el('span', { class: 'call-num', text: c.phone }),
     ]),
   ]);
@@ -1347,7 +1442,7 @@ function renderContacts() {
     ...contactsFor(state.country).map((c) => {
       const body = el('span', { class: 'row-body' }, [
         el('span', { class: 'row-title', text: shortName(c) }),
-        el('span', { class: 'row-sub', text: c.display || [c.hoursShort || c.hours, c.feeShort || c.fee].filter(Boolean).join(' · ') }),
+        el('span', { class: 'row-sub', text: FR && c.country === 'FR' ? [c.hours, c.fee].filter(Boolean).join(' · ') || c.display : c.display || [c.hoursShort || c.hours, c.feeShort || c.fee].filter(Boolean).join(' · ') }),
       ]);
       if (c.tel) body.append(el('span', { class: 'contact-num', text: c.phone }));
       return el('li', {}, c.tel
@@ -1366,7 +1461,16 @@ document.querySelectorAll('input[name="country"]').forEach((r) => r.addEventList
 
 /* ---------- boot ---------- */
 
+// FR / EN switch: remembered, applied by reloading the page.
+$('lang-switch').textContent = FR ? 'EN' : 'FR';
+$('lang-switch').setAttribute('aria-label', FR ? 'Switch to English' : 'Passer en français');
+$('lang-switch').addEventListener('click', () => {
+  storeSet('lang', FR ? 'en' : 'fr');
+  location.reload();
+});
+
 async function boot() {
+  if (FR) fetch('data/fr.json').then((r) => (r.ok ? r.json() : {})).then(setDataFr).catch(() => {});
   try {
     const [toxins, signs, contacts] = await Promise.all(
       ['toxins', 'signs', 'contacts'].map((n) => fetch(`data/${n}.json`).then((r) => { if (!r.ok) throw new Error(n); return r.json(); }))

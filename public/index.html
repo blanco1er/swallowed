@@ -51,6 +51,7 @@
     <header class="bar" id="bar">
       <button id="back" class="bar-back" type="button" hidden aria-label="Back"><svg class="icon" aria-hidden="true"><use href="#i-chev-l"/></svg></button>
       <span id="brand" class="brand">Swallowed</span>
+      <button id="lang-switch" class="lang-switch" type="button">FR</button>
       <p id="bar-title" class="bar-title" aria-hidden="true"></p>
       <button id="help-open" class="capsule" type="button" aria-label="Emergency"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span>Emergency</span></button>
     </header>
@@ -212,6 +213,11 @@
             </div>
             <p id="verdict-reason" class="sr-only"></p>
           </div>
+
+          <section class="why" aria-labelledby="why-title">
+            <h2 id="why-title" class="why-title">How Swallowed decided</h2>
+            <ol id="why" class="why-list"></ol>
+          </section>
 
           <section class="steps" aria-labelledby="steps-title">
             <h2 id="steps-title" class="steps-title">What to do now</h2>

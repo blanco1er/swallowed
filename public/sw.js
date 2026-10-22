@@ -3,12 +3,12 @@
 // Photos, icons and the font: cache first. /api is never cached. Only responses marked by our
 // own server are stored, so Render's "waking up" page can never be cached as the app.
 
-const SHELL = 'swallowed-shell-v1';
+const SHELL = 'swallowed-shell-v2';
 const ASSETS = 'swallowed-assets-v1';
 const TIMEOUT_MS = 4000;
 const BASE = new URL('./', self.location).pathname; // "/" on Render, "/swallowed/" on GitHub Pages
-const PRECACHE = ['', 'styles.css', 'js/app.js', 'js/match.js', 'js/verdict.js', 'js/summary.js', 'js/speech.js',
-  'data/toxins.json', 'data/signs.json', 'data/contacts.json', 'manifest.webmanifest'].map((p) => BASE + p);
+const PRECACHE = ['', 'styles.css', 'js/app.js', 'js/match.js', 'js/verdict.js', 'js/summary.js', 'js/speech.js', 'js/i18n.js',
+  'data/toxins.json', 'data/fr.json', 'data/signs.json', 'data/contacts.json', 'manifest.webmanifest'].map((p) => BASE + p);
 const IMAGES = ['hero', 'chocolate', 'grapes', 'lily', 'pills', 'gum', 'onion', 'dog', 'cat', 'rabbit', 'guineapig', 'bird', 'icon-180', 'icon-64']
   .map((n) => `${BASE}img/${n}.${n.startsWith('icon') ? 'png' : 'jpg'}`);
 // On Render, only responses marked by our server are cached (never its "waking up" page).
